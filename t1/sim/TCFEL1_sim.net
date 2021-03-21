@@ -1,0 +1,34 @@
+TCFELab1
+
+.options savecurrents
+
+*the node 8 is the gnd = 0
+
+Vin 1 4 5.03847501972
+Id 0 6 1.01674167773m
+
+*dumb voltage source
+Vdumb CFP1 7 0
+
+R1 2 1 1.03994439216k
+R2 3 2 2.07923431764k
+R3 2 5 3.06168544529k
+R4 4 5 4.09516986362k
+R5 5 6 3.00136467001k
+R6 4 CFP1 2.03324628446k
+R7 7 0 1.02216788331k
+
+Gb 6 3 2 5 7.01505323139m
+Hc 5 0 Vdumb 8.37372457746k
+
+.op
+
+.control
+	run
+	echo "op_TAB"
+	print all
+	echo "op_END"
+.endc
+
+
+.end
