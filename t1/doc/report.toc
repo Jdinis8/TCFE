@@ -1,10 +1,10 @@
-\babel@toc {portuguese}{}
+\babel@toc {english}{}
+\babel@toc {english}{}
 \babel@toc {english}{}
 \babel@toc {portuguese}{}
-\babel@toc {portuguese}{}
-\babel@toc {portuguese}{}
-\contentsline {section}{Lista de Tabelas}{2}%
-\contentsline {section}{Lista de Figuras}{2}%
+\babel@toc {english}{}
+\contentsline {section}{List of Tables}{2}%
+\contentsline {section}{List of Figures}{2}%
 \contentsline {section}{\numberline {1}Introduction}{3}%
 \contentsline {section}{\numberline {2}Theoretical Analysis}{4}%
 \contentsline {subsection}{\numberline {2.1}Mesh Analysis}{4}%

@@ -1,8 +1,8 @@
-\babel@toc {portuguese}{}
+\babel@toc {english}{}
+\babel@toc {english}{}
 \babel@toc {english}{}
 \babel@toc {portuguese}{}
-\babel@toc {portuguese}{}
-\babel@toc {portuguese}{}
+\babel@toc {english}{}
 \contentsline {figure}{\numberline {1}{\ignorespaces \textit {Circuit analysed. It consists, essentially, in a circuit with 4 essential meshes, 8 nodes and 11 branches (in which we count 7 resistors, 2 voltage sources - one of them controlled by the current $I_C$ - and 2 current sources - one independent and one dependent, controlled by the voltage $V_b$ as it can be seen in the figure. The labels used in this figure will be used throughout this report.}}}{3}%
 \contentsline {figure}{\numberline {2}{\ignorespaces \textit {Mesh analysis scheme for this circuit that shows the adopted current direction for each mesh}}}{4}%
 \contentsline {figure}{\numberline {3}{\ignorespaces \textit {Nodal analysis scheme for this circuit that shows the labels given to each of the circuit's nodes}}}{5}%
