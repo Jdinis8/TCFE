@@ -1,6 +1,13 @@
-\contentsline {section}{\numberline {1}Introduction}{1}%
-\contentsline {section}{\numberline {2}Theoretical Analysis}{1}%
-\contentsline {subsection}{\numberline {2.1}Mesh Analysis}{1}%
-\contentsline {subsection}{\numberline {2.2}Nodal Analysis}{3}%
-\contentsline {section}{\numberline {3}Simulation Analysis}{4}%
-\contentsline {section}{\numberline {4}Conclusion}{6}%
+\babel@toc {portuguese}{}
+\babel@toc {english}{}
+\babel@toc {portuguese}{}
+\babel@toc {portuguese}{}
+\babel@toc {portuguese}{}
+\contentsline {section}{Lista de Tabelas}{2}%
+\contentsline {section}{Lista de Figuras}{2}%
+\contentsline {section}{\numberline {1}Introduction}{3}%
+\contentsline {section}{\numberline {2}Theoretical Analysis}{4}%
+\contentsline {subsection}{\numberline {2.1}Mesh Analysis}{4}%
+\contentsline {subsection}{\numberline {2.2}Nodal Analysis}{5}%
+\contentsline {section}{\numberline {3}Simulation Analysis}{7}%
+\contentsline {section}{\numberline {4}Conclusion}{9}%

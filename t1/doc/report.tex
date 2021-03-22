@@ -1,6 +1,7 @@
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage[english,portuguese]{babel}
 
 \usepackage{lmodern}
 \usepackage{geometry}
@@ -11,15 +12,31 @@
 \usepackage{float} 
 \usepackage{amsmath}
 
-\geometry{legalpaper, margin=1in}
+\geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 \renewcommand{\arraystretch}{1.15}
+
+\renewenvironment{abstract}[1]
+  {\bigskip\selectlanguage{#1}%
+   \begin{center}\bfseries\abstractname\end{center}}
+  {\par\bigskip}
 
 \begin{document}
 
 \input{frontcover}
 \maketitle
 \input{abstract}
+\input{resumo}
+
+\cleardoublepage
+
 \tableofcontents
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+\cleardoublepage
+
 \input{introduction}
 \input{theory}
 \input{ngspice}

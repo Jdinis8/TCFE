@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.2)  22 MAR 2021 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.2)  22 MAR 2021 17:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -31,6 +31,35 @@ Package: inputenc 2018/08/11 v1.3c Input encoding file
 (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2020/02/11 v2.0o Standard LaTeX package
 )
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2020/02/14 3.40 The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/switch.def
+File: switch.def 2020/02/14 3.40 Babel switching mechanism
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2017/06/06 v3.3r English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2020/02/14 3.40 Babel common definitions
+\babel@savecnt=\count175
+\U@D=\dimen135
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
+\bbl@readstream=\read2
+\bbl@dirlevel=\count176
+)
+Package babel Info: \l@canadian = using hyphenrules for english
+(babel)             (\language0) on input line 102.
+Package babel Info: \l@australian = using hyphenrules for ukenglish
+(babel)             (\language22) on input line 105.
+Package babel Info: \l@newzealand = using hyphenrules for ukenglish
+(babel)             (\language22) on input line 108.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/babel-portuges/portuges.ldf
+Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
+Package babel Info: Making " an active character on input line 145.
+))
 (/usr/share/texmf/tex/latex/lm/lmodern.sty
 Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
@@ -79,26 +108,26 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2019/11/07 v1.0c TeX engine tests
 ))
-\Gm@cnth=\count175
-\Gm@cntv=\count176
-\c@Gm@tempcnt=\count177
-\Gm@bindingoffset=\dimen135
-\Gm@wd@mp=\dimen136
-\Gm@odd@mp=\dimen137
-\Gm@even@mp=\dimen138
-\Gm@layoutwidth=\dimen139
-\Gm@layoutheight=\dimen140
-\Gm@layouthoffset=\dimen141
-\Gm@layoutvoffset=\dimen142
+\Gm@cnth=\count177
+\Gm@cntv=\count178
+\c@Gm@tempcnt=\count179
+\Gm@bindingoffset=\dimen136
+\Gm@wd@mp=\dimen137
+\Gm@odd@mp=\dimen138
+\Gm@even@mp=\dimen139
+\Gm@layoutwidth=\dimen140
+\Gm@layoutheight=\dimen141
+\Gm@layouthoffset=\dimen142
+\Gm@layoutvoffset=\dimen143
 \Gm@dimlist=\toks17
 )
 (/usr/share/texlive/texmf-dist/tex/latex/preprint/authblk.sty
 Package: authblk 2001/02/27 1.3 (PWD)
 \affilsep=\skip49
 \@affilsep=\skip50
-\c@Maxaffil=\count178
-\c@authors=\count179
-\c@affil=\count180
+\c@Maxaffil=\count180
+\c@authors=\count181
+\c@affil=\count182
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
@@ -117,28 +146,28 @@ Package graphics Info: Driver file: pdftex.def on input line 105.
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen143
-\Gin@req@width=\dimen144
+\Gin@req@height=\dimen144
+\Gin@req@width=\dimen145
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count181
+\c@tracingmulticols=\count183
 \mult@box=\box45
-\multicol@leftmargin=\dimen145
-\c@unbalance=\count182
-\c@collectmore=\count183
-\doublecol@number=\count184
-\multicoltolerance=\count185
-\multicolpretolerance=\count186
-\full@width=\dimen146
-\page@free=\dimen147
-\premulticols=\dimen148
-\postmulticols=\dimen149
+\multicol@leftmargin=\dimen146
+\c@unbalance=\count184
+\c@collectmore=\count185
+\doublecol@number=\count186
+\multicoltolerance=\count187
+\multicolpretolerance=\count188
+\full@width=\dimen147
+\page@free=\dimen148
+\premulticols=\dimen149
+\postmulticols=\dimen150
 \multicolsep=\skip51
 \multicolbaselineskip=\skip52
 \partial@page=\box46
 \last@line=\box47
-\maxbalancingoverflow=\dimen150
+\maxbalancingoverflow=\dimen151
 \mult@rightbox=\box48
 \mult@grightbox=\box49
 \mult@gfirstbox=\box50
@@ -180,26 +209,26 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \@tempa=\box86
 \@tempa=\box87
 \@tempa=\box88
-\c@minrows=\count187
-\c@columnbadness=\count188
-\c@finalcolumnbadness=\count189
-\last@try=\dimen151
-\multicolovershoot=\dimen152
-\multicolundershoot=\dimen153
+\c@minrows=\count189
+\c@columnbadness=\count190
+\c@finalcolumnbadness=\count191
+\last@try=\dimen152
+\multicolovershoot=\dimen153
+\multicolundershoot=\dimen154
 \mult@nat@firstbox=\box89
 \colbreak@box=\box90
-\mc@col@check@num=\count190
+\mc@col@check@num=\count192
 )
 (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2019/05/31 v2.5 Span multiple rows of a table
 \multirow@colwidth=\skip53
-\multirow@cntb=\count191
+\multirow@cntb=\count193
 \multirow@dima=\skip54
-\bigstrutjot=\dimen154
+\bigstrutjot=\dimen155
 )
 (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count192
+\c@float@type=\count194
 \float@exts=\toks18
 \float@box=\box91
 \@float@everytoks=\toks19
@@ -216,46 +245,46 @@ Package: amstext 2000/06/29 v2.01 AMS text
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks20
-\ex@=\dimen155
+\ex@=\dimen156
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen156
+\pmbraise@=\dimen157
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count193
+\inf@bad=\count195
 LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count194
-\leftroot@=\count195
+\uproot@=\count196
+\leftroot@=\count197
 LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count196
-\DOTSCASE@=\count197
+\classnum@=\count198
+\DOTSCASE@=\count199
 LaTeX Info: Redefining \ldots on input line 486.
 LaTeX Info: Redefining \dots on input line 489.
 LaTeX Info: Redefining \cdots on input line 610.
 \Mathstrutbox@=\box93
 \strutbox@=\box94
-\big@size=\dimen157
+\big@size=\dimen158
 LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count198
-\c@MaxMatrixCols=\count199
+\macc@depth=\count266
+\c@MaxMatrixCols=\count267
 \dotsspace@=\muskip16
-\c@parentequation=\count266
-\dspbrk@lvl=\count267
+\c@parentequation=\count268
+\dspbrk@lvl=\count269
 \tag@help=\toks21
-\row@=\count268
-\column@=\count269
-\maxfields@=\count270
+\row@=\count270
+\column@=\count271
+\maxfields@=\count272
 \andhelp@=\toks22
-\eqnshift@=\dimen158
-\alignsep@=\dimen159
-\tagshift@=\dimen160
-\tagwidth@=\dimen161
-\totwidth@=\dimen162
-\lineht@=\dimen163
+\eqnshift@=\dimen159
+\alignsep@=\dimen160
+\tagshift@=\dimen161
+\tagwidth@=\dimen162
+\totwidth@=\dimen163
+\lineht@=\dimen164
 \@envbody=\toks23
 \multlinegap=\skip56
 \multlinetaggap=\skip57
@@ -265,27 +294,27 @@ LaTeX Info: Redefining \] on input line 2860.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count271
+\l__kernel_color_stack_int=\count273
 \l__pdf_internal_box=\box95
 )
 (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 17
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 23
 .
  (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -294,19 +323,19 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
 * driver: pdftex
-* paper: legalpaper
+* paper: <default>
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 867.24002pt, 72.26999pt)
+* h-part:(L,W,R)=(71.13188pt, 472.03123pt, 71.13188pt)
+* v-part:(T,H,B)=(71.13188pt, 652.70622pt, 71.13188pt)
 * \paperwidth=614.295pt
-* \paperheight=1011.78pt
-* \textwidth=469.75502pt
-* \textheight=867.24002pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
+* \paperheight=794.96999pt
+* \textwidth=472.03123pt
+* \textheight=652.70622pt
+* \oddsidemargin=-1.1381pt
+* \evensidemargin=-1.1381pt
+* \topmargin=-38.1381pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=11.0pt
@@ -326,16 +355,16 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count272
-\scratchdimen=\dimen164
+\scratchcounter=\count274
+\scratchdimen=\dimen165
 \scratchbox=\box96
-\nofMPsegments=\count273
-\nofMParguments=\count274
+\nofMPsegments=\count275
+\nofMParguments=\count276
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count275
-\MPscratchDim=\dimen165
-\MPnumerator=\count276
-\makeMPintoPDFobject=\count277
+\MPscratchCnt=\count277
+\MPscratchDim=\dimen166
+\MPnumerator=\count278
+\makeMPintoPDFobject=\count279
 \everyMPtoPDFconversion=\toks26
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -378,82 +407,83 @@ e
 ))
 (./frontcover.tex)
 LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 2
-0.
+6.
  (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-0.
+6.
 
 (/usr/share/texmf/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-20.
+26.
 
 (/usr/share/texmf/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-20.
+26.
 
 (/usr/share/texmf/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 20.
+(Font)              <12> on input line 26.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 20.
+(Font)              <8> on input line 26.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 20.
- (./abstract.tex) (./report.toc
+(Font)              <6> on input line 26.
+ (./abstract.tex) (./resumo.tex)
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./report.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 3.
+(Font)              <10.95> on input line 10.
 )
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
 
-(./introduction.tex
-<esquema.pdf, id=1, 845.04686pt x 597.50786pt>
+(./report.lot)
+\tf@lot=\write4
+\openout4 = `report.lot'.
+
+ (./report.lof)
+\tf@lof=\write5
+\openout5 = `report.lof'.
+
+ [2
+
+] (./introduction.tex
+<esquema.pdf, id=17, 845.04686pt x 597.50786pt>
 File: esquema.pdf Graphic file (type pdf)
 <use esquema.pdf>
 Package pdftex.def Info: esquema.pdf  used on input line 6.
-(pdftex.def)             Requested size: 328.82707pt x 232.50745pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
+(pdftex.def)             Requested size: 330.42041pt x 233.62886pt.
 
 Overfull \hbox (2.43332pt too wide) in paragraph at lines 14--49
 []$[]$ $[]$ 
  []
 
-) (./theory.tex
-<mesh.pdf, id=2, 845.04686pt x 597.50786pt>
+) (./theory.tex [3
+
+ <./esquema.pdf>]
+<mesh.pdf, id=35, 845.04686pt x 597.50786pt>
 File: mesh.pdf Graphic file (type pdf)
 <use mesh.pdf>
 Package pdftex.def Info: mesh.pdf  used on input line 8.
-(pdftex.def)             Requested size: 328.82707pt x 232.50745pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./esquema.pdf> <./mesh
-.pdf
-
-pdfTeX warning: pdflatex (file ./mesh.pdf): PDF inclusion: multiple pdfs with p
-age group included in a single page
->] (../mat/mesh_an.tex) (../mat/vc.tex)
-<nodal.pdf, id=50, 845.04686pt x 597.50786pt>
+(pdftex.def)             Requested size: 330.42041pt x 233.62886pt.
+ [4 <./mesh.pdf>] (../mat/mesh_an.tex)
+(../mat/vc.tex)
+<nodal.pdf, id=57, 845.04686pt x 597.50786pt>
 File: nodal.pdf Graphic file (type pdf)
 <use nodal.pdf>
 Package pdftex.def Info: nodal.pdf  used on input line 86.
-(pdftex.def)             Requested size: 328.82707pt x 232.50745pt.
- [3 <./nodal.pdf>]
-Overfull \hbox (2.51839pt too wide) detected at line 142
+(pdftex.def)             Requested size: 330.42041pt x 233.62886pt.
+ [5 <./nodal.pdf>]
+Overfull \hbox (0.24217pt too wide) detected at line 142
 [] [] \OT1/lmr/m/n/10.95 = []
  []
 
@@ -463,7 +493,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-
+[6]
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 
  []
@@ -488,22 +518,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 34--35
 
  []
 
-[4]
+
 Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
 
-<esquemacpolos.pdf, id=69, 845.04686pt x 597.50786pt>
+<esquemacpolos.pdf, id=76, 845.04686pt x 597.50786pt>
 File: esquemacpolos.pdf Graphic file (type pdf)
 <use esquemacpolos.pdf>
 Package pdftex.def Info: esquemacpolos.pdf  used on input line 40.
-(pdftex.def)             Requested size: 328.82707pt x 232.50745pt.
+(pdftex.def)             Requested size: 330.42041pt x 233.62886pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 45--45
 
  []
 
-(../sim/op_tab.tex) [5 <./esquemacpolos.pdf>]
+[7] (../sim/op_tab.tex) [8 <./esquemacpolos.pdf>]
 Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
@@ -513,30 +546,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-) (./bib.tex) [6] (./report.aux) ) 
+[9]) (./bib.tex) [10] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 3473 strings out of 481239
- 48818 string characters out of 5920378
- 301953 words of memory out of 5000000
- 18630 multiletter control sequences out of 15000+600000
- 596782 words of font info for 54 fonts, out of 8000000 for 9000
+ 4136 strings out of 481239
+ 58281 string characters out of 5920378
+ 322967 words of memory out of 5000000
+ 19263 multiletter control sequences out of 15000+600000
+ 586534 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,10n,29p,1108b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathi
-t.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/font
-s/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/u
-sr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/publi
-c/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public/lm/
-lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/texmf/
-fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.p
-fb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/ty
-pe1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr
-/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on report.pdf (6 pages, 269078 bytes).
+ 34i,10n,29p,1111b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-m
+athit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/
+fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc
+}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/p
+ublic/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
+are/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/public
+/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/te
+xmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr
+10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/font
+s/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb><
+/usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
+Output written on report.pdf (10 pages, 273280 bytes).
 PDF statistics:
- 130 PDF objects out of 1000 (max. 8388607)
- 88 compressed objects within 1 object stream
+ 145 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
