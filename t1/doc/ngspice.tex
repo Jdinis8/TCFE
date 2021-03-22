@@ -63,6 +63,6 @@ Afterwards, $Gb$ and $Hc$ stand for the voltage-controlled current source $I_b$ 
 
 \vspace{10px}
 
-The values obtained were expected in some way given to the results obtained in the theoretical analysis and that were presented in the last section. \\
+The values obtained were expected in some way given the results obtained in the theoretical analysis and that were presented in the last section. The reader can check the results knowing that $V_b = V_2 -V_5$ and $V_c = V_5$.\\
 
-However, due to \textit{machine epsilons} and related things, some decimal places might be a bit different. The main cause of this is that Ngspice also uses, if possible, nodal analysis. Thus, for solving matrix \ref{eqnodos}, one has to be aware that inverting a 9x9 or 7x7 matrix will introduce a significant margin of error, which explains the registered difference in the results obtained.
+However, due to \textit{machine epsilons} and related things, some decimal places might be a bit different. The main cause of this is that Ngspice also uses, whenever possible, nodal analysis. Thus, for solving matrix \ref{eqnodos}, one has to be aware that inverting a 9x9 or 7x7 matrix will introduce a significant margin of error, which explains a possible observable difference in the results obtained, specially between this simulation and the mesh analysis.
