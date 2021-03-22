@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.2)  22 MAR 2021 18:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.2)  22 MAR 2021 19:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,23 +658,10 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 26.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 26.
- (./dedication.tex
-LaTeX Font Info:    Trying to load font information for T2A+lmr on input line 3
-.
-LaTeX Font Info:    No file T2Almr.fd. on input line 3.
+ [1
 
-
-LaTeX Font Warning: Font shape `T2A/lmr/m/n' undefined
-(Font)              using `T2A/cmr/m/n' instead on input line 3.
-
-
-LaTeX Font Warning: Font shape `T2A/lmr/m/it' undefined
-(Font)              using `T2A/lmr/m/n' instead on input line 4.
-
-) [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./abstract.tex)
-(./resumo.tex) [2
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./abstract.tex) (./resumo
+.tex) [2
 
 ] (./report.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -683,7 +670,8 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- (./report.lot)
+
+(./report.lot)
 \tf@lot=\write4
 \openout4 = `report.lot'.
 
@@ -693,9 +681,8 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
  [3
 
-]
-(./introduction.tex
-<esquema.pdf, id=21, 845.04686pt x 597.50786pt>
+] (./introduction.tex
+<esquema.pdf, id=20, 845.04686pt x 597.50786pt>
 File: esquema.pdf Graphic file (type pdf)
 <use esquema.pdf>
 Package pdftex.def Info: esquema.pdf  used on input line 6.
@@ -708,14 +695,14 @@ Overfull \hbox (2.43332pt too wide) in paragraph at lines 14--49
 ) (./theory.tex [4
 
  <./esquema.pdf>]
-<mesh.pdf, id=39, 845.04686pt x 597.50786pt>
+<mesh.pdf, id=38, 845.04686pt x 597.50786pt>
 File: mesh.pdf Graphic file (type pdf)
 <use mesh.pdf>
 Package pdftex.def Info: mesh.pdf  used on input line 8.
 (pdftex.def)             Requested size: 330.42041pt x 233.62886pt.
  [5 <./mesh.pdf>] (../mat/mesh_an.tex)
 (../mat/vc.tex)
-<nodal.pdf, id=61, 845.04686pt x 597.50786pt>
+<nodal.pdf, id=60, 845.04686pt x 597.50786pt>
 File: nodal.pdf Graphic file (type pdf)
 <use nodal.pdf>
 Package pdftex.def Info: nodal.pdf  used on input line 86.
@@ -761,7 +748,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
 
-<esquemacpolos.pdf, id=81, 845.04686pt x 597.50786pt>
+<esquemacpolos.pdf, id=80, 845.04686pt x 597.50786pt>
 File: esquemacpolos.pdf Graphic file (type pdf)
 <use esquemacpolos.pdf>
 Package pdftex.def Info: esquemacpolos.pdf  used on input line 40.
@@ -784,35 +771,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-[10]) (./bib.tex) [11] (./report.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
- ) 
+[10]) (./bib.tex) [11] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 4652 strings out of 481239
- 63960 string characters out of 5920378
+ 4625 strings out of 481239
+ 63583 string characters out of 5920378
  327188 words of memory out of 5000000
- 19760 multiletter control sequences out of 15000+600000
- 587342 words of font info for 52 fonts, out of 8000000 for 9000
+ 19738 multiletter control sequences out of 15000+600000
+ 586534 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,10n,29p,1108b,268s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/en
-c/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathex.enc}{/u
-sr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/l
-m/lm-ec.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t2a.enc}</usr/s
-hare/texmf/fonts/type1/public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/publi
-c/lm/lmbx12.pfb></usr/share/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/
-texmf/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/
-lmmi6.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/f
-onts/type1/public/lm/lmr10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pf
-b></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type
-1/public/lm/lmri10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb></usr
-/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on report.pdf (11 pages, 293662 bytes).
+{/usr/share/texmf/fonts/enc/dvips/lm/lm-
+mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf
+/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.en
+c}{/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/
+public/lm/lmbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/s
+hare/texmf/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf/fonts/type1/publi
+c/lm/lmmi10.pfb></usr/share/texmf/fonts/type1/public/lm/lmmi6.pfb></usr/share/t
+exmf/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lm
+r10.pfb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fon
+ts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb>
+</usr/share/texmf/fonts/type1/public/lm/lmsy10.pfb>
+Output written on report.pdf (11 pages, 273764 bytes).
 PDF statistics:
- 154 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
+ 149 PDF objects out of 1000 (max. 8388607)
+ 101 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
