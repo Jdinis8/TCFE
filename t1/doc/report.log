@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.2)  21 MAR 2021 20:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.3.2)  22 MAR 2021 17:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -406,45 +406,59 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <8> on input line 20.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <6> on input line 20.
- (./report.toc
+ (./abstract.tex) (./report.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 3.
 )
 \tf@toc=\write3
 \openout3 = `report.toc'.
 
- (./introduction.tex
+
+(./introduction.tex
 <esquema.pdf, id=1, 845.04686pt x 597.50786pt>
 File: esquema.pdf Graphic file (type pdf)
 <use esquema.pdf>
 Package pdftex.def Info: esquema.pdf  used on input line 6.
 (pdftex.def)             Requested size: 328.82707pt x 232.50745pt.
 
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Overfull \hbox (2.43332pt too wide) in paragraph at lines 14--49
 []$[]$ $[]$ 
  []
 
-) (./theory.tex [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./esquema.pdf>]
-<mesh.pdf, id=27, 845.04686pt x 597.50786pt>
+) (./theory.tex
+<mesh.pdf, id=2, 845.04686pt x 597.50786pt>
 File: mesh.pdf Graphic file (type pdf)
 <use mesh.pdf>
 Package pdftex.def Info: mesh.pdf  used on input line 8.
 (pdftex.def)             Requested size: 328.82707pt x 232.50745pt.
- [2 <./mesh.pdf>] (../mat/mesh_an.tex) (../mat/vc.tex)
-<nodal.pdf, id=51, 845.04686pt x 597.50786pt>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./esquema.pdf> <./mesh
+.pdf
+
+pdfTeX warning: pdflatex (file ./mesh.pdf): PDF inclusion: multiple pdfs with p
+age group included in a single page
+>] (../mat/mesh_an.tex) (../mat/vc.tex)
+<nodal.pdf, id=50, 845.04686pt x 597.50786pt>
 File: nodal.pdf Graphic file (type pdf)
 <use nodal.pdf>
 Package pdftex.def Info: nodal.pdf  used on input line 86.
 (pdftex.def)             Requested size: 328.82707pt x 232.50745pt.
-
+ [3 <./nodal.pdf>]
 Overfull \hbox (2.51839pt too wide) detected at line 142
 [] [] \OT1/lmr/m/n/10.95 = []
  []
 
-[3 <./nodal.pdf>] (../mat/nodal_an.tex) (../mat/vc_nodal.tex)
-(../mat/vb_nodal.tex)) (./ngspice.tex
+(../mat/nodal_an.tex) (../mat/vc_nodal.tex) (../mat/vb_nodal.tex))
+(./ngspice.tex
 Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
@@ -479,7 +493,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 36--37
 
  []
 
-<esquemacpolos.pdf, id=70, 845.04686pt x 597.50786pt>
+<esquemacpolos.pdf, id=69, 845.04686pt x 597.50786pt>
 File: esquemacpolos.pdf Graphic file (type pdf)
 <use esquemacpolos.pdf>
 Package pdftex.def Info: esquemacpolos.pdf  used on input line 40.
@@ -501,11 +515,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
 ) (./bib.tex) [6] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 3468 strings out of 481239
- 48751 string characters out of 5920378
- 304953 words of memory out of 5000000
- 18627 multiletter control sequences out of 15000+600000
- 586534 words of font info for 51 fonts, out of 8000000 for 9000
+ 3473 strings out of 481239
+ 48818 string characters out of 5920378
+ 301953 words of memory out of 5000000
+ 18630 multiletter control sequences out of 15000+600000
+ 596782 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,10n,29p,1108b,266s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathi
@@ -519,10 +533,10 @@ fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf/fonts/type1/public/lm/lmr10.p
 fb></usr/share/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/ty
 pe1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr
 /share/texmf/fonts/type1/public/lm/lmsy10.pfb>
-Output written on report.pdf (6 pages, 266607 bytes).
+Output written on report.pdf (6 pages, 269078 bytes).
 PDF statistics:
- 131 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
+ 130 PDF objects out of 1000 (max. 8388607)
+ 88 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

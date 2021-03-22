@@ -156,16 +156,16 @@ No. of Data Rows : 1
           p                    -0             0.0013578
 
 
-Total analysis time (seconds) = 0
+Total analysis time (seconds) = 0.001
 
-Total elapsed time (seconds) = 0.003 
+Total elapsed time (seconds) = 0.196 
 
 Total DRAM available = 15945.082 MB.
-DRAM currently available = 6659.469 MB.
-Total ngspice program size =   21.855 MB.
-Resident set size =    9.750 MB.
-Shared ngspice pages =    7.848 MB.
+DRAM currently available = 7059.184 MB.
+Total ngspice program size =   21.852 MB.
+Resident set size =    9.723 MB.
+Shared ngspice pages =    7.855 MB.
 Text (code) pages =    5.070 MB.
 Stack = 0 bytes.
-Library pages =    2.113 MB.
+Library pages =    2.109 MB.
 
