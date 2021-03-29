@@ -1,30 +1,39 @@
-R1 = 1.03994439216;
-R2 = 2.07923431764;
-R3 = 3.06168544529;
-R4 = 4.09516986362;
-R5 = 3.00136467001;
-R6 = 2.03324628446;
-R7 = 1.02216788331;
-Vs = 5.03847501972;
-C = 1.01674167773;
-Kb = 7.01505323139;
-Kd = 8.37372457746;
+#files names
+filename = "data.txt";
+op       = "../sim/values.inc";
 
-#Units for the values: V, mA, kOhm and mS
-# [C] = mF
+#opening files
+fid    = fopen (filename, "r");
+output = fopen(op, "w");
 
-##to put units well
-R1 = R1*1000;
-R2 = R2*1000;
-R3 = R3*1000;
-R4 = R4*1000;
-R5 = R5*1000;
-R6 = R6*1000;
-R7 = R7*1000;
-C  = C*0.001;
-Kb = Kb*0.001;
-Kd = Kd*1000;
+#reading data
+[a, b] = textread (filename, "%s %f");
+for i = 1:rows(a)
+  printf("%s = %d\n",char(a(i)), b(i))
+endfor
 
+#printing data for ngspice
+#         r1    r2     r3     r4     r5     r6     r7     vs     c    kb            kd
+nodes = {"1 2"; "2 3"; "2 5"; "0 5"; "5 6"; "0 7"; "7 8"; "0 1"; "6 8"; "6 3 2 5"; "5 8 Vdumb"};
+
+for i = 1:rows(a)
+  fprintf(output, "%s %s %f\n", char(a(i)), nodes{i}, b(i));
+endfor
+
+#assigning data
+R1 = b(1);
+R2 = b(2);
+R3 = b(3);
+R4 = b(4);
+R5 = b(5);
+R6 = b(6);
+R7 = b(7);
+Vs = b(8);
+C =  b(9);
+Kb = b(10);
+Kd = b(11);
+
+#solving nodal analysis
 A = [R4+R3+R1 -R3 -R4;
      R4 0 R4+R6+R7-Kd;
      Kb*R3 1-Kb*R3 0;];
@@ -33,4 +42,6 @@ v = [-Vs; 0; 0];
 
 A\v
 
-B = load data.txt
+#closing files
+fclose(op);
+fclose(fid);

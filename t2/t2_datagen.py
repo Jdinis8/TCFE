@@ -15,11 +15,11 @@ class Var:
         
     def printVar(self):
         if (self.name[0] == 'R') or self.name == 'Kd':
-            print self.name, "=", self.val*1000
+            print self.name, " ", self.val*1000
         elif self.name in ['Kb', 'C']:
-            print self.name, "=", self.val*0.001
+            print self.name, " ", self.val*0.001
         else:
-            print self.name, "=", self.val
+            print self.name, " ", self.val
         
 class Prob:
     def __init__(self, number, weight):
