@@ -1,10 +1,12 @@
 #files names
 filename = "data.txt";
 op       = "../sim/values.inc";
+tex_file = "../doc/nodal_an_less_0.tex"
 
 #opening files
-fid    = fopen (filename, "r");
-output = fopen(op, "w");
+fid        = fopen (filename, "r");
+output     = fopen(op, "w");
+output_tex = fopen(tex_file, "w");
 
 #reading data
 [a, b] = textread (filename, "%s %f");
@@ -28,20 +30,39 @@ R4 = b(4);
 R5 = b(5);
 R6 = b(6);
 R7 = b(7);
+
+G1 = 1/R1;
+G2 = 1/R2;
+G3 = 1/R3;
+G4 = 1/R4;
+G5 = 1/R5;
+G6 = 1/R6;
+G7 = 1/R7;
+
 Vs = b(8);
 C =  b(9);
 Kb = b(10);
 Kd = b(11);
 
 #solving nodal analysis
-A = [R4+R3+R1 -R3 -R4;
-     R4 0 R4+R6+R7-Kd;
-     Kb*R3 1-Kb*R3 0;];
-    
-v = [-Vs; 0; 0];
+     #V1    V2      V3    V4      V5       V6     V7      V8 
+A = [1      0        0    -1       0        0      0      0;
+    -G1  G1+G2+G3  -G2     0      -G3       0      0      0; 
+     0    -G2-Kb    G2     0       Kb       0      0      0;
+     0      0       0      1        0       0      0      0;
+     0    -G3       0     -G4   G3+G4+G5   -G5    -G7    G7;
+     0     Kb       0      0     -G5-Kb    G5      0      0;
+     0     0        0     -G6       0       0    G6+G7  -G7;
+     0     0        0    -Kd*G6     1       0    Kd*G6   -1;];
 
-A\v
+    
+v = [Vs; 0; 0; 0; 0; 0; 0; 0];
+
+v = A\v;
+
+fprintf(output_tex, '\\begin{equation} \\Vec{b} = \\begin{bmatrix} %s \\end{bmatrix} \\label{eqsol} \\end{equation}', strjoin(cellstr(num2str(v(:))),'\\\\ '));
 
 #closing files
 fclose(op);
 fclose(fid);
+fclose(tex_file);
