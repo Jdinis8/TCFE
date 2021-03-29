@@ -14,7 +14,12 @@ class Var:
         self.val = val + random.random()*(val*float(tol)/100)
         
     def printVar(self):
-        print self.name, "=", self.val, "\n",
+        if (self.name[0] == 'R') or self.name == 'Kd':
+            print self.name, "=", self.val*1000
+        elif self.name in ['Kb', 'C']:
+            print self.name, "=", self.val*0.001
+        else:
+            print self.name, "=", self.val
         
 class Prob:
     def __init__(self, number, weight):
@@ -23,10 +28,10 @@ class Prob:
         self.weight = weight
         
     def printProb(self):
-        print "Values: ",
+        #print "Values: ",
         for i in range(len(self.varList)):
             self.varList[i].printVar()
-        print "\n\n"
+        #print "\n\n"
             
     def addVar(self, var):
         self.varList.append(var)
@@ -54,21 +59,21 @@ class DataSet:
         self.prob.addVar(Var("Vs", 5, 5))
         self.prob.addVar(Var("C",  1, 5))
         self.prob.addVar(Var("Kb", 7, 5))
-        self.prob.addVar(Var("Kc", 8, 5))
+        self.prob.addVar(Var("Kd", 8, 5))
 
         self.probList.append(self.prob)
     
     def printDataSet(self):
         nprobs = len(self.probList)
-        print "Units for the values: V, mA, kOhm and mS\n\n"
+        #print "Units for the values: V, mA, kOhm and mS\n\n"
         for i in range(nprobs):
             self.probList[i].printProb()
 
 def main():
     #init test
-    number = input("\n\nPlease enter the lowest student number in your group: \n")
-    print
-    print
+    number = 96541
+    #print
+    #print
     dataset = DataSet(number)
 
     #print test
