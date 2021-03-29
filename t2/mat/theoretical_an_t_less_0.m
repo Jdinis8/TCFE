@@ -32,3 +32,5 @@ A = [R4+R3+R1 -R3 -R4;
 v = [-Vs; 0; 0];
 
 A\v
+
+B = load data.txt

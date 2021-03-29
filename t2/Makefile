@@ -5,7 +5,7 @@
 # ------------------------------------------------------------
 
 all:
-	python2 t2_datagen.py > data.txt
+	python2 t2_datagen.py > mat/data.txt
 	make -C mat
 	make -C sim
 	make -C doc
