@@ -9,7 +9,9 @@ output     = fopen(op, "w");
 output_tex = fopen(tex_file, "w");
 
 #reading data
-[a, b] = textread (filename, "%s %f");
+C = textscan(fid, "%s %f");
+[a, b] = C{:};
+
 for i = 1:rows(a)
   printf("%s = %d\n",char(a(i)), b(i))
 endfor
@@ -21,6 +23,9 @@ nodes = {"1 2"; "2 3"; "2 5"; "0 5"; "5 6"; "0 7"; "7 8"; "0 1"; "6 8"; "6 3 2 5
 for i = 1:rows(a)
   fprintf(output, "%s %s %f\n", char(a(i)), nodes{i}, b(i));
 endfor
+
+#printing data for .tex
+mtx_res = {"V1"; "V2"; "V3"; "V4"; "V5"; "V6"; "V7"; "V8"};
 
 #assigning data
 R1 = b(1);
@@ -60,7 +65,26 @@ v = [Vs; 0; 0; 0; 0; 0; 0; 0];
 
 v = A\v;
 
-fprintf(output_tex, '\\begin{equation} \\Vec{b} = \\begin{bmatrix} %s \\end{bmatrix} \\label{eqsol} \\end{equation}', strjoin(cellstr(num2str(v(:))),'\\\\ '));
+#print out the data for the nodal analysis
+
+#variables
+fprintf(output_tex, '\\begin{equation} \n\\begin{bmatrix}\n');
+for i = 1:rows(mtx_res)
+  fprintf(output_tex, "%s \\\\", mtx_res{i});
+endfor
+fprintf(output_tex, '\\end{bmatrix} = \n');
+
+#results
+fprintf(output_tex, '\\begin{bmatrix}\n');
+for i = 1:rows(v)
+  fprintf(output_tex, "%f \\\\", v(i));
+endfor
+fprintf(output_tex, 'V \\end{bmatrix}\n');
+
+#closing matrix
+fprintf(output_tex, '\\label{eqsol}\n \\end{equation}');
+
+#fprintf(output_tex, '\\begin{equation} \\Vec{b} = \\begin{bmatrix} %s \\end{bmatrix} \\label{eqsol} \\end{equation}', strjoin(cellstr(num2str(v(:))),'\\\\ '));
 
 #closing files
 fclose(op);
