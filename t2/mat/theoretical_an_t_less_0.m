@@ -13,7 +13,7 @@ C = textscan(fid, "%s %f");
 [a, b] = C{:};
 
 for i = 1:rows(a)
-  printf("%s = %d\n",char(a(i)), b(i))
+  #printf("%s = %d\n",char(a(i)), b(i))
 endfor
 
 #printing data for ngspice
@@ -49,6 +49,7 @@ C =  b(9);
 Kb = b(10);
 Kd = b(11);
 
+#alinea 1
 #solving nodal analysis
      #V1    V2      V3    V4      V5       V6     V7      V8 
 A = [1      0        0    -1       0        0      0      0;
@@ -62,8 +63,22 @@ A = [1      0        0    -1       0        0      0      0;
 
     
 v = [Vs; 0; 0; 0; 0; 0; 0; 0];
-
 v = A\v;
+
+
+#alinea 2
+#aqui o valor de V6-V8 = cte.
+
+     #V2        V3  V5     V7
+B = [-G1         0 -G4    -G6;
+      G1+G5+G3 -G2 -G3      0;
+      0          0   0  G6+G7;
+      -G2-Kb    G2  Kb      0;];
+      
+v2 = [0; 0; G7*v(8); 0];
+
+v2 = B\v2
+
 
 #print out the data for the nodal analysis
 
@@ -79,7 +94,7 @@ fprintf(output_tex, '\\begin{bmatrix}\n');
 for i = 1:rows(v)
   fprintf(output_tex, "%f \\\\", v(i));
 endfor
-fprintf(output_tex, 'V \\end{bmatrix}\n');
+fprintf(output_tex, '\\end{bmatrix} V\n');
 
 #closing matrix
 fprintf(output_tex, '\\label{eqsol}\n \\end{equation}');
