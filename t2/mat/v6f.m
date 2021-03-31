@@ -49,15 +49,16 @@ C =  b(9)*0.001;
 Kb = b(10);
 Kd = b(11);
 
-%time axis: 0 to 10ms with 1us steps
-t=0:1e-6:2e-3; %s
 
-vs = -j*exp(j*omega*t);
+syms vs(t)
+syms v(t)
+
+vs(t) = -j*exp(j*sym('omega')*t);
 
 Zc = 1/(j*omega*C);
 
     #V1    V2      V3    V4      V5       V6     V7      V8 
-A2= [1      0        0    -1       0        0      0      0;
+A = [1      0        0    -1       0        0      0      0;
     -G1  G1+G2+G3  -G2     0      -G3       0      0      0; 
      0    -G2-Kb    G2     0       Kb       0      0      0;
      0      0       0      1        0       0      0      0;
@@ -67,4 +68,7 @@ A2= [1      0        0    -1       0        0      0      0;
      0     0        0    -Kd*G6     1       0    Kd*G6   -1;]
 
 
-     
+v(t) = [vs(t); 0; 0; 0; 0; 0; 0; 0];
+
+v(t) = A\v(t)
+
