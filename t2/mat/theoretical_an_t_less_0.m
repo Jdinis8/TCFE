@@ -102,51 +102,60 @@ v6 = (v(6)-v(8))*exp(-t./(Req*C));
 
 
 plot (t*1e3, v6)
-xlabel("t [ms]")
-ylabel("v_{6n}(t) [V]")
-legend("v_{6n}", "vR")
+xlabel("t [ms]");
+ylabel("v_{6n}(t) [V]");
+legend("v_{6n}", "vR");
 
 print ("v6n.eps", "-depsc");
 
 #alinea 4
 
-syms vs(x)
-syms Zc
-syms f
-syms omega
-syms C2
-syms x
+t = 0: 1e-6: 20e-3;
 
-C2 = sym ('C');
+f = 1000; #1kHz
 
-omega = sym(2)*sym(pi)*f;
+omega = pi*2*f;
 
-Zc = 1./(j*omega*C2);
+vs = -j*exp(j*omega*t);
 
 
-vs = sin(omega*x);
+Zc = 1/(j*omega*C);
 
+##G1 = sym('G1');
+##G2 = sym('G2');
+##G3 = sym('G3');
+##G4 = sym('G4');
+##G5 = sym('G5');
+##G6 = sym('G6');
+##G7 = sym('G7');
+##Kd = sym('Kd');
+##Kb = sym('Kb');
 
 
      #V1    V2      V3    V4      V5       V6     V7      V8 
-A2 = [1      0        0    -1       0        0      0      0;
+A2= [1      0        0    -1       0        0      0      0;
     -G1  G1+G2+G3  -G2     0      -G3       0      0      0; 
      0    -G2-Kb    G2     0       Kb       0      0      0;
      0      0       0      1        0       0      0      0;
-     0    -G3       0     -G4   G3+G4+G5   -G5-1/Zc    -G7   1/Zc+G7;
-     0     Kb       0      0     -G5-Kb    G5+1/Zc      0   -1/Zc;
+     0    -G3       0     -G4   G3+G4+G5   -G5-1/Zc    -G7    G7+1/Zc;
+     0     Kb       0      0     -G5-Kb    G5+1/Zc      0     -1/Zc;
      0     0        0     -G6       0       0    G6+G7  -G7;
-     0     0        0    -Kd*G6     1       0    Kd*G6   -1;]
+     0     0        0    -Kd*G6     1       0    Kd*G6   -1;];
+
+
+
+for i = 1:rows(vs)
+  #printf("%s = %d\n",char(a(i)), b(i))
+endfor
+     
+va = [-j*exp(j*omega*t); 0; 0; 0; 0; 0; 0; 0];
+##va = A2\va;
+
+#pretty(va);
+
+#real(va(0))
 
      
-disp("OLA");
-
-     
-syms va
-
-va = [vs; 0; 0; 0; 0; 0; 0; 0];
-va = A2\va
-
 #print out the data for the nodal analysis
 
 #variables
