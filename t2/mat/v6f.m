@@ -89,6 +89,6 @@ A = [one      0        0    notone       0        0      0      0;
 
 v(t) = [vs(t); 0; 0; 0; 0; 0; 0; 0];
 
-v(t) = A\v(t);
+v(t) = A\v(t)
 
-
+v(t) = vpa(v(t))
