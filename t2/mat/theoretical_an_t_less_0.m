@@ -1,3 +1,8 @@
+clear all 
+close all
+
+pkg load symbolic
+
 #files names
 filename = "data.txt";
 op       = "../sim/values.inc";
@@ -9,8 +14,8 @@ output     = fopen(op, "w");
 output_tex = fopen(tex_file, "w");
 
 #reading data
-C = textscan(fid, "%s %f");
-[a, b] = C{:};
+Kyu = textscan(fid, "%s %f");
+[a, b] = Kyu{:};
 
 for i = 1:rows(a)
   #printf("%s = %d\n",char(a(i)), b(i))
@@ -71,14 +76,76 @@ v = A\v;
 
      #V2        V3  V5     V7
 B = [-G1         0 -G4    -G6;
-      G1+G5+G3 -G2 -G3      0;
+      G1+G2+G3 -G2 -G3      0;
       0          0   0  G6+G7;
       -G2-Kb    G2  Kb      0;];
       
 v2 = [0; 0; G7*v(8); 0];
 
-v2 = B\v2
+v2 = B\v2;
 
+Ib = Kb*(v2(1)-v2(3));
+I5 = (v(6) - v2(3))/R5;
+
+Ic = Ib + I5
+
+Req = (v(6)-v(8))/Ic
+
+
+#alinea 3
+% time vector
+t = 0: 1e-6: 20e-3;
+
+C = C*0.001;
+
+v6 = (v(6)-v(8))*exp(-t./(Req*C));
+
+
+plot (t*1e3, v6)
+xlabel("t [ms]")
+ylabel("v_{6n}(t) [V]")
+legend("v_{6n}", "vR")
+
+print ("v6n.eps", "-depsc");
+
+#alinea 4
+
+syms vs(x)
+syms Zc
+syms f
+syms omega
+syms C2
+syms x
+
+C2 = sym ('C');
+
+omega = sym(2)*sym(pi)*f;
+
+Zc = 1./(j*omega*C2);
+
+
+vs = sin(omega*x);
+
+
+
+     #V1    V2      V3    V4      V5       V6     V7      V8 
+A2 = [1      0        0    -1       0        0      0      0;
+    -G1  G1+G2+G3  -G2     0      -G3       0      0      0; 
+     0    -G2-Kb    G2     0       Kb       0      0      0;
+     0      0       0      1        0       0      0      0;
+     0    -G3       0     -G4   G3+G4+G5   -G5-1/Zc    -G7   1/Zc+G7;
+     0     Kb       0      0     -G5-Kb    G5+1/Zc      0   -1/Zc;
+     0     0        0     -G6       0       0    G6+G7  -G7;
+     0     0        0    -Kd*G6     1       0    Kd*G6   -1;]
+
+     
+disp("OLA");
+
+     
+syms va
+
+va = [vs; 0; 0; 0; 0; 0; 0; 0];
+va = A2\va
 
 #print out the data for the nodal analysis
 
