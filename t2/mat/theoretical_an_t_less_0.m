@@ -1,28 +1,49 @@
 #files names
 filename = "data.txt";
 op       = "../sim/values.inc";
-tex_file = "../doc/nodal_an_less_0.tex"
+tex_file = "../doc/nodal_an_less_0.tex";
+inc2     = "../sim/values2.inc";
+inc3     = "../doc/ic_req.tex";
 
 #opening files
 fid        = fopen (filename, "r");
 output     = fopen(op, "w");
 output_tex = fopen(tex_file, "w");
+output_1   = fopen(inc2, "w");
+output_2   = fopen("../doc/ic_req.tex", "w");
 
 #reading data
 Kyu = textscan(fid, "%s %f");
 [a, b] = Kyu{:};
+
+rowasd = rows(a) - 2;
+rowasb = rows(a) - 4;
 
 for i = 1:rows(a)
   #printf("%s = %d\n",char(a(i)), b(i))
 endfor
 
 #printing data for ngspice
-#         r1    r2     r3     r4     r5     r6     r7     vs     c    kb            kd
-nodes = {"1 2"; "2 3"; "2 5"; "0 5"; "5 6"; "0 7"; "7 8"; "0 1"; "6 8"; "6 3 2 5"; "5 8 Vdumb"};
+#         r1    r2     r3     r4     r5     r6     r7          vs          c    kb            kd
+nodes  = {"2 1"; "2 3"; "2 5"; "0 5"; "5 6"; "0 CFP1"; "7 8"; "1 0"; "6 8"; "6 3 2 5"; "5 8 Vdumb"};
+nodes2 = {"2 1"; "2 3"; "2 5"; "0 5"; "5 6"; "0 CFP1"; "7 8"; "1 0 0"; "6 8"; "6 3 2 5"; "5 8 Vdumb"};
 
-for i = 1:rows(a)
+for i = 1:rowasd
   fprintf(output, "%s %s %f\n", char(a(i)), nodes{i}, b(i));
 endfor
+
+fprintf(output, "Gb %s %f\n", nodes{rows(nodes)-1}, b(rows(b)-1));
+fprintf(output, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
+
+for i = 1:rowasb
+  fprintf(output_1, "%s %s %f\n", char(a(i)), nodes2{i}, b(i));
+endfor
+
+fprintf(output_1, "Vs 1 0 0\n");
+fprintf(output_1, "Gb %s %f\n", nodes2{rows(nodes2)-1}, b(rows(b)-1));
+fprintf(output_1, "Hd %s %f\n", nodes2{rows(nodes2)}, b(rows(b)));
+
+
 
 #printing data for .tex
 mtx_res = {"V1"; "V2"; "V3"; "V4"; "V5"; "V6"; "V7"; "V8"};
@@ -69,23 +90,30 @@ v = A\v;
 #alinea 2
 #aqui o valor de V6-V8 = cte.
 
-     #V2        V3  V5     V7
-B = [-G1         0 -G4    -G6;
-      G1+G2+G3 -G2 -G3      0;
-      0          0   0  G6+G7;
-      -G2-Kb    G2  Kb      0;];
+     #V1    V2      V3    V4      V5       V6     V7      V8 
+A2 = [1      0        0    0       0        0      0      0;
+    -G1  G1+G2+G3  -G2     0      -G3       0      0      0; 
+     0    -G2-Kb    G2     0       Kb       0      0      0;
+     0      0       0      1        0       0      0      0;
+     0    -G3+Kb    0    -G4    G4+G3-Kb    0     -G7    G7;
+     0     0        0      0        0       1      0     -1;
+     0     0        0     -G6       0       0    G6+G7  -G7;
+     0     0        0    -Kd*G6     1       0    Kd*G6   -1;];
       
-v2 = [0; 0; G7*v(8); 0];
+v2 = [0; 0; 0; 0; 0; v(6)-v(8); 0; 0];
 
-v2 = B\v2;
+v2 = A2\v2;
 
-Ib = Kb*(v2(1)-v2(3));
-I5 = (v(6) - v2(3))/R5;
+Ib = Kb*(v2(2)-v2(5));
+I5 = (v2(6) - v2(8))/R5;
 
-Ic = Ib + I5
+fprintf(output_1, "V2 %s %f\n", nodes2{rows(nodes2)-2}, v(6)-v(8));
 
-Req = (v(6)-v(8))/Ic
+Ic = -(Ib + I5);
 
+Req = (v(8)-v(6))/Ic;
+
+fprintf(output_2, "$I_c = %f \\rightarrow R_{eq} = %f$", Ic, Req);
 
 #alinea 3
 % time vector
@@ -129,3 +157,5 @@ fprintf(output_tex, '\\label{eqsol}\n \\end{equation}');
 fclose(op);
 fclose(fid);
 fclose(tex_file);
+fclose(inc2);
+fclose(inc3);

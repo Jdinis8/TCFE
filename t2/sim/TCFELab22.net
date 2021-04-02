@@ -1,0 +1,19 @@
+TCFELab2
+
+.options savecurrents
+
+Vdumb CFP1 7 0
+
+.inc values2.inc
+
+.op
+
+.control
+	run
+	echo "op2_TAB"
+	print all
+	echo "op2_END"
+.endc
+
+
+.end

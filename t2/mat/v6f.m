@@ -7,8 +7,6 @@ fid        = fopen (filename, "r");
 Kyu = textscan(fid, "%s %f");
 [a, b] = Kyu{:};
 
-
-
 #alinea 4
 
 ##syms vs(t)
@@ -45,7 +43,7 @@ G5 = 1/R5;
 G6 = 1/R6;
 G7 = 1/R7;
 
-Vs = b(8);
+Vs = 1;
 C =  b(9)*0.001;
 Kb = b(10);
 Kd = b(11);
@@ -91,4 +89,4 @@ v(t) = [vs(t); 0; 0; 0; 0; 0; 0; 0];
 
 v(t) = A\v(t)
 
-v(t) = vpa(v(t))
+v(t) = real(vpa(v(t)))

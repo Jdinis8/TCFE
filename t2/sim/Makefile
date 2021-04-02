@@ -4,17 +4,22 @@ LOG := $(wildcard *.log)
 OBJ := $(addsuffix .tex, $(basename $(NET)))
 
 all: ngspice.log
-	$(eval NGSFIGS=$(shell grep _FIG $< | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
+	$(foreach var, $(wildcard *.net), make $(basename $(var)).executavel;)
+
+
+%.executavel:
+	$(eval NGSFIGS=$(shell grep _FIG $(basename $@).log | sed 's/_FIG//g' | sed ':a;N;$!ba;s/\n/ /g'))
 	$(eval NGSFIGPS=$(addsuffix .ps, $(NGSFIGS)))
-	$(eval NGSTABS=$(shell grep _TAB $< | sed 's/_TAB//g' | sed ':a;N;$!ba;s/\n/ /g'))
-	$(foreach i, $(NGSTABS), sed -n '/^$i_TAB/,/^$i_END/{p;/^$i_END/q}' $< | grep -v $i_TAB | grep -v $i_END | grep -v '#' | sed 's/\=/\&/g' | sed 's/$$/\\\\ \\hline/g' > $i_tab.tex;)
+	$(eval NGSTABS=$(shell grep _TAB $(basename $@).log | sed 's/_TAB//g' | sed ':a;N;$!ba;s/\n/ /g'))
+	$(foreach i, $(NGSTABS), sed -n '/^$i_TAB/,/^$i_END/{p;/^$i_END/q}' $(basename $@).log | grep -v $i_TAB | grep -v $i_END | grep -v '#' | sed 's/\=/\&/g' | sed 's/$$/\\\\ \\hline/g' > $i_tab.tex;)
 	$(foreach i, $(NGSFIGPS), ps2pdf $i;)
-	touch $(OBJ)
-	cp $(NET) $(OBJ)
-	$(eval OBJTABS=$(shell grep _TAB $(OBJ) | sed 's/_TAB/\_TAB/g' | sed ':a;N;$!ba;s/\n/\par/g'))
+	touch $(basename $@).tex
+	cp $(basename $@).log $(basename $@).tex
+	$(eval OBJTABS=$(shell grep _TAB $(basename $@).tex | sed 's/_TAB/\_TAB/g' | sed ':a;N;$!ba;s/\n/\par/g'))
+
 
 ngspice.log:
-	$(foreach var, $(NET), ngspice -b $(var) -o ngspice.log)
+	$(foreach var, $(NET), ngspice -b $(var) -o $(basename $(var)).log;)
 
 clean:
 	@rm -f $(LOG) *.tex *.pdf *.ps *~
