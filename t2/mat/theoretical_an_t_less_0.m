@@ -113,25 +113,32 @@ Ic = -(Ib + I5);
 
 Req = (v(8)-v(6))/Ic;
 
-fprintf(output_2, "$I_c = %f \\rightarrow R_{eq} = %f$", Ic, Req);
+tau = Req*C;
+
+fprintf(output_2, "$I_c = %f \\rightarrow R_{eq} = %f \\rightarrow \\tau = %f$", Ic, Req, tau);
 
 #alinea 3
 % time vector
 t = 0: 1e-6: 20e-3;
 
      #V1    V2      V3    V4      V5       V6     V7      V8 
-A2 = [1      0        0    0       0        0      0      0;
+A3= [1      0        0     -1       0       0      0      0;
     -G1  G1+G2+G3  -G2     0      -G3       0      0      0; 
      0    -G2-Kb    G2     0       Kb       0      0      0;
      0      0       0      1        0       0      0      0;
-     0    -G3+Kb    0    -G4    G4+G3-Kb    0     -G7    G7;
-     0     0        0      0        0       1      0     -1;
+     0    -G3       0     -G4   G3+G4+G5   -G5    -G7    G7;
+     0     Kb       0      0     -G5-Kb    G5      0      0;
      0     0        0     -G6       0       0    G6+G7  -G7;
      0     0        0    -Kd*G6     1       0    Kd*G6   -1;];
-      
-v2 = [0; 0; 0; 0; 0; (v(6)-v(8))*exp(-t./(Req*C)); 0; 0];
 
-v6 = (v(6)-v(8))*exp(-t./(Req*C));
+     
+v3 = [0; 0; 0; 0; 0; 0; 0; 0];
+
+v3 = A3\v3;
+
+t = 0: 1e-6: 20e-3;
+
+v6 = v3(6) + (v(6)-v3(6))*exp(-t./(tau));
 
 
 plot (t*1e3, v6)
@@ -139,7 +146,7 @@ xlabel("t [ms]");
 ylabel("v_{6n}(t) [V]");
 legend("v_{6n}", "vR");
 
-print ("v6n.eps", "-depsc");
+print ("v6n.png", "-depsc");
 
      
 #print out the data for the nodal analysis
