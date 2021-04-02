@@ -1,8 +1,8 @@
-Transient_an
+Transient_forced_an
 
 .TRAN 1ms 20ms
 
-.inc values3.inc
+.inc values4.inc
 Vdumb CFP1 7 0
 
 .model P2model NPN(Bf=200, CJE=12pF, CJC=2pF)
@@ -30,9 +30,7 @@ echo "Transient analysis"
 echo "********************************************"
 tran 1e-5 20e-3
 
-print all
-
-hardcopy trans3.ps v(6)
-echo trans3_FIG
+hardcopy trans5.ps v(6) v(1)
+echo trans5_FIG
 
 .endc

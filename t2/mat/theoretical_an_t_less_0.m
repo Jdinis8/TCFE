@@ -4,6 +4,8 @@ op       = "../sim/values.inc";
 tex_file = "../doc/nodal_an_less_0.tex";
 inc2     = "../sim/values2.inc";
 inc3     = "../doc/ic_req.tex";
+inc4     = "../sim/values3.inc";
+inc5     = "../sim/values4.inc";
 
 #opening files
 fid        = fopen (filename, "r");
@@ -11,6 +13,8 @@ output     = fopen(op, "w");
 output_tex = fopen(tex_file, "w");
 output_1   = fopen(inc2, "w");
 output_2   = fopen("../doc/ic_req.tex", "w");
+output_3   = fopen(inc4, "w");
+output_4   = fopen(inc5, "w");
 
 #reading data
 Kyu = textscan(fid, "%s %f");
@@ -37,6 +41,8 @@ fprintf(output, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
 
 for i = 1:rowasb
   fprintf(output_1, "%s %s %f\n", char(a(i)), nodes2{i}, b(i));
+  fprintf(output_3, "%s %s %f\n", char(a(i)), nodes{i}, b(i));
+  fprintf(output_4, "%s %s %f\n", char(a(i)), nodes{i}, b(i));
 endfor
 
 fprintf(output_1, "Vs 1 0 0\n");
@@ -44,6 +50,16 @@ fprintf(output_1, "Gb %s %f\n", nodes2{rows(nodes2)-1}, b(rows(b)-1));
 fprintf(output_1, "Hd %s %f\n", nodes2{rows(nodes2)}, b(rows(b)));
 
 
+fprintf(output_3, "Vs 1 0 0\n");
+fprintf(output_3, "C1 %s %f\n", nodes{rows(nodes)-2}, b(rows(b)-2));
+fprintf(output_3, "Gb %s %f\n", nodes{rows(nodes)-1}, b(rows(b)-1));
+fprintf(output_3, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
+
+
+fprintf(output_4, "Vs 1 0 SINE(0 1.0 1000 0 0 0)\n");
+fprintf(output_4, "C1 %s %f\n", nodes{rows(nodes)-2}, b(rows(b)-2));
+fprintf(output_4, "Gb %s %f\n", nodes{rows(nodes)-1}, b(rows(b)-1));
+fprintf(output_4, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
 
 #printing data for .tex
 mtx_res = {"V1"; "V2"; "V3"; "V4"; "V5"; "V6"; "V7"; "V8"};
@@ -85,7 +101,6 @@ A = [1      0        0    -1       0        0      0      0;
     
 v = [Vs; 0; 0; 0; 0; 0; 0; 0];
 v = A\v;
-
 
 #alinea 2
 #aqui o valor de V6-V8 = cte.
@@ -130,15 +145,15 @@ A3= [1      0        0     -1       0       0      0      0;
      0     Kb       0      0     -G5-Kb    G5      0      0;
      0     0        0     -G6       0       0    G6+G7  -G7;
      0     0        0    -Kd*G6     1       0    Kd*G6   -1;];
+    
 
-     
 v3 = [0; 0; 0; 0; 0; 0; 0; 0];
 
 v3 = A3\v3;
 
 t = 0: 1e-6: 20e-3;
 
-v6 = v3(6) + (v(6)-v3(6))*exp(-t./(tau));
+v6 = v3(6) + (v2(6)-v3(6))*exp(-t./(tau));
 
 
 plot (t*1e3, v6)
@@ -176,3 +191,5 @@ fclose(fid);
 fclose(tex_file);
 fclose(inc2);
 fclose(inc3);
+fclose(inc4);
+fclose(inc5);
