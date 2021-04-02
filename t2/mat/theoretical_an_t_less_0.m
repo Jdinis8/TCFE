@@ -146,7 +146,7 @@ xlabel("t [ms]");
 ylabel("v_{6n}(t) [V]");
 legend("v_{6n}", "vR");
 
-print ("v6n.png", "-depsc");
+print ("v6n.eps", "-depsc");
 
      
 #print out the data for the nodal analysis
