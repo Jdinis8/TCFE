@@ -119,7 +119,17 @@ fprintf(output_2, "$I_c = %f \\rightarrow R_{eq} = %f$", Ic, Req);
 % time vector
 t = 0: 1e-6: 20e-3;
 
-C = C*0.001;
+     #V1    V2      V3    V4      V5       V6     V7      V8 
+A2 = [1      0        0    0       0        0      0      0;
+    -G1  G1+G2+G3  -G2     0      -G3       0      0      0; 
+     0    -G2-Kb    G2     0       Kb       0      0      0;
+     0      0       0      1        0       0      0      0;
+     0    -G3+Kb    0    -G4    G4+G3-Kb    0     -G7    G7;
+     0     0        0      0        0       1      0     -1;
+     0     0        0     -G6       0       0    G6+G7  -G7;
+     0     0        0    -Kd*G6     1       0    Kd*G6   -1;];
+      
+v2 = [0; 0; 0; 0; 0; (v(6)-v(8))*exp(-t./(Req*C)); 0; 0];
 
 v6 = (v(6)-v(8))*exp(-t./(Req*C));
 

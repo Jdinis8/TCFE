@@ -16,8 +16,10 @@ class Var:
     def printVar(self):
         if (self.name[0] == 'R') or self.name == 'Kd':
             print self.name, " ", self.val*1000
-        elif self.name in ['Kb', 'C']:
+        elif self.name in ['Kb']:
             print self.name, " ", self.val*0.001
+        elif self.name in ['C1']:
+            print self.name, " ", self.val*0.001*0.001
         else:
             print self.name, " ", self.val
         
@@ -57,7 +59,7 @@ class DataSet:
         self.prob.addVar(Var("R6", 2, 5))
         self.prob.addVar(Var("R7", 1, 5))
         self.prob.addVar(Var("Vs", 5, 5))
-        self.prob.addVar(Var("C",  1, 5))
+        self.prob.addVar(Var("C1",  1, 5))
         self.prob.addVar(Var("Kb", 7, 5))
         self.prob.addVar(Var("Kd", 8, 5))
 
