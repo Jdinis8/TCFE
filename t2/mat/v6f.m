@@ -67,47 +67,46 @@ syms vs(t)
 syms v(t)
 syms Zc
 
-vs(t) = -j*exp(j*omega*t); #-ie^(ix) = -icos(x) + sin(x)
-#vs(t) = sin(omega*t);
+vs(t) = -j*exp(j*omega*t);
 
 Zc = 1/(j*omega*C);
 
 one = sym(1);
 
 notone = sym(-1);
+     #V1    V2      V3     V5       V6     V7      V8 
+##A = [sym(1) 0        0     0        0      0      0;
+##    -G1  G1+G2+G3  -G2    -G3       0      0      0; 
+##     0    -G2-Kb    G2     Kb       0      0      0;
+##     0    -G3       0   G3+G4+G5 -G5-j*C*omega -G7    G7+j*C*omega;
+##     0     Kb       0   -G5-Kb    G5+j*C*omega  0    -j*C*omega;
+##     0     0        0      0        0     G6+G7  -G7;
+##     0     0        0     sym(1)    0     Kd*G6 sym(-1);];
 
-    #V1    V2      V3    V4      V5       V6     V7      V8 
-A = [one      0        0    notone       0        0      0      0;
-    -G1  G1+G2+G3  -G2     0      -G3       0      0      0; 
-     0    -G2-Kb    G2     0       Kb       0      0      0;
-     0      0       0      one        0       0      0      0;
-     0    -G3       0     -G4   G3+G4+G5   -G5-1/Zc    -G7    G7+1/Zc;
-     0     Kb       0      0     -G5-Kb    G5+1/Zc      0     -1/Zc;
-     0     0        0     -G6       0       0    G6+G7  -G7;
-     0     0        0    -Kd*G6     one       0    Kd*G6   notone;];
+A = [sym(1) 0        0     0        0      0      0;
+    -G1  G1+G2+G3  -G2    -G3       0      0      0; 
+     0    -G2-Kb    G2     Kb       0      0      0;
+     G1    -G1      0      G4       0     -G6     0;
+     0     Kb       0   -G5-Kb    G5+j*C*omega  0    -j*C*omega;
+     0     0        0      0        0     G6+G7  -G7;
+     0     0        0     sym(1)    0     Kd*G6 sym(-1);];
 
-v(t) = [vs(t); 0; 0; 0; 0; 0; 0; 0];
+     
+     
+#v(t) = [vs(t); 0; 0; 0; 0; 0; 0];
 
-v(t) = A\v(t);
+v(t) = [vs(t); 0; 0; 0; 0; 0; 0];
 
-ht = matlabFunction(vpa(v(t)))
-
-ht(0)
-
-Sixth = @(t) t(6);
-
-v6 = @(t) Sixth(ht(t))
-
-fplot(v6, [0, 0.02], 201)
-
+v(t) = vpa(A\v(t))
 ##
-##x = 0: 1e-6: 20e-3;
+##v(t) = A\v(t);
 ##
-##ijk = v6(x);
+##ht = matlabFunction(vpa(v(t)))
 ##
-##plot (t*1e3, ijk)
-##xlabel("t [ms]");
-##ylabel("v_{6n}(t) [V]");
-##legend("v_{6n}", "vR");
+##ht(0)
 ##
-##print ("v6f.eps", "-depsc");
+##Sixth = @(t) t(6);
+##
+##v6 = @(t) Sixth(ht(t))
+##
+##fplot(v6, [0, 0.02], 201)
