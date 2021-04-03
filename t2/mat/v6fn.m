@@ -140,7 +140,7 @@ vl(x) = [vs(x)*const; 0; 0; 0; 0; 0; 0];
 vl(x) = Aze\vl(x);
 
 ht = matlabFunction(vpa(vl(x)));
-ze = ht(0)
+ze = ht(0);
 
 ############################
 
@@ -155,7 +155,7 @@ v6tots = v6f + v6;
 
 plot (t*1e3, v6tots)
 xlabel("t [ms]");
-ylabel("v_{6f}+v_{6n}(t) [V]");
+ylabel("V [V]");
 print ("v6fn.eps", "-depsc");
 
 x = -5e-3: 1e-6: 20e-3;
@@ -179,7 +179,8 @@ plot (x*1e3,I), grid
 hold on
 plot (x*1e3,I2)
 xlabel("t [ms]");
-ylabel("v_{6f}+v_{6n}(t) [V]");
+ylabel("V [V]");
+legend("v_{6}(t)", "v_s(t)");
 print ("v6totsze.eps", "-depsc");
 
 

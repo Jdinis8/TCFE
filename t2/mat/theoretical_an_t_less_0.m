@@ -6,6 +6,7 @@ inc2     = "../sim/values2.inc";
 inc3     = "../doc/ic_req.tex";
 inc4     = "../sim/values3.inc";
 inc5     = "../sim/values4.inc";
+inc6     = "../doc/currents_branches_first_alienea.tex";
 
 #opening files
 fid        = fopen (filename, "r");
@@ -15,6 +16,7 @@ output_1   = fopen(inc2, "w");
 output_2   = fopen("../doc/ic_req.tex", "w");
 output_3   = fopen(inc4, "w");
 output_4   = fopen(inc5, "w");
+output_5   = fopen(inc6, "w");
 
 #reading data
 Kyu = textscan(fid, "%s %f");
@@ -56,7 +58,7 @@ fprintf(output_3, "Gb %s %f\n", nodes{rows(nodes)-1}, b(rows(b)-1));
 fprintf(output_3, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
 
 
-fprintf(output_4, "Vs 1 0 SINE(0 1.0 1000 0 0 0)\n");
+fprintf(output_4, "Vs 1 0 dc %f ac 1.0 SINE(0 1.0 1000 0 0 0)\n", b(rows(b)-4));
 fprintf(output_4, "C1 %s %f\n", nodes{rows(nodes)-2}, b(rows(b)-2));
 fprintf(output_4, "Gb %s %f\n", nodes{rows(nodes)-1}, b(rows(b)-1));
 fprintf(output_4, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
@@ -101,6 +103,35 @@ A = [1      0        0    -1       0        0      0      0;
     
 v = [Vs; 0; 0; 0; 0; 0; 0; 0];
 v = A\v;
+
+Ir1 = G1*(v(2)-v(1));
+Ivs = Ir1;
+Ir2 = G2*(v(2)-v(3));
+Ir3 = G3*(v(2)-v(5));
+Ir4 = G4*(v(4)-v(5));
+Ir5 = G5*(v(5)-v(6));
+Ir6 = G6*(v(4)-v(7));
+Ir7 = G7*(v(7)-v(8));
+Id  = (v(5)-v(8))/Kd;
+Ivd = -Id;
+Ib = Kb*(v(2)-v(5));
+Ic = 0;
+
+fprintf(output_5, "I(R1) & %f\\\\\n",  Ir1);
+fprintf(output_5, "I(R2) & %f\\\\\n",  Ir2);
+fprintf(output_5, "I(R3) & %f\\\\\n",  Ir3);
+fprintf(output_5, "I(R4) & %f\\\\\n",  Ir4);
+fprintf(output_5, "I(R5) & %f\\\\\n",  Ir5);
+fprintf(output_5, "I(R6) & %f\\\\\n",  Ir6);
+fprintf(output_5, "I(R7) & %f\\\\\n",  Ir7);
+fprintf(output_5, "I(Vs) & %f\\\\\n",  Ivs);
+fprintf(output_5, "I(Vd) & %f\\\\\n",  Ivd);
+fprintf(output_5, "Id  & %f\\\\\n",  Id);
+fprintf(output_5, "Ib & %f\\\\\n",  Ib);
+fprintf(output_5, "Ic & %f\\\\\n",  Ic);
+
+###         r1    r2     r3     r4     r5     r6     r7          vs          c    kb            kd
+##nodes  = {"2 1"; "2 3"; "2 5"; "0 5"; "5 6"; "0 CFP1"; "7 8"; "1 0"; "6 8"; "6 3 2 5"; "5 8 Vdumb"};
 
 #alinea 2
 #aqui o valor de V6-V8 = cte.
@@ -159,7 +190,7 @@ v6 = v3(6) + (v2(6)-v3(6))*exp(-t./(tau));
 plot (t*1e3, v6)
 xlabel("t [ms]");
 ylabel("v_{6n}(t) [V]");
-legend("v_{6n}", "vR");
+legend("v_{6n}");
 
 print ("v6n.eps", "-depsc");
 
@@ -193,3 +224,4 @@ fclose(inc2);
 fclose(inc3);
 fclose(inc4);
 fclose(inc5);
+fclose(inc6);

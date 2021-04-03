@@ -1,0 +1,42 @@
+PHases
+
+.TRAN 1ms 20ms
+
+.inc values4.inc
+Vdumb CFP1 7 0
+
+.ic v(6)= 8.403629 v(8)=0
+.END
+
+.op
+
+.end
+
+.control
+
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
+
+ac dec 10 0.1 1MEG
+
+hardcopy voltage_mag.ps vdb(6,8) vdb(1) vdb(6)
+echo voltage_mag_FIG
+
+hardcopy voltage_mag2.ps vdb(1) vdb(6)
+echo voltage_mag2_FIG
+
+set units=degrees
+hardcopy zezoca.ps vp(6) vp(1) vp(6,8)
+echo zezoca
+
+
+exit
+
+.endc

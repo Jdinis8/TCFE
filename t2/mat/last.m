@@ -73,37 +73,60 @@ Aze = [sym(1) 0        0     0        0      0      0;
 
 vl(t) = [vs(t); 0; 0; 0; 0; 0; 0];
 
-vl(t) = vpa(Aze\vl(t))
+vl(t) = vpa(Aze\vl(t));
 
-ht = matlabFunction(vpa(vl(t)))
+ht = matlabFunction(vpa(vl(t)));
 
 Coisoth = @(ze) ze(5) - ze(7);
+Sixth = @(ze) ze(5);
+First = @(ze) ze(1);
 
-vc = @(omega) angle(Coisoth(ht(2*pi*omega, 0)))
+function retval = saca_argumento(x)
+  if(abs(real(x)) < 1e-9)
+    if(imag(x) >= 0) retval = pi/2;
+    else retval = -pi/2;
+    endif
+  else retval = arg(x);
+  if(retval > 0) retval = retval - 2*pi;
+  endif
+  endif
+endfunction;
 
-#~fplot(vc, [1, 1000000], 201)
+vscenas = @(omega) 180/pi*saca_argumento((First(ht(2*pi*power(10,omega), 0))));
 
-x = logspace(-8, 6)
-y = vc(x)
-semilogx(x,y)
-grid on
+vc = @(omega) 180/pi*saca_argumento((Coisoth(ht(2*pi*power(10,omega), 0))));
+v6cenas = @(omega) 180/pi*saca_argumento((Sixth(ht(2*pi*power(10,omega), 0))));
 
-##Coisoth = @(t) t(5) - t(7);
-##
-##
-##angle(vc)
-##norm(vc)
+ground = @(omega) 0;
 
-##f = 1000; #1kHz
-##omega = pi*2*f;
-##
-##
-##
-##ht = matlabFunction(vpa(vl(x)));
-##ze = ht(0)
+fplot(vc, [-1, 6], 201);
+hold on
+fplot(v6cenas, [-1, 6], 201);
+hold on
+fplot(vscenas, [-1, 6], 201);
+legend("\\phi(VC)", "\\phi(V6)","\\phi(VS)");
+xlabel("log10(f) [f] = Hz");
+ylabel("vc_{phi}(f) [V]");
+h = findobj(gca, 'type', 'line');
+set(h, 'LineWidth', 2)
+print ("vcphi.eps", "-depsc");
 
+clf
 
+vscenas = @(omega) 20*log10(abs((First(ht(2*pi*power(10,omega), 0)))));
+vc = @(omega) 20*log10(abs((Coisoth(ht(2*pi*power(10,omega), 0)))));
+v6cenas = @(omega) 20*log10(abs((Sixth(ht(2*pi*power(10,omega), 0)))));
 
+fplot(vc, [-1, 6], 201);
+hold on
+fplot(v6cenas, [-1, 6], 201);
+hold on
+fplot(vscenas, [-1, 6], 201);
+legend("MAG(VC)", "MAG(V6)","MAG(VS)");
+xlabel("log10(f) [f] = Hz");
+ylabel("Mag [dB]");
+h = findobj(gca, 'type', 'line');
+set(h, 'LineWidth', 2)
+print ("vcmag.eps", "-depsc");
 
-#closing files
 fclose(fid);
