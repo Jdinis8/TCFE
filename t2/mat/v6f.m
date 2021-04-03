@@ -2,8 +2,14 @@ clear all
 
 pkg load symbolic
 
-filename = "data.txt";
+filename  = "data.txt";
+filename2 = "../doc/tabela_complexa.tex";
+filename3 = "../doc/tabela_amplitudes.tex";
+
 fid        = fopen (filename, "r");
+fid2       = fopen (filename2, "w");
+fid3       = fopen (filename3, "w");
+
 Kyu = textscan(fid, "%s %f");
 [a, b] = Kyu{:};
 
@@ -44,7 +50,7 @@ G6 = 1/R6;
 G7 = 1/R7;
 
 Vs = 1;
-C =  b(9)*0.001;
+C =  b(9);
 Kb = b(10);
 Kd = b(11);
 
@@ -74,39 +80,65 @@ Zc = 1/(j*omega*C);
 one = sym(1);
 
 notone = sym(-1);
-     #V1    V2      V3     V5       V6     V7      V8 
-##A = [sym(1) 0        0     0        0      0      0;
-##    -G1  G1+G2+G3  -G2    -G3       0      0      0; 
-##     0    -G2-Kb    G2     Kb       0      0      0;
-##     0    -G3       0   G3+G4+G5 -G5-j*C*omega -G7    G7+j*C*omega;
-##     0     Kb       0   -G5-Kb    G5+j*C*omega  0    -j*C*omega;
-##     0     0        0      0        0     G6+G7  -G7;
-##     0     0        0     sym(1)    0     Kd*G6 sym(-1);];
-
+  #   V1    V2      V3     V5       V6     V7      V8 
 A = [sym(1) 0        0     0        0      0      0;
     -G1  G1+G2+G3  -G2    -G3       0      0      0; 
      0    -G2-Kb    G2     Kb       0      0      0;
-     G1    -G1      0      G4       0     -G6     0;
+     0    -G3       0   G3+G4+G5 -G5-j*C*omega -G7    G7+j*C*omega;
      0     Kb       0   -G5-Kb    G5+j*C*omega  0    -j*C*omega;
      0     0        0      0        0     G6+G7  -G7;
      0     0        0     sym(1)    0     Kd*G6 sym(-1);];
 
-     
-     
-#v(t) = [vs(t); 0; 0; 0; 0; 0; 0];
+##A = [sym(1) 0        0     0        0      0      0;
+##    -G1  G1+G2+G3  -G2    -G3       0      0      0; 
+##     0    -G2-Kb    G2     Kb       0      0      0;
+##     G1    -G1      0      G4       0     -G6     0;
+##     0     Kb       0   -G5-Kb    G5+j*C*omega  0    -j*C*omega;
+##     0     0        0      0        0     G6+G7  -G7;
+##     0     0        0     sym(1)    0     Kd*G6 sym(-1);];
 
-v(t) = [vs(t); 0; 0; 0; 0; 0; 0];
+     
+const = 1000;
+const = sym(const, 'r');
 
-v(t) = vpa(A\v(t))
-##
-##v(t) = A\v(t);
-##
-##ht = matlabFunction(vpa(v(t)))
-##
-##ht(0)
-##
-##Sixth = @(t) t(6);
-##
-##v6 = @(t) Sixth(ht(t))
-##
-##fplot(v6, [0, 0.02], 201)
+A = A*const;
+
+v(t) = [vs(t)*const; 0; 0; 0; 0; 0; 0];
+
+v(t) = A\v(t);
+
+v(t) = vpa(v(t));
+
+vpa(det(A))
+
+
+ht = matlabFunction(vpa(v(t)));
+
+ze = ht(0)
+
+Sixth = @(t) t(5);
+
+v6 = @(t) Sixth(ht(t))
+
+fplot(v6, [0, 0.02], 201)
+
+xlabel("t [s]");
+ylabel("v_{6f}(t) [V]");
+legend("v_{6f}", "vR");
+
+print ("v6f.eps", "-depsc");
+
+nodes  = {"1"; "2"; "3"; "5"; "6"; "7"; "8"};
+
+for i = 1:rows(ze)
+    fprintf(fid2, "V(%s) & %f + i(%f)\\\\ \n", nodes{i}, real(ze(i)), imag(ze(i)));
+endfor
+
+
+for i = 1:rows(ze)
+    fprintf(fid3, "V(%s) & %f & %f\\\\ \n", nodes{i}, abs(ze(i)), angle(ze(i)));
+endfor
+
+fclose(fid)
+fclose(fid2)
+fclose(fid3)

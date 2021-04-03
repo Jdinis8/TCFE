@@ -120,13 +120,13 @@ v2 = [0; 0; 0; 0; 0; v(6)-v(8); 0; 0];
 v2 = A2\v2;
 
 Ib = Kb*(v2(2)-v2(5));
-I5 = (v2(6) - v2(8))/R5;
+I5 = (v2(5) - v2(6))/R5;
 
 fprintf(output_1, "V2 %s %f\n", nodes2{rows(nodes2)-2}, v(6)-v(8));
 
 Ic = -(Ib + I5);
 
-Req = (v(8)-v(6))/Ic;
+Req = (v(6)-v(8))/Ic;
 
 tau = Req*C;
 
