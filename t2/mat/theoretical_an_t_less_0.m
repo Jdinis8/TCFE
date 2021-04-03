@@ -117,18 +117,18 @@ Ivd = -Id;
 Ib = Kb*(v(2)-v(5));
 Ic = 0;
 
-fprintf(output_5, "I(R1) & %f\\\\\n",  Ir1);
-fprintf(output_5, "I(R2) & %f\\\\\n",  Ir2);
-fprintf(output_5, "I(R3) & %f\\\\\n",  Ir3);
-fprintf(output_5, "I(R4) & %f\\\\\n",  Ir4);
-fprintf(output_5, "I(R5) & %f\\\\\n",  Ir5);
-fprintf(output_5, "I(R6) & %f\\\\\n",  Ir6);
-fprintf(output_5, "I(R7) & %f\\\\\n",  Ir7);
-fprintf(output_5, "I(Vs) & %f\\\\\n",  Ivs);
-fprintf(output_5, "I(Vd) & %f\\\\\n",  Ivd);
-fprintf(output_5, "Id  & %f\\\\\n",  Id);
-fprintf(output_5, "Ib & %f\\\\\n",  Ib);
-fprintf(output_5, "Ic & %f\\\\\n",  Ic);
+fprintf(output_5, "I(R1) & $%f$\\\\\n",  Ir1);
+fprintf(output_5, "I(R2) & $%f$\\\\\n",  Ir2);
+fprintf(output_5, "I(R3) & $%f$\\\\\n",  Ir3);
+fprintf(output_5, "I(R4) & $%f$\\\\\n",  Ir4);
+fprintf(output_5, "I(R5) & $%f$\\\\\n",  Ir5);
+fprintf(output_5, "I(R6) & $%f$\\\\\n",  Ir6);
+fprintf(output_5, "I(R7) & $%f$\\\\\n",  Ir7);
+fprintf(output_5, "I(Vs) & $%f$\\\\\n",  Ivs);
+fprintf(output_5, "I(Vd) & $%f$\\\\\n",  Ivd);
+fprintf(output_5, "Id  & $%f$\\\\\n",  Id);
+fprintf(output_5, "Ib & $%f$\\\\\n",  Ib);
+fprintf(output_5, "Ic & $%f$\\\\\n",  Ic);
 
 ###         r1    r2     r3     r4     r5     r6     r7          vs          c    kb            kd
 ##nodes  = {"2 1"; "2 3"; "2 5"; "0 5"; "5 6"; "0 CFP1"; "7 8"; "1 0"; "6 8"; "6 3 2 5"; "5 8 Vdumb"};
