@@ -1,7 +1,5 @@
 Transient_forced_an
 
-.TRAN 1ms 20ms
-
 .inc values4.inc
 Vdumb CFP1 7 0
 

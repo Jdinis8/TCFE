@@ -1,6 +1,5 @@
 Transient_forced_an
 
-.TRAN 1ms 20ms
 
 .inc values4.inc
 Vdumb CFP1 7 0
@@ -32,5 +31,6 @@ tran 1e-5 20e-3
 
 hardcopy trans4.ps v(6)
 echo trans4_FIG
+
 
 .endc

@@ -1,6 +1,5 @@
 PHases
 
-.TRAN 1ms 20ms
 
 .inc values4.inc
 Vdumb CFP1 7 0
@@ -36,7 +35,5 @@ set units=degrees
 hardcopy zezoca.ps vp(6) vp(1) vp(6,8)
 echo zezoca
 
-
-exit
 
 .endc

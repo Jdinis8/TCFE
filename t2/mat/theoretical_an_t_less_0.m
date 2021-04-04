@@ -52,7 +52,7 @@ fprintf(output_1, "Gb %s %f\n", nodes2{rows(nodes2)-1}, b(rows(b)-1));
 fprintf(output_1, "Hd %s %f\n", nodes2{rows(nodes2)}, b(rows(b)));
 
 
-fprintf(output_3, "Vs 1 0 0\n");
+fprintf(output_3, "Vs 1 0 dc 0\n");
 fprintf(output_3, "C1 %s %f\n", nodes{rows(nodes)-2}, b(rows(b)-2));
 fprintf(output_3, "Gb %s %f\n", nodes{rows(nodes)-1}, b(rows(b)-1));
 fprintf(output_3, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
