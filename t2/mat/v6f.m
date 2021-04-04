@@ -131,12 +131,12 @@ print ("v6f.eps", "-depsc");
 nodes  = {"1"; "2"; "3"; "5"; "6"; "7"; "8"};
 
 for i = 1:rows(ze)
-    fprintf(fid2, "V(%s) & %f + i(%f)\\\\ \n", nodes{i}, real(ze(i)), imag(ze(i)));
+    fprintf(fid2, "V(%s) & %f + i(%f)\\\\ ", nodes{i}, real(ze(i)), imag(ze(i)));
 endfor
 
 
 for i = 1:rows(ze)
-    fprintf(fid3, "V(%s) & %f & %f\\\\ \n", nodes{i}, abs(ze(i)), angle(ze(i)));
+    fprintf(fid3, "V(%s) & %f & %f\\\\ ", nodes{i}, abs(ze(i)), angle(ze(i)));
 endfor
 
 fclose(fid)
