@@ -18,6 +18,7 @@ all: ngspice.log
 
 
 ngspice.log:
+	@echo olaaaaaaaaaaaa
 	$(foreach var, $(NET), ngspice -b $(var) -o $(basename $(var)).log;)
 
 clean:

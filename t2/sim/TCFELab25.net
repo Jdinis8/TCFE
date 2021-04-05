@@ -3,13 +3,9 @@ Transient_forced_an
 .inc values4.inc
 Vdumb CFP1 7 0
 
-.model P2model NPN(Bf=200, CJE=12pF, CJC=2pF)
 .ic v(6)= 8.403629 v(8)=0
-.END
 
 .op
-
-.end
 
 .control
 
@@ -32,3 +28,5 @@ hardcopy trans5.ps v(6) v(1)
 echo trans5_FIG
 
 .endc
+
+.end

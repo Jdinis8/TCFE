@@ -1,5 +1,4 @@
-PHases
-
+magnitudes and phases
 
 .inc values4.inc
 Vdumb CFP1 7 0
@@ -33,7 +32,7 @@ echo voltage_mag2_FIG
 
 set units=degrees
 hardcopy zezoca.ps vp(6) vp(1) vp(6,8)
-echo zezoca
+echo zezoca_FIG
 
 
 .endc

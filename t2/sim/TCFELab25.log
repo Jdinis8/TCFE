@@ -36,21 +36,21 @@ No. of Data Rows : 1
 	Node                                  Voltage
 	----                                  -------
 	----	-------
-	V(8)                             -5.59276e+02
-	V(7)                             -3.72174e+02
-	cfp1                             -3.72174e+02
-	V(6)                             1.145589e+03
-	V(5)                             9.734867e+02
-	V(3)                             8.460866e+02
-	V(1)                             1.022168e+03
-	V(2)                             9.653126e+02
+	V(8)                             -2.75679e+00
+	V(7)                             -1.83452e+00
+	cfp1                             -1.83452e+00
+	V(6)                             5.646842e+00
+	V(5)                             4.798515e+00
+	V(3)                             4.170534e+00
+	V(1)                             5.038475e+00
+	V(2)                             4.758224e+00
 
 	Source	Current
 	------	-------
 
-	vs#branch                        -5.46715e-02
-	vdumb#branch                     1.830444e-01
-	hd#branch                        -1.83044e-01
+	vs#branch                        -2.69487e-04
+	vdumb#branch                     9.022631e-04
+	hd#branch                        -9.02263e-04
 
  Capacitor models (Fixed capacitor)
       model                     C
@@ -99,9 +99,9 @@ capacitance                 1e-06
 
  CCVS: Linear current controlled current source
      device                    hd
-          i             -0.183044
-          v               1532.76
-          p              -280.564
+          i          -0.000902263
+          v                7.5553
+          p           -0.00681687
 
  Resistor: Simple linear resistor
      device                    r7                    r6                    r5
@@ -111,8 +111,8 @@ capacitance                 1e-06
       dtemp                     0                     0                     0
      bv_max                 1e+99                 1e+99                 1e+99
       noisy                     1                     1                     1
-          i              0.183044              0.183044            -0.0573413
-          p                34.248               68.1244               9.86855
+          i           0.000902263           0.000902263          -0.000282647
+          p           0.000832125            0.00165522           0.000239777
 
  Resistor: Simple linear resistor
      device                    r4                    r3                    r2
@@ -122,8 +122,8 @@ capacitance                 1e-06
       dtemp                     0                     0                     0
      bv_max                 1e+99                 1e+99                 1e+99
       noisy                     1                     1                     1
-          i             -0.237716            -0.0026698             0.0573413
-          p               231.413             0.0218232               6.83657
+          i           -0.00117175            -1.316e-05           0.000282647
+          p            0.00562266            5.3024e-07           0.000166109
 
  Resistor: Simple linear resistor
      device                    r1
@@ -133,19 +133,19 @@ capacitance                 1e-06
       dtemp                     0
      bv_max                 1e+99
       noisy                     1
-          i            -0.0546715
-          p               3.10836
+          i          -0.000269487
+          p           7.55241e-05
 
  VCCS: Voltage controlled current source
      device                    gb
           m                     0
-          i            -0.0573413
-          v               299.502
-          p              -17.1738
+          i          -0.000282647
+          v               1.47631
+          p          -0.000417274
 
  Vsource: Independent voltage source
      device                 vdumb                    vs
-         dc                     0               1022.17
+         dc                     0               5.03848
       acmag                     0                     1
       pulse         -                     0
                                           1
@@ -195,19 +195,19 @@ capacitance                 1e-06
                                           0
                                           0
                                           0
-          i              0.183044            -0.0546715
-          p                    -0               55.8834
+          i           0.000902263          -0.000269487
+          p                    -0             0.0013578
 
 
-Total analysis time (seconds) = 0.009
+Total analysis time (seconds) = 0.01
 
-Total elapsed time (seconds) = 0.012 
+Total elapsed time (seconds) = 0.014 
 
 Total DRAM available = 15945.082 MB.
-DRAM currently available = 4600.621 MB.
+DRAM currently available = 6314.777 MB.
 Total ngspice program size =   21.988 MB.
-Resident set size =    9.887 MB.
-Shared ngspice pages =    7.992 MB.
+Resident set size =    9.977 MB.
+Shared ngspice pages =    8.082 MB.
 Text (code) pages =    5.070 MB.
 Stack = 0 bytes.
 Library pages =    2.246 MB.

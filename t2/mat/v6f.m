@@ -126,7 +126,7 @@ xlabel("t [s]");
 ylabel("v_{6f}(t) [V]");
 legend("v_{6f}", "vR");
 
-print ("v6f.eps", "-depsc");
+print ("v6f.png", "-dpng");
 
 nodes  = {"1"; "2"; "3"; "5"; "6"; "7"; "8"};
 

@@ -156,7 +156,7 @@ v6tots = v6f + v6;
 plot (t*1e3, v6tots)
 xlabel("t [ms]");
 ylabel("V [V]");
-print ("v6fn.eps", "-depsc");
+print ("v6fn.png", "-dpng");
 
 x = -5e-3: 1e-6: 20e-3;
 x2 = 1e-6: 1e-6: 20e-3;
@@ -181,8 +181,7 @@ plot (x*1e3,I2)
 xlabel("t [ms]");
 ylabel("V [V]");
 legend("v_{6}(t)", "v_s(t)");
-print ("v6totsze.eps", "-depsc");
-
+print ("v6totsze.png", "-dpng");
 
 
 #closing files

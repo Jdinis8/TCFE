@@ -58,7 +58,7 @@ fprintf(output_3, "Gb %s %f\n", nodes{rows(nodes)-1}, b(rows(b)-1));
 fprintf(output_3, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
 
 
-fprintf(output_4, "Vs 1 0 dc %f ac 1.0 SINE(0 1.0 1000 0 0 0)\n", b(rows(b)-4));
+fprintf(output_4, "Vs 1 0 dc %f ac 1.0 SINE(0 1.0 1000 0 0 0)\n", b(rows(b)-3));
 fprintf(output_4, "C1 %s %f\n", nodes{rows(nodes)-2}, b(rows(b)-2));
 fprintf(output_4, "Gb %s %f\n", nodes{rows(nodes)-1}, b(rows(b)-1));
 fprintf(output_4, "Hd %s %f\n", nodes{rows(nodes)}, b(rows(b)));
@@ -191,8 +191,7 @@ plot (t*1e3, v6)
 xlabel("t [ms]");
 ylabel("v_{6n}(t) [V]");
 legend("v_{6n}");
-
-print ("v6n.eps", "-depsc");
+print ("v6n.png", "-dpng");
 
      
 #print out the data for the nodal analysis

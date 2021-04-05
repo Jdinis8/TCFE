@@ -109,7 +109,7 @@ xlabel("log10(f) [f] = Hz");
 ylabel("vc_{phi}(f) [V]");
 h = findobj(gca, 'type', 'line');
 set(h, 'LineWidth', 2)
-print ("vcphi.eps", "-depsc");
+print ("vcphi.png", "-dpng");
 
 clf
 
@@ -127,6 +127,5 @@ xlabel("log10(f) [f] = Hz");
 ylabel("Mag [dB]");
 h = findobj(gca, 'type', 'line');
 set(h, 'LineWidth', 2)
-print ("vcmag.eps", "-depsc");
-
+print ("vcmag.png", "-dpng");
 fclose(fid);
