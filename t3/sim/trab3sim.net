@@ -15,13 +15,13 @@ D3 0 2 DMOD
 D4 2 0 DMOD
 
 D5 1 3 DMOD
-R1 3 2 30k
-C1 3 2 30u
-R2 3 4 30k
+R1 3 2 40k
+C1 3 2 40u
+*R2 3 4 1k
 
-D6 4 6 DMOD
-D7 6 7 DMOD
-D8 7 2 DMOD
+*D6 4 6 DMOD
+*D7 6 7 DMOD
+*D8 7 2 DMOD
 
 *C2 4 6 1u
 *C3 6 7 1u
@@ -33,17 +33,26 @@ D8 7 2 DMOD
 *D13 8 7 DMOD
 *D14 7 9 DMOD
 
-RZe 4 2 1k
+*RZe 3 2 1k
 
 .op
 
-
 .control
+
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
 
 echo "********************************************"
 echo "Transient analysis"
 echo "********************************************"
-tran 1e-4 20e-3
+tran 1e-4 500e-3
 
 hardcopy zauzau.ps v(3)-v(2)
 echo zauzau_FIG
