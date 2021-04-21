@@ -1,0 +1,33 @@
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {english}{}
+\babel@toc {portuguese}{}
+\babel@toc {english}{}
+\contentsline {figure}{\numberline {1}{\ignorespaces \textit {Circuit analysed. It consists, essentially, in a circuit with 4 meshes, 8 nodes and 11 branches (in which we count 7 resistors, 2 voltage sources - one of them controlled by the current $I_d$ - and 2 current sources - one independent and one dependent, controlled by the voltage $V_b$ as it can be seen in the figure). The labels used in this figure will be used throughout this report.}}}{4}%
+\contentsline {figure}{\numberline {2}{\ignorespaces \textit {Plot of the natural solution for the voltage on node 6 in the interval $t\in [0,20]ms$ as shown on the plot}}}{8}%
+\contentsline {figure}{\numberline {3}{\ignorespaces \textit {Plot of the forced solution for the voltage on node 6 in the interval $t\in [0,20]ms$ as shown on the plot}}}{9}%
+\contentsline {figure}{\numberline {4}{\ignorespaces \textit {Plot of the complete solution for the voltage on node 6 in the interval $t\in [0,20]ms$ as shown on the plot}}}{10}%
+\contentsline {figure}{\numberline {5}{\ignorespaces \textit {Plot of the complete solution for the voltage on node 6 and the input voltage in the interval $t\in [-5,20]ms$ as shown on the plot}}}{10}%
+\contentsline {figure}{\numberline {6}{\ignorespaces \textit {Plot of the phase in function of the frequency. The frequency is presented in a logarithmic scale, contrary to the phase which is in linear scale in degrees.}}}{11}%
+\contentsline {figure}{\numberline {7}{\ignorespaces \textit {Plot of the magnitude in function of the frequency. The frequency is presented in a logarithmic scale, as is the magnitude, which is in dB.}}}{11}%
+\contentsline {figure}{\numberline {8}{\ignorespaces \textit {Natural solution for $v_s = 0$, having been charged, the capacitor, previously, since infinite (due to initial conditions).}}}{13}%
+\contentsline {figure}{\numberline {9}{\ignorespaces \textit {Forced solution for $v_s = sin(2\pi ft)$, having zero initial conditions, i.e., capacitor totally discharged.}}}{14}%
+\contentsline {figure}{\numberline {10}{\ignorespaces \textit {Sum of forced and natural solution in red and $v_s$ in red.}}}{15}%
+\contentsline {figure}{\numberline {11}{\ignorespaces \textit {Sum of forced and natural solution for $v_x$.}}}{16}%
+\contentsline {figure}{\numberline {12}{\ignorespaces \textit {Magnitudes of $v_6$ (orange), $v_6 - v_8$ (red) and $v_s$ (blue) as a function of frequency.}}}{17}%
+\contentsline {figure}{\numberline {13}{\ignorespaces \textit {Phases of $v_6$ (red), $v_6 - v_8$ (orange) and $v_s$ (blue) as a function of frequency.}}}{18}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Natural solution for voltage in node 6 for $t=[0,20]$.}}{19}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theoretical analysis}}}{19}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Simulation analysis}}}{19}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Forced solution for voltage in node 6 for $t=[0,20]$.}}{20}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theoretical analysis}}}{20}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Simulation analysis}}}{20}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Complete solution for voltage in node 6 for $t=[-5,20]$ and $t=[0,20]$.}}{20}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theoretical analysis}}}{20}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Simulation analysis}}}{20}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Phase difference as a function of the frequency of the voltage source.}}{21}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theoretical analysis}}}{21}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Simulation analysis}}}{21}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Magnitude as a function of the frequency of the voltage source.}}{21}%
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theoretical analysis}}}{21}%
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Simulation analysis}}}{21}%

@@ -1,0 +1,95 @@
+\subsection{$R_{eq}$ and time constant $\tau$}
+Next up, we need to determine the equivalent resistance, $R_eq$, as seen from the capacitor terminals to find the time constant associated with this circuit, $\tau = R_{eq}C$, so that one can analyse, afterwards, the natural and the forced solution of the circuit. \\
+
+To do that, one can start by "shutting down" the independent voltage source of the circuit, $V_s$, by making it $V_s = 0$, i.e., replacing it by a short circuit. Afterward, as we want to calculate $R_{eq}$ as seen by the terminals of the capacitor, one should now substitute the capacitor by a voltage source with value $V_x = V_6 - V_8$, where one can use the values obtained in section \ref{sec:1st} for $V_6$ and $V_8$. This whole process is adopted because the value $R_{eq}$ which we are seeking is nothing more than the Thévenin Resistance, $R_{th}$, of the circuit as seen by the terminals of the capacitor. \\
+
+Rewriting the system of equations with this new constraints (knowing the value for $V_x$ and imposing $V_s = 0$), one can write the system as:
+
+\begin{equation}
+    \begin{bmatrix}
+     1 &  0      &  0 &    -1  &     0      &  0  &  0    &  0\\
+     -G_1 & G_1+G_2+G_3 & -G_2  & 0   &  -G_3       &  0  &  0    &  0\\
+     0   & -G_2-K_b    & G_2  & 0   &   K_b       &  0  &  0    &  0\\
+     0   & 0        & 0   & 1 & 0       &  0  & 0   & 0\\
+     0   & -G_3+K_b      &  0 &  -G_4  &   G_3+G_4-K_b & 0 &  -G_7    & G_7\\
+     0   & 0       & 0  &  0    & 0     & 1  & 0     & -1\\
+     0   & 0        & 0  & -G_6   &  0         & 0   & G_6+G_7 & -G_7\\
+     0   & 0        & 0  &  -K_dG_6    &  1         & 0   & K_dG_6     & -1
+    \end{bmatrix} 
+    \begin{bmatrix}
+        V_1\\
+        V_2\\
+        V_3\\
+        V_4\\
+        V_5\\
+        V_6\\
+        V_7\\
+        V_8
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        0\\
+        0\\
+        0\\
+        0\\
+        0\\
+        V_x\\
+        0\\
+        0
+    \end{bmatrix}
+\label{eqnodos}
+\end{equation}
+
+Which take us to this result:
+
+\begin{equation}
+    \begin{bmatrix}
+        V_1\\
+        V_2\\
+        V_3\\
+        V_4\\
+        V_5\\
+        V_6\\
+        V_7\\
+        V_8
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+        0\\
+        0\\
+        0\\
+        0\\
+        0\\
+        8.40363\\
+        0\\
+        0
+    \end{bmatrix}V
+\end{equation}
+
+Now that one obtained the values for every node voltage, and having in mind that $I_x$ can be written as $I_x = -(I_b+I_5)$:
+
+\begin{equation}
+\begin{cases}
+    I_b = K_b(V_2 - V_5) = 0mA\\
+    I_5 = (V_6 - V_8)G_5 \approx -2.80 mA
+\end{cases}
+    \Longrightarrow I_x = -I_5 = 2.80 mA
+\end{equation}
+
+Now that one obtained the values of $V_x$ and $I_x$, one can finally obtain the value for $R_eq$, which can be written as:
+
+\begin{equation}
+    R_{eq} = \frac{V_x}{I_x} \approx 3.0014 k\Omega
+\end{equation}
+
+Finally, as for RC circuits, the time constant can be expressed as:
+
+\begin{equation}
+    \tau = R_{eq}
+\end{equation}
+
+one can obtain that for this specific circuit, $tau$ can be written as:
+
+\begin{equation}
+    \tau \approx 3.0516 ms
+\end{equation}
