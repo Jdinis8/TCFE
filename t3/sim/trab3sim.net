@@ -52,7 +52,7 @@ set color6=rgb:4/0/0
 echo "********************************************"
 echo "Transient analysis"
 echo "********************************************"
-tran 1e-4 500e-3
+tran 5e-4 500e-3
 
 hardcopy zauzau.ps v(3)-v(2)
 echo zauzau_FIG
