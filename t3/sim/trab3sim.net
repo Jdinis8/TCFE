@@ -3,39 +3,50 @@ trab 3
 
 .options savecurrents
 
+.PARAM n = 1/16
 
-.model DMOD D
+Vprimario 0 ze dc 1 ac 230 SINE(0 230 314 0 0 0)
 
-VIN 5 0 dc 1 ac 14.2 SINE(0 14.2 314 0 0 0)
+E1 5 0 0 ze n
+
 
 *full wave rectifier
-D1 5 1 DMOD
-D2 1 5 DMOD
-D3 0 2 DMOD
-D4 2 0 DMOD
+D1 2 1 Default
+D2 1 2 Default
+D3 4 0 Default
+D4 0 4 Default
 
-D5 1 3 DMOD
-R1 3 2 40k
-C1 3 2 40u
-*R2 3 4 1k
 
-*D6 4 6 DMOD
-*D7 6 7 DMOD
-*D8 7 2 DMOD
+R1 2 4 10k
+C1 2 4 5u
 
-*C2 4 6 1u
-*C3 6 7 1u
-*C4 2 8 1u
-*C5 8 9 1u
+R4 2 3 0.005k
 
-*D11 2 6 DMOD
-*D12 6 8 DMOD
-*D13 8 7 DMOD
-*D14 7 9 DMOD
+D5 3 Dumb Default
+D6 Dumb 5 Default
+D7 5 6 Default
+D8 6 7 Default
+D9 7 8 Default
+D10 8 9 Default
+D11 9 10 Default
+D12 10 11 Default
+D13 11 12 Default
+D14 12 13 Default
+D15 13 14 Default
+D16 14 15 Default
+D17 15 16 Default
+D18 16 17 Default
+D19 17 18 Default
+D20 18 19 Default
+D21 19 20 Default
+D22 20 21 Default
+D23 21 22 Default
+D24 22 4 Default
 
-*RZe 3 2 1k
 
+.model Default D
 .op
+.end
 
 .control
 
@@ -52,12 +63,10 @@ set color6=rgb:4/0/0
 echo "********************************************"
 echo "Transient analysis"
 echo "********************************************"
-tran 5e-4 500e-3
+tran 1e-4 200e-3 100e-3
 
-hardcopy zauzau.ps v(3)-v(2)
+hardcopy zauzau.ps v(4)-v(3)
 echo zauzau_FIG
 
 
 .endc
-
-.end
