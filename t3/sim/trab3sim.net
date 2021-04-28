@@ -63,6 +63,10 @@ echo "Transient analysis"
 echo "********************************************"
 tran 1e-4 200e-3 100e-3
 
+print mean(v(4)-v(2))
+print mean(v(4)-v(2)) - 12
+print {maximum(v(4)-v(2))-minimum(v(4)-v(2))}
+print 1/((2.4+40+10)*({maximum(v(4)-v(2))-minimum(v(4)-v(2))} + mean(v(4)-v(2)) - 12 + 0.000001))
 hardcopy zauzau.ps v(4)-v(2)
 echo zauzau_FIG
 
