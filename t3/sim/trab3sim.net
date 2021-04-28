@@ -3,28 +3,26 @@ trab 3
 
 .options savecurrents
 
-.PARAM n = 1/16
+.PARAM n = 1/17
 
 Vprimario 0 ze dc 1 ac 230 SINE(0 230 314 0 0 0)
 
-E1 5 0 0 ze n
-
+E1 1 0 0 ze n
 
 *full wave rectifier
-D1 2 1 Default
-D2 1 2 Default
-D3 4 0 Default
+D1 1 4 Default
+D2 2 1 Default
+D3 2 0 Default
 D4 0 4 Default
 
+R1 4 2 30k
+C1 4 2 10u
 
-R1 2 4 10k
-C1 2 4 5u
+R2 4 5 10k
 
-R4 2 3 0.005k
-
-D5 3 Dumb Default
-D6 Dumb 5 Default
-D7 5 6 Default
+D5 5 Dumb Default
+D6 Dumb 5c Default
+D7 5c 6 Default
 D8 6 7 Default
 D9 7 8 Default
 D10 8 9 Default
@@ -41,7 +39,7 @@ D20 18 19 Default
 D21 19 20 Default
 D22 20 21 Default
 D23 21 22 Default
-D24 22 4 Default
+D24 22 2 Default
 
 
 .model Default D
@@ -65,7 +63,7 @@ echo "Transient analysis"
 echo "********************************************"
 tran 1e-4 200e-3 100e-3
 
-hardcopy zauzau.ps v(4)-v(3)
+hardcopy zauzau.ps v(4)-v(2)
 echo zauzau_FIG
 
 
