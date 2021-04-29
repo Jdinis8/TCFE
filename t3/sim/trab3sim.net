@@ -15,10 +15,13 @@ D2 2 1 Default
 D3 2 0 Default
 D4 0 4 Default
 
-R1 4 2 30k
-C1 4 2 10u
+*envelope
+R1 4 2 12.5k
+C1 4 2 12.5u
 
-R2 4 5 10k
+*limiter
+R2 4 5 4k
+
 
 D5 5 Dumb Default
 D6 Dumb 5c Default
@@ -39,7 +42,9 @@ D20 18 19 Default
 D21 19 20 Default
 D22 20 21 Default
 D23 21 22 Default
-D24 22 2 Default
+D24 22 23 Default
+D25 23 24 Default
+D26 24 2 Default
 
 
 .model Default D
@@ -63,11 +68,11 @@ echo "Transient analysis"
 echo "********************************************"
 tran 1e-4 200e-3 100e-3
 
-print mean(v(4)-v(2))
-print mean(v(4)-v(2)) - 12
-print {maximum(v(4)-v(2))-minimum(v(4)-v(2))}
-print 1/((2.4+40+10)*({maximum(v(4)-v(2))-minimum(v(4)-v(2))} + mean(v(4)-v(2)) - 12 + 0.000001))
-hardcopy zauzau.ps v(4)-v(2)
+print mean(v(5)-v(2))
+print mean(v(5)-v(2)) - 12
+print {maximum(v(5)-v(2))-minimum(v(5)-v(2))}
+print 1/((2.6+16.5+12.5)*({maximum(v(5)-v(2))-minimum(v(5)-v(2))} + abs(mean(v(5)-v(2)) - 12) + 0.000001))
+hardcopy zauzau.ps v(5)-v(2)
 echo zauzau_FIG
 
 
