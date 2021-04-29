@@ -1,0 +1,76 @@
+trab 3
+
+
+.options savecurrents
+
+.PARAM n = 1/14
+
+Vprimario 0 ze dc 0 ac 230 SINE(0 230 314 0 0 0)
+
+E1 1 0 0 ze n
+
+*full wave rectifier
+D1 1 4 Default
+D2 2 1 Default
+D3 2 0 Default
+D4 0 4 Default
+
+R1 4 2 90k
+C1 4 2 110u
+
+R2 4 5 7.421k
+
+D5 5 Dumb Default
+D6 Dumb 5c Default
+D7 5c 6 Default
+D8 6 7 Default
+D9 7 8 Default
+D10 8 9 Default
+D11 9 10 Default
+D12 10 11 Default
+D13 11 12 Default
+D14 12 13 Default
+D15 13 14 Default
+D16 14 15 Default
+D17 15 16 Default
+D18 16 17 Default
+D19 17 18 Default
+D20 18 19 Default
+D21 19 20 Default
+D22 20 21 Default
+D23 21 2 Default
+
+
+.model Default D
+.op
+.end
+
+.control
+
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
+
+echo "********************************************"
+echo "Transient analysis"
+echo "********************************************"
+tran 1.2e-4 1000e-3 800e-3
+
+print mean(v(5)-v(2))
+print mean(v(5)-v(2)) - 12
+print {maximum(v(5)-v(2))-minimum(v(5)-v(2))}
+print (2.3+90+7.421+110)
+print 1/((2.3+90+7.421+110)*({maximum(v(5)-v(2))-minimum(v(5)-v(2))} + abs(mean(v(5)-v(2)) - 12) + 0.000001))
+hardcopy antes.ps v(4)-v(2)
+hardcopy zauzau.ps v(5)-v(2)
+hardcopy deviation.ps v(5)-v(2)-12
+echo zauzau_FIG
+
+
+.endc
