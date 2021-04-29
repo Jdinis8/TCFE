@@ -5,9 +5,9 @@ trab 3
 
 .PARAM n = 1/14
 
-Vprimario 0 ze dc 0 ac 230 SINE(0 230 314 0 0 0)
+Vprimario 0 3 dc 0 ac 230 SINE(0 230 314 0 0 0)
 
-E1 1 0 0 ze n
+E1 1 0 0 3 n
 
 *full wave rectifier
 D1 1 4 Default
@@ -15,10 +15,10 @@ D2 2 1 Default
 D3 2 0 Default
 D4 0 4 Default
 
-R1 4 2 110k
+R1 4 2 90k
 C1 4 2 110u
 
-R2 4 5 7.4284k
+R2 4 5 7.421k
 
 D5 5 Dumb Default
 D6 Dumb 5c Default
@@ -60,15 +60,16 @@ set color6=rgb:4/0/0
 echo "********************************************"
 echo "Transient analysis"
 echo "********************************************"
-tran 1.2e-4 1800e-3 800e-3
+tran 1.2e-4 1000e-3 800e-3
 
 print mean(v(5)-v(2))
 print mean(v(5)-v(2)) - 12
 print {maximum(v(5)-v(2))-minimum(v(5)-v(2))}
-print (2.3+110+7.4284+110)
-print 1/((2.3+110+7.4284+110)*({maximum(v(5)-v(2))-minimum(v(5)-v(2))} + abs(mean(v(5)-v(2)) - 12) + 0.000001))
+print (2.3+90+7.421+110)
+print 1/((2.3+90+7.421+110)*({maximum(v(5)-v(2))-minimum(v(5)-v(2))} + abs(mean(v(5)-v(2)) - 12) + 0.000001))
 hardcopy antes.ps v(4)-v(2)
 hardcopy zauzau.ps v(5)-v(2)
+hardcopy deviation.ps v(5)-v(2)-12
 echo zauzau_FIG
 
 
