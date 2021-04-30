@@ -1,0 +1,61 @@
+trab 3
+
+
+.options savecurrents
+
+.param n=1/18.41351
+.param xC1=1u
+.param xR2=0.5k
+
+
+*transformer
+Vprimario 0 ze dc 0 ac 230 SINE(0 230 50 0 0 0)
+E1 1 0 0 ze n
+
+*full wave rectifier
+D1 1 4 Default
+D2 0 1 Default
+D3 0 2 Default
+D4 2 4 Default
+
+
+*envelope detector
+C1 4 0 xC1
+
+R2 4 5 xR2
+
+
+*limiter
+D5 5 0 Nd
+
+
+*setting up models
+.model Default D
+.model Nd D(N=31)
+
+.op
+.end
+
+*transient analysis
+.tran 2e-4 6.8 0.1
+
+.control
+run
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
+
+echo "********************************************"
+echo "Transient analysis"
+echo "********************************************"
+
+hardcopy estabilizar.ps v(5)
+echo estabilizar_FIG
+
+.endc
