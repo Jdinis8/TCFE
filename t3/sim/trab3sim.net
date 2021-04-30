@@ -3,50 +3,56 @@ trab 3
 
 .options savecurrents
 
-.PARAM n = 1/14
+.param n=1/18.41351
+.param xC1=1u
+.param xR2=0.5k
 
+
+*transformer
 Vprimario 0 ze dc 0 ac 230 SINE(0 230 50 0 0 0)
-
 E1 1 0 0 ze n
 
 *full wave rectifier
 D1 1 4 Default
-D2 2 1 Default
-D3 2 0 Default
-D4 0 4 Default
-
-R1 4 2 200k
-C1 4 2 250u
-
-R2 4 5 7.442k
-
-D5 5 Dumb Default
-D6 Dumb 5c Default
-D7 5c 6 Default
-D8 6 7 Default
-D9 7 8 Default
-D10 8 9 Default
-D11 9 10 Default
-D12 10 11 Default
-D13 11 12 Default
-D14 12 13 Default
-D15 13 14 Default
-D16 14 15 Default
-D17 15 16 Default
-D18 16 17 Default
-D19 17 18 Default
-D20 18 19 Default
-D21 19 20 Default
-D22 20 21 Default
-D23 21 2 Default
+D2 0 1 Default
+D3 0 2 Default
+D4 2 4 Default
 
 
+*envelope detector
+C1 4 0 xC1
+
+R2 4 6 xR2
+
+
+*limiter
+D5 6 0 Nd
+
+
+*setting up models
 .model Default D
+.model Nd D(N=31)
+
 .op
 .end
 
-.control
+*transient analysis
+.tran 2e-4 6.8 6.6
 
+*calculating averages
+.measure tran av_volt_6 AVG v(6) from=6.6 to=6.8
+.measure tran abs_av_volt param='abs(av_volt_6-12)'
+
+*maximum and minimum values
+.measure tran maxvolt_6 MAX v(6) from=6.6 to=6.8
+.measure tran minvolt_6 MIN v(6) from=6.6 to=6.8
+.measure tran ripples param='abs(maxvolt_6 - minvolt_6)'
+.measure tran cost param='(31+4)*0.1 + (xC1)*10^6 + (xR2)*10^(-3)'
+.measure tran merit param='1 / (cost * (ripples + abs_av_volt + 10^(-6)))'
+
+
+.control
+run
 *makes plots in color
 set hcopypscolor=0
 set color0=white
@@ -60,18 +66,15 @@ set color6=rgb:4/0/0
 echo "********************************************"
 echo "Transient analysis"
 echo "********************************************"
-tran 2.01e-4 1000e-3 800e-3
 
-print mean(v(5)-v(2))
-print mean(v(5)-v(2)) - 12
-print {maximum(v(5)-v(2))-minimum(v(5)-v(2))}
-print (2.3+200+7.442+250)
-print 1/((2.3+200+7.442+250)*({maximum(v(5)-v(2))-minimum(v(5)-v(2))} + abs(mean(v(5)-v(2)) - 12) + 0.000001))
-hardcopy antes.ps v(4)-v(2)
-hardcopy zauzau.ps v(5)-v(2)
-hardcopy deviation.ps v(5)-v(2)-12
-hardcopy acdc.ps v(5)-v(2) v(ze)
+
+hardcopy antes.ps v(4)
+echo antes_FIG
+hardcopy zauzau.ps v(6)
 echo zauzau_FIG
-
+hardcopy deviation.ps v(6)-12
+echo deviation_FIG
+hardcopy acdc.ps v(6) v(ze)
+echo acdc_FIG
 
 .endc
