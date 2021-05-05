@@ -34,7 +34,7 @@ Id(v) = Is*(exp(v/(nd*VT)) - 1)
 syms ic(t)
 syms C
 
-ic(t) = C*A*w*sin(w*t)
+ic(t) = C*A*w*cos(w*t)*sin(w*t)/abs(sin(w*t))
 
 #because dv0/dt * C = ic, then we can approximate the derivative by
 #delta's and reach a good approximation of the next iteration
