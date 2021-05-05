@@ -4,13 +4,13 @@ trab 3
 .options savecurrents
 
 .param n=1/18.41351
-.param xC1=1u
-.param xR2=0.5k
+.param xC1=1.33u
+.param xR2=0.2k
 
 
 *transformer
-Vprimario 0 ze dc 0 ac 230 SINE(0 230 50 0 0 0)
-E1 1 0 0 ze n
+Vprimario 0 3 dc 0 ac 230 SINE(0 230 50 0 0 0)
+E1 1 0 0 3 n
 
 *full wave rectifier
 D1 1 4 Default
@@ -22,11 +22,11 @@ D4 2 4 Default
 *envelope detector
 C1 4 0 xC1
 
-R2 4 6 xR2
+R2 4 5 xR2
 
 
 *limiter
-D5 6 0 Nd
+D5 5 0 Nd
 
 
 *setting up models
@@ -37,15 +37,15 @@ D5 6 0 Nd
 .end
 
 *transient analysis
-.tran 2e-4 6.8 6.6
+.tran 2e-4 8.8 8.6
 
 *calculating averages
-.measure tran av_volt_6 AVG v(6) from=6.6 to=6.8
+.measure tran av_volt_6 AVG v(5) from=8.6 to=8.8
 .measure tran abs_av_volt param='abs(av_volt_6-12)'
 
 *maximum and minimum values
-.measure tran maxvolt_6 MAX v(6) from=6.6 to=6.8
-.measure tran minvolt_6 MIN v(6) from=6.6 to=6.8
+.measure tran maxvolt_6 MAX v(5) from=8.6 to=8.8
+.measure tran minvolt_6 MIN v(5) from=8.6 to=8.8
 .measure tran ripples param='abs(maxvolt_6 - minvolt_6)'
 .measure tran cost param='(31+4)*0.1 + (xC1)*10^6 + (xR2)*10^(-3)'
 .measure tran merit param='1 / (cost * (ripples + abs_av_volt + 10^(-6)))'
@@ -70,11 +70,11 @@ echo "********************************************"
 
 hardcopy antes.ps v(4)
 echo antes_FIG
-hardcopy zauzau.ps v(6)
+hardcopy zauzau.ps v(5)
 echo zauzau_FIG
-hardcopy deviation.ps v(6)-12
+hardcopy deviation.ps v(5)-12
 echo deviation_FIG
-hardcopy acdc.ps v(6) v(ze)
+hardcopy acdc.ps v(5) v(3)
 echo acdc_FIG
 
 .endc
