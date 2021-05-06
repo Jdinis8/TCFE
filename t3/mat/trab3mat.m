@@ -3,12 +3,24 @@ close all
 
 format long
 
+filename1 = "../doc/ripple.tex";
+filename2 = "../doc/merit.tex";
+filename3 = "../doc/merit_corrected.tex";
+filename4 = "../doc/rd.tex";
+filename5 = "../doc/media.tex";
+
+fid1       = fopen (filename1, "w");
+fid2       = fopen (filename2, "w");
+fid3       = fopen (filename3, "w");
+fid4       = fopen (filename4, "w");
+fid5       = fopen (filename5, "w");
+
 period = 10;
 n = 17.78988;
 A = 230/n;
 f=50;
 #t0 = 0
-t0 = 27600e-3
+t0 = 27600e-3;
 t=linspace(t0, t0+period/f, 10000);
 w=2*pi*f;
 V_ON = 0.7;
@@ -54,7 +66,7 @@ for i=1:length(t)
 endfor
 
 #Regulating our voltage
-rd = eta*vT/(Is*exp((12.5/N)/(eta*vT)))
+rd = eta*vT/(Is*exp((12.5/N)/(eta*vT)));
 
 %restriction depending on the number of diodes and V_on
 for i = 1:length(t)
@@ -73,13 +85,20 @@ endfor
 
 final_vo = vL + vo;
 
-ripples = max(final_vo) - min(final_vo)
+ripples = max(final_vo) - min(final_vo);
 
 #if theoretical model is as the teacher asked
-merit = 1/((R/1000 + C*10^6 + N*0.1)*(ripples + abs(mean(final_vo)-12) + 10^(-6)))
+merit = 1/((R/1000 + C*10^6 + N*0.1)*(ripples + abs(mean(final_vo)-12) + 10^(-6)));
 
 #if the theoretical model is approximately what ngspice gives
-merit_corrected = 1/((R/1000 + C*10^6 + N*0.1)*(ripples + 10^(-6)))
+merit_corrected = 1/((R/1000 + C*10^6 + N*0.1)*(ripples + 10^(-6)));
+
+
+fprintf(fid1, "%f", ripples);
+fprintf(fid2, "%f", merit);
+fprintf(fid3, "%f", merit_corrected);
+fprintf(fid4, "%f", rd);
+fprintf(fid5, "%f", mean(final_vo));
 
 plot(t, v_toff);
 ylim([12.9275 12.929]);
@@ -100,3 +119,11 @@ plot(t, final_vo,t, v_in);
 ylim([-230 230]);
 legend("Output Voltage","Input Voltage");
 print ("acdc.png", "-dpng"); 
+
+close all
+
+fclose(fid1);
+fclose(fid2);
+fclose(fid3);
+fclose(fid4);
+fclose(fid5);
