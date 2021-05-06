@@ -37,7 +37,7 @@ D5 5 0 Nd
 .end
 
 *transient analysis
-.tran 2e-4 6.8 0.1
+.tran 2e-4 30 0.1
 
 .control
 run

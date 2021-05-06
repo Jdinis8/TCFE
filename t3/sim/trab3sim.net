@@ -38,6 +38,8 @@ D5 5 0 Nd
 *transient analysis
 .tran 2e-4 27.8 27.6
 
+
+
 *calculating averages
 .measure tran av_volt_6 AVG v(5) from=27.6 to=27.8
 .measure tran abs_av_volt param='abs(av_volt_6-12)'
@@ -52,6 +54,20 @@ D5 5 0 Nd
 
 .control
 run
+
+let media = mean(v(5))
+let media_12 = mean(v(5)) - 12 
+let ripples = maximum(v(5))-minimum(v(5))
+let merit = 1/(((31+4)*0.1 + 1.33 + 0.2)*({maximum(v(5))-minimum(v(5))} + abs(mean(v(5)) - 12) + 0.000001))
+
+echo "op_TAB"
+print media
+print media_12
+print ripples
+print merit
+echo "op_END"
+
+
 *makes plots in color
 set hcopypscolor=0
 set color0=white
