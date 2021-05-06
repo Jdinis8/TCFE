@@ -95,4 +95,4 @@ print ("deviation_mat.png", "-dpng");
 plot(t, final_vo,t, v_in);
 ylim([-230 230]);
 legend("Output Voltage","Input Voltage");
-print ("acdc.png", "-dpng");
+print ("acdc.png", "-dpng"); 
