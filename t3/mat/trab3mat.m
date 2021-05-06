@@ -18,7 +18,7 @@ N = 31;
 Is  = 1e-14;
 R = 200;
 C = 0.00000133;
-R1 = 1e8; #symbolizing the absence of resistor in parallel
+R1 = 1e9; #symbolizing the absence of resistor in parallel
 
 v_in = 230*cos(w*t);
 v = A*cos(w*t);
@@ -75,7 +75,11 @@ final_vo = vL + vo;
 
 ripples = max(final_vo) - min(final_vo)
 
+#if theoretical model is as the teacher asked
+merit = 1/((R/1000 + C*10^6 + N*0.1)*(ripples + abs(mean(final_vo)-12) + 10^(-6)))
 
+#if the theoretical model is approximately what ngspice gives
+merit_corrected = 1/((R/1000 + C*10^6 + N*0.1)*(ripples + 10^(-6)))
 
 plot(t, v_toff);
 ylim([12.9275 12.929]);
