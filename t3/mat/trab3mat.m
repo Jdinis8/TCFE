@@ -103,17 +103,17 @@ fprintf(fid4, "%f", rd);
 fprintf(fid5, "%f", mean(final_vo));
 
 plot(t, v_toff);
-ylim([12.87 12.977]);
+ylim([12.91 12.94]);
 legend("Voltage after Envelope Detector");
 print ("antes_mat.png", "-dpng");
 
 plot(t, final_vo);
-ylim([12.87 12.977]);
+ylim([12.90 12.94]);
 legend("Output Voltage");
 print ("zauzau_mat.png", "-dpng");
 
 plot(t, final_vo-12);
-ylim([12.87-12 12.977-12]);
+ylim([0.9 0.94]);
 legend("Output Voltage-12");
 print ("deviation_mat.png", "-dpng");
 
