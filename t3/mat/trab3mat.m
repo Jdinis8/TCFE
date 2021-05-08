@@ -15,12 +15,12 @@ fid3       = fopen (filename3, "w");
 fid4       = fopen (filename4, "w");
 fid5       = fopen (filename5, "w");
 
-period = 10;
+period = 12;
 n = 17.78988;
 A = 230/n;
 f=50;
 #t0 = 0
-t0 = 27600e-3;
+t0 = 27500e-3;
 t=linspace(t0, t0+period/f, 10000);
 w=2*pi*f;
 V_ON = 0.7;
@@ -30,7 +30,11 @@ N = 31;
 Is  = 1e-14;
 R = 200;
 C = 0.00000133;
-R1 = 1e9; #symbolizing the absence of resistor in parallel
+
+#Equivelant resistance in each diode
+rd = eta*vT/(Is*exp((12.5/N)/(eta*vT)));
+
+R1 = N*rd; #symbolizing the absence of resistor in parallel and the capacitor discharging from the diodes, very high resistance
 
 v_in = 230*cos(w*t);
 v = A*cos(w*t);
@@ -65,8 +69,6 @@ for i=1:length(t)
   endif
 endfor
 
-#Regulating our voltage
-rd = eta*vT/(Is*exp((12.5/N)/(eta*vT)));
 
 %restriction depending on the number of diodes and V_on
 for i = 1:length(t)
@@ -101,17 +103,17 @@ fprintf(fid4, "%f", rd);
 fprintf(fid5, "%f", mean(final_vo));
 
 plot(t, v_toff);
-ylim([12.9275 12.929]);
+ylim([12.87 12.977]);
 legend("Voltage after Envelope Detector");
 print ("antes_mat.png", "-dpng");
 
 plot(t, final_vo);
-ylim([12.927 12.9295]);
+ylim([12.87 12.977]);
 legend("Output Voltage");
 print ("zauzau_mat.png", "-dpng");
 
 plot(t, final_vo-12);
-ylim([12.927-12 12.9295-12]);
+ylim([12.87-12 12.977-12]);
 legend("Output Voltage-12");
 print ("deviation_mat.png", "-dpng");
 
