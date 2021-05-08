@@ -12,16 +12,16 @@ we can model very superficially the function that should describe this merit in 
     \label{eq:approx}
 \end{equation}
 
-From that, we can then plot what's the aspect of the function, shown in Fig. \ref{fig:plot}.
+From that, we can then plot what's the aspect of the function, shown in Fig. \ref{fig:plot2}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.85\linewidth]{cost.png}
         \caption{\textit{Merit approximated function. Plot obtained using GeoGebra3D}}
-    \label{fig:plot}
+    \label{fig:plot2}
 \end{figure}
 
-And thus we have the justification of our doings by removing the resistor. Then, we made use of the specifications of the non-linear part of the diodes and found that there is a very fortunate correlation between the amount of diodes in the voltage regulator and the ripples in the end voltage. What this means is that we can let go of the equation that says that $R2$ must be much greater than $rd$, for this is but a very rough approximation of the real life's diode behaviour. The only setback of this method is the stabilization time, but the merit does not take that into account, so we're good. This way, we used 31 diodes, for nonetheless we did not want to have an exaggerated stabilization time. WARNING: This will cause big differences between the theoretical analysis and the simulation. The model presented in class, when applied to Octave, will basically serve of nothing.
+And thus we have the justification of our doings by removing the resistor. Then, we made use of the specifications of the non-linear part of the diodes and found that there is a very fortunate correlation between the amount of diodes in the voltage regulator and the ripples in the end voltage (we basically substitute our R by the incremental resistor arising from the diode series). What this means is that we can let go of the equation that says that $R2$ must be much greater than $rd$, for this is but a very rough approximation of the real life's diode behaviour. The only setback of this method is the stabilization time, but the merit does not take that into account, so we're good. This way, we used 31 diodes, for nonetheless we did not want to have an exaggerated stabilization time. WARNING: This will cause big differences between the theoretical analysis and the simulation. The model presented in class, when applied to Octave, will basically serve of nothing.
 
 Finally, one found the values considered as the best to find an optimal merit score which are given by:
 
@@ -47,15 +47,22 @@ Finally, one found the values considered as the best to find an optimal merit sc
 \subsection{Cost and Merit Score}
 Evaluating the merit, and knowing that the cost is given by \eqref{eq:cost}
 \begin{equation}
-    c = cost = 35 \cdot 0.1 + 0.2 + 1.33 =  4.85\text{MU}
+    c = cost = 35 \cdot 0.1 + 0.2 + 1.33 =  5.03\text{MU}
     \label{eq:cost}
 \end{equation}
 
 Using the values obtained for $c$, $d$ and $r$, one can finally calculate the merit score obtained with this circuit (calculated using equation \eqref{score}), which allows one to get the following score:
 
-\begin{equation}
-    M = 3.31752e+02
-\end{equation}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+          \hline
+          \input{"../sim/op2_tab.tex"}
+          \hline
+    \end{tabular}
+    \caption{Merit.}
+    \label{tab:fresnel}
+\end{table}
 
 \subsection{Envelope Detector and Voltage Regulator output voltages}
 To understand the role played by the envelope detector and the voltage regulator circuits in our circuit one plotted the results obtained for the output voltages in each one of them. So, starting by the plot obtained at the output terminals of the envelope detector circuit
@@ -92,10 +99,7 @@ which allowed to get
     \label{fig:zauzau}
 \end{figure}
 
-Comparing the two plots one can conclude that the plots are perfectly similar except on the $y$ axis scale. In fact, the difference between the two plots was caused by the action of our voltage regulator circuit. As the number of diodes was chosen to set an upper limit to the output voltage of the circuit to the desired value $V = 12V$ the difference registered between the two graphs only reflects the effect of that part of the circuit. And in fact, as one can see, the voltage regulator circuit is working as it is supposed to because the voltage that was intially oscillating around $14V$ is oscillating around $12V$ at the output terminals of the voltage regulator. This translates, numerically, into: INSERT HERE
-\begin{equation}
-    v_{6 average} = 
-\end{equation}
+Comparing the two plots one can conclude that the plots are perfectly similar except on the $y$ axis scale. In fact, the difference between the two plots was caused by the action of our voltage regulator circuit. As the number of diodes was chosen to set an upper limit to the output voltage of the circuit to the desired value $V = 12V$ the difference registered between the two graphs only reflects the effect of that part of the circuit. And in fact, as one can see, the voltage regulator circuit is working as it is supposed to because the voltage that was intially oscillating around $14V$ is oscillating around $12V$ at the output terminals of the voltage regulator.
 
 \subsection{Plotting $v_o - 12$}
 Finally, to conclude the simulation analysis (which one can antecipate that allowed to get precise and satisfactory results) and to better understand how the output voltage behaved next to the desired value of $V = 12V$, one plotted the function $V = v_o - 12$:
@@ -109,8 +113,19 @@ Finally, to conclude the simulation analysis (which one can antecipate that allo
     \label{fig:dev}
 \end{figure}
 
-which, numerically, gives: INSERT HERE
+Summing up, all the numerical values,
 
-\begin{equation}
-    |v_6 - 12| = 
-\end{equation}
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabular}{|c|c|}
+          \hline
+          Variable & $Value$\\
+          \hline
+          \input{"../sim/op_tab.tex"}
+          \hline
+    \end{tabular}
+    \caption{All the values resulting from simulation.}
+    \label{tab:all}
+    \end{table}
+

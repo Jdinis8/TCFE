@@ -56,17 +56,21 @@ D5 5 0 Nd
 run
 
 let media = mean(v(5))
-let media_12 = mean(v(5)) - 12 
+let media-12 = mean(v(5)) - 12 
 let ripples = maximum(v(5))-minimum(v(5))
 let merit = 1/(((31+4)*0.1 + 1.33 + 0.2)*({maximum(v(5))-minimum(v(5))} + abs(mean(v(5)) - 12) + 0.000001))
 
 echo "op_TAB"
 print media
-print media_12
+print media-12
 print ripples
 print merit
 echo "op_END"
 
+
+echo "op2_TAB"
+print merit
+echo "op2_END"
 
 *makes plots in color
 set hcopypscolor=0

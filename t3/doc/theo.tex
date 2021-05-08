@@ -29,7 +29,7 @@ But in our circuit we did not included the resistor so, with it being in paralle
     \centering
     \includegraphics[width = 0.85\linewidth]{mat/antes_mat.png}
         \caption{\textit{Signal as it exits the envelope detector according to the theoretical analysis.}}
-    \label{fig:plot}
+    \label{fig:plot6}
 \end{figure}
 
 The last part of the circuit is the voltage regulator, in our case it's a set of 31 diodes in series, all in parallel with the capacitor. In this analysis we followed the expected formulae, although, because of the heavy difference between simulation and theoretical analysis we can begin disprove the usage of these equations for higher number of diodes.
@@ -68,21 +68,21 @@ The only thing left to discuss is the DC component of this approximation for the
     \centering
     \includegraphics[width = 0.85\linewidth]{mat/zauzau_mat.png}
         \caption{\textit{Output voltage according to the theoretical analysis.}}
-    \label{fig:plot}
+    \label{fig:plot3}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.85\linewidth]{mat/acdc.png}
         \caption{\textit{Comparison between output and input voltage.}}
-    \label{fig:plot}
+    \label{fig:plot4}
 \end{figure}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width = 0.85\linewidth]{mat/deviation_mat.png}
         \caption{\textit{Output signal minus the 12V goal.}}
-    \label{fig:plot}
+    \label{fig:plot5}
 \end{figure}
 
-With this output and the components used the final relevant values are the average of the signal \input{media}V, the ripple \input{ripple} and finally \input{merit}, but as we know the value of the average can be easily adjusted by n in the transformer so, removing that term, the corrected merit in the theoretical analysis is \input{merit_corrected}.
+With this output and the components used the final relevant values are the average of the signal \input{media}V, the ripple \input{ripple}V and finally the merit \input{merit}, but as we know the value of the average can be easily adjusted by n in the transformer so, removing that term, the corrected merit in the theoretical analysis is \input{merit_corrected}.
