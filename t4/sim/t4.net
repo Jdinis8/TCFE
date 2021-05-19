@@ -1,11 +1,11 @@
 .options savecurrents
 
-.param xCi=1000u
-.param xCb=1000u
+.param xCi=300u
+.param xCb=100u
 .param xC3=1u
 .param xRin=0.1k
-.param xR1=80k
-.param xR2=20k
+.param xR1=0.1k
+.param xR2=0.1k
 .param xRc=1k
 .param xRe=0.1k
 .param xRout=0.1k
@@ -68,9 +68,9 @@ let f3db = peak/sqrt(2)
 meas ac f1 WHEN vmag(out)=f3db RISE=1
 meas ac f2 WHEN vmag(out)=f3db FALL=1
 
-set cost = (xRin+xR1+xR2+xRc+xRe+xRout+xRl)*10^(-3) + (xCi+xCb+xC3)*10^(6) + 0.2
+*set cost = (xRin+xR1+xR2+xRc+xRe+xRout+xRl)*10^(-3) + (xCi+xCb+xC3)*10^(6) + 0.2
 
-print $cost 
+*print $cost 
 
 let bandwidth = f2-f1
 let cutofflower = f1
@@ -101,6 +101,8 @@ hardcopy vo1f.ps vdb(coll)
 plot vdb(out)
 plot vp(out)
 hardcopy vo2f.ps vdb(coll)
+
+hardcopy vout.ps vdb(out)
 
 *input impedance in kohm
 print v(in2)[40]/(v(in)[40]-v(in2)[40])/100*1000
