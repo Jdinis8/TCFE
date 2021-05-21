@@ -39,7 +39,6 @@ RL out 0 8
 
 .control
 
-print all
 
 * time analysis
 tran 1e-5 1e-2
@@ -49,25 +48,6 @@ hardcopy vo1.ps vdb(coll)
 
 * frequency analysis
 ac dec 10 10 100MEG
-
-
-meas ac peak  MAX  vmag(out) FROM=10 TO=1MEG
-meas ac fpeak WHEN vmag(out)=peak 
-let f3db = peak/sqrt(2)
-meas ac f1 WHEN vmag(out)=f3db RISE=1
-meas ac f2 WHEN vmag(out)=f3db FALL=1
-
-*set cost = (xRin+xR1+xR2+xRc+xRe+xRout+xRl)*10^(-3) + (xCi+xCb+xC3)*10^(6) + 0.2
-
-*print $cost 
-
-let bandwidth = f2-f1
-let cutofflower = f1
-
-*let merit = bandwidth/(cost*cutofflower)
-
-print bandwidth/cutofflower
-
 plot vdb(coll)
 plot vp(coll)
 hardcopy vo1f.ps vdb(coll)
@@ -79,7 +59,10 @@ plot vp(out)
 hardcopy vo2f.ps vdb(coll)
 
 *input impedance in kohm
-print v(in2)[40]/(v(in)[40]-v(in2)[40])/100*1000
+*print all
+
+plot abs(v(in2)[40]/vin#branch[40]/(-1000))
+print v(in2)[40]/vin#branch[40]/(-1000)
 
 *need a different setup to measure output impedance
 
