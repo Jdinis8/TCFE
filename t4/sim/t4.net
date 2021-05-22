@@ -6,19 +6,19 @@
 
 .param vccx = 12.0
 .param rinx = 0.1k
-.param cix = 7.4u
-.param r1x = 85k
-.param r2x = 17k
-.param rcx = 0.75k
-.param rex = 0.05k
-.param cbx = 150u
-.param routx = 0.4k
-.param cox = 87.5u
+.param cix = 25u
+.param r1x = 67.5k
+.param r2x = 7.5k
+.param rcx = 1.6k
+.param rex = 0.09k
+.param cbx = 420u
+.param routx = 0.3k
+.param cox = 250u
 .param rlx = 0.008k
 
 Vcc vcc 0 vccx
 Vin in 0 0 ac 1.0 sin(0 10m 1k)
-Rin in in2 rin
+Rin in in2 rinx
 
 * input coupling capacitor
 Ci in2 base cix
@@ -78,14 +78,14 @@ print v(in2)[40]/vin#branch[40]/(-1000)
 
 *cost
 let rinx = 0.1k
-let cix = 7.4u
-let r1x = 85k
-let r2x = 17k
-let rcx = 0.75k
-let rex = 0.05k
-let cbx = 150u
-let routx = 0.4k
-let cox = 87.5u
+let cix = 25u
+let r1x = 67.5k
+let r2x = 7.5k
+let rcx = 1.6k
+let rex = 0.09k
+let cbx = 420u
+let routx = 0.3k
+let cox = 250u
 let rlx = 0.008k
 
 let cost = '(r1x + r2x + rinx + rcx + rex + routx + rlx)*10^(-3) + (cix + cbx + cox)*10^6 + 0.2'
@@ -98,6 +98,7 @@ meas ac f1 WHEN vdb(out)=cutoff RISE=1
 meas ac f2 WHEN vdb(out)=cutoff CROSS=LAST
 let bandwidth = f2-f1
 
+print f1 
 let gain_band = abs(v(out)[40]/v(in)[40])
 
 let merit = (bandwidth*gain_band)/(f1*cost)
