@@ -70,8 +70,6 @@ set color6=rgb:4/0/0
 ac dec 10 1 100MEG
 hardcopy gainplotdb.ps vdb(coll)
 echo gainplotdb_FIG
-hardcopy gainplotphase.ps vp(coll)*180/pi
-echo gainplotphase_FIG
 
 echo "op_TAB"
 print vdb(base)[0]
@@ -88,7 +86,7 @@ let abszin = abs(zin)
 
 echo "zin_TAB"
 echo "Zi = $&rez + ($&imz)j"
-echo "Zi = $&abszin"
+echo "|Zi| = $&abszin"
 echo "zin_END"
 
 *plot abs(v(in2)[40]/vin#branch[40]/(-1000))
