@@ -70,8 +70,6 @@ set color6=rgb:4/0/0
 ac dec 10 1 100MEG
 hardcopy gainplotdb.ps vdb(coll)
 echo gainplotdb_FIG
-hardcopy gainplotphase.ps vp(coll)*180/pi
-echo gainplotphase_FIG
 
 echo "op_TAB"
 print vdb(base)[0]
