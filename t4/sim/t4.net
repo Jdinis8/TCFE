@@ -86,7 +86,7 @@ let abszin = abs(zin)
 
 echo "zin_TAB"
 echo "Zi = $&rez + ($&imz)j"
-echo "Zi = $&abszin"
+echo "|Zi| = $&abszin"
 echo "zin_END"
 
 *plot abs(v(in2)[40]/vin#branch[40]/(-1000))
