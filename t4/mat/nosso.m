@@ -3,6 +3,8 @@ close all
 
 format long
 
+pkg load symbolic
+
 filename1 = "../doc/vce.tex";
 filename2 = "../doc/gainstage_gain.tex";
 filename3 = "../doc/outputstage_gain.tex";
@@ -77,9 +79,11 @@ VI2 = VO1
 VO2 = Vcc - Rout*res(6)
 
 gm2 = IC2/VT
+rpi2 = beta2/gm2
 go2 = IC2/VAFP
 gpi2 = gm2/beta2
 ge2 = 1/Rout
+ro2 = VAFN/res(5)
 
 AV2 = gm2/(gm2+gpi2+go2+ge2)
 ZI2 = (gm2+gpi2+go2+ge2)/gpi2/(gpi2+go2+ge2)
@@ -98,6 +102,75 @@ ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
 ##this concludes point 2 of the theoretical analysis
 ##for point 3:
 
+Cin = 1*10^(-6);
+Cb = 1*10^(-6);
+Co = 1*10^(-6);
+Rl = 8;
+
+syms w
+
+##Zin(w) = RS+1/(j*w*Cin)
+##Zed(w) = Re + 1/(j*w*Cb)
+##Zl = Rl + 1/(j*w*Co)
+
+syms Gin(w)
+syms Ged(w)
+syms Go1
+syms Go2
+syms Gc
+syms Gout
+syms Gm1
+syms Gm2
+syms Vin
+syms acres(w)
+syms Go(w)
+syms v5f(w)
+
+Gin(w) = 1/(RS+1/(j*w*Cin))
+Ged(w) = 1/(1/Re + j*w*Cb)
+Go(w) = j*w*Co
+
+G1 = 1/R1
+G2 = 1/R2
+Gpi1 = 1/rpi1
+Gpi2 = 1/rpi2
+Go2 = 1/ro2
+Go1 = 1/ro1
+Gout = 1/Rout
+Gm1 = gm1
+Gc = 1/Rc
+#Gm2 = gm2
+Vin = 0.1
+
+
+     #v1             #v2                 #v3           #v4 #v5
+B = [Gin+G2+G1+Gpi1  -Gpi1                0             0   0;
+     -Gpi1-Gm1       Gpi1+Ged+Go1+Gm1    -Go1+Gm1       0   0;
+     Gm1             -Gm1-Go1            Go1+sym(Gc)+Gpi2   -Gpi2 0;
+     0                0                  -Gpi2-gm2     Gpi2+Go2+Gout+sym(gm2)+Go -Go;
+     0                0                   0            -Go  Go+sym(1/Rl)]
+
+vb = [Vin*Gin; 0; 0; 0; 0]
+
+acres(w) = B\vb
+
+acres(w) = matlabFunction(vpa(abs(acres(w))))
+
+fif = @(w) w(5);
+
+v5f = @(w) fif(acres(w))
+
+vpa(v5f(10))
+vpa(v5f(100))
+
+x = linspace(0, 1e9, 90);
+y = cell(90);
+
+#fplot(v5f, [0, 0.02], 201)
+
+##for i=1:length(x)
+##  y(i) = v5f(x(i));
+##endfor
 
 
 close all

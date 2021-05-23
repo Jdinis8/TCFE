@@ -59,6 +59,7 @@ IC2 = BFP/(BFP+1)*IE2
 VO2 = VCC - RE2*IE2
 
 gm2 = IC2/VT
+rpi2 = beta2/gm2
 go2 = IC2/VAFP
 gpi2 = gm2/BFP
 ge2 = 1/RE2
