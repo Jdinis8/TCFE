@@ -1,0 +1,47 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese, english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{subfigure} 
+\usepackage{lmodern}
+\usepackage{geometry}
+\usepackage{authblk}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{float} 
+\usepackage{amsmath}
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+
+\geometry{legalpaper, margin=1in}
+\renewcommand{\arraystretch}{1.15}
+
+\begin{document}
+
+
+\input{frontcover}
+\maketitle
+
+\renewenvironment{abstract}[1]
+  {\bigskip\selectlanguage{#1}%
+   \begin{center}\bfseries\abstractname\end{center}}
+  {\par\bigskip}
+
+\input{abstract}
+\tableofcontents
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+\cleardoublepage
+
+\input{introduction}
+\input{sim}
+\input{theo}
+\input{sidebyside}
+\input{conc}
+\input{bib}
+
+
+\end{document}
