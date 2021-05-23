@@ -68,16 +68,15 @@ set color6=rgb:4/0/0
 
 * frequency analysis
 ac dec 10 1 100MEG
-plot vdb(coll)
-plot vp(coll)
 hardcopy gainplotdb.ps vdb(coll)
 echo gainplotdb_FIG
 hardcopy gainplotphase.ps vp(coll)*180/pi
 echo gainplotphase_FIG
 
+echo "op_TAB"
+print vdb(base)[0]
+echo "op_END"
 
-plot vdb(out)
-plot vp(out)
 hardcopy vdbout.ps vdb(out) vdb(in2)
 echo vdbout_FIG
 
