@@ -54,11 +54,12 @@ ac dec 10 10 100MEG
 let zout = -v(out)[40]/i(Vteste)[40]
 let rez = Re(zout)
 let imz = Im(zout)
+let abszout = abs(zout)
 print abs(zout)
 
 echo "zout_TAB"
 echo "Zo = $&rez + ($&imz)j"
-echo "|Zo| = $&abszin"
+echo "|Zo| = $&abszout"
 echo "zout_END"
 .endc 
 
