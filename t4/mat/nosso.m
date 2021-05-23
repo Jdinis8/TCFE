@@ -222,7 +222,7 @@ endfor
 
 v5fmaxlinear = 10^(v5fmax/20);
 
-cost = (R1+R2+RS+Rc+Re+Rout+Rl)/10^3 + (Cin+Cb+Co)*10^(6);
+cost = (R1+R2+RS+Rc+Re+Rout+Rl)/10^3 + (Cin+Cb+Co)*10^(6) + 2*0.1;
 merit = (10^(upperF)-10^(lowerF))*v5fmaxlinear/(10^(lowerF)*cost);
 
 fprintf(fid4, "Lower Frequency & $%f$\\\\", 10^(lowerF));
