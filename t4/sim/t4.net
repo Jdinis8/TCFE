@@ -76,6 +76,8 @@ hardcopy vo2f.ps vdb(coll)
 plot abs(v(in2)[40]/vin#branch[40]/(-1000))
 print v(in2)[40]/vin#branch[40]/(-1000)
 
+plot v(in2)
+
 *cost
 let rinx = 0.1k
 let cix = 135u
