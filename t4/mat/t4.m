@@ -70,11 +70,11 @@ ZO2 = 1/(gm2+gpi2+go2+ge2)
 
 
 %total
-gB = 1/(1/gpi2+ZO1)
-AV = (gB+gm2/gpi2*gB)/(gB+ge2+go2+gm2/gpi2*gB)*AV1
-AV_DB = 20*log10(abs(AV))
-ZI=ZI1
-ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
+gB = 1/(1/gpi2+ZO1);
+AV = (gB+gm2/gpi2*gB)/(gB+ge2+go2+gm2/gpi2*gB)*AV1;
+AV_DB = 20*log10(abs(AV));
+ZI=ZI1;
+ZO=1/(go2+gm2/gpi2*gB+ge2+gB);
 
 pkg load symbolic
 
@@ -115,7 +115,7 @@ Vcc = 12;
 Vbeon = 0.7;
 VT=25e-3;
 VAFN=69.7;
-VAFP = 37.2
+VAFP = 37.2;
 RB=1/(1/R1+1/R2);
 RS=100;
 Cin = 135*10^(-6);
