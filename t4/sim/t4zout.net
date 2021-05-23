@@ -58,8 +58,8 @@ let abszout = abs(zout)
 print abs(zout)
 
 echo "zout_TAB"
-echo "Zo = $&rez + ($&imz)j"
-echo "|Zo| = $&abszout"
+echo "Zo = $&rez + ($&imz)j $\\Omega$"
+echo "|Zo| = $&abszout $\\Omega$"
 echo "zout_END"
 .endc 
 
