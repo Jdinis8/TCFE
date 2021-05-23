@@ -121,11 +121,15 @@ let merit = (bandwidth*maxgain)/(f1*cost)
 
 print maxgain
 print bandwidth
-print cost
-print merit
+
+echo cost_TAB
+echo "$&cost"
+echo cost_END
+
+wrdata cost.tex cost
 
 echo "finalvaluesng_TAB"
-echo "Gain = $&maxgain V"
+echo "Gain = $&maxgain"
 echo "Gain (dB) = $&maxgaindb dB"
 echo "Lower cut-off frequency = $&f1 Hz"
 echo "Upper cut-off frequency = $&f2 Hz"
