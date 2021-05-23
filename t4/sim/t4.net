@@ -7,13 +7,13 @@
 .param vccx = 12.0
 .param rinx = 0.1k
 .param cix = 135u
-.param r1x = 95k
+.param r1x = 90k
 .param r2x = 10k
-.param rcx = 2.5k
-.param rex = 0.13k
-.param cbx = 1900u
-.param routx = 0.25k
-.param cox = 1190u
+.param rcx = 2.3k
+.param rex = 0.12k
+.param cbx = 1840u
+.param routx = 0.33k
+.param cox = 1200u
 .param rlx = 0.008k
 
 Vcc vcc 0 vccx
@@ -50,42 +50,55 @@ RL out 0 rlx
 .end
 
 .control
-
+*makes plots in color
+set hcopypscolor=0
+set color0=white
+set color1=black
+set color2=red
+set color3=blue
+set color4=violet
+set color5=rgb:3/8/0
+set color6=rgb:4/0/0
 
 * time analysis
-tran 1e-5 1e-2
-plot v(coll)
-hardcopy vo1.ps vdb(coll)
+*tran 1e-5 1e-2
+*plot v(coll)
+*hardcopy vo1.ps vdb(coll)
 
 
 * frequency analysis
 ac dec 10 1 100MEG
 plot vdb(coll)
 plot vp(coll)
-hardcopy vo1f.ps vdb(coll)
+hardcopy gainplotdb.ps vdb(coll)
+hardcopy gainplotphase.ps vp(coll)*180/pi
 
 
 
 plot vdb(out)
 plot vp(out)
-hardcopy vo2f.ps vdb(coll)
+hardcopy vdbout.ps vdb(out) vdb(in2)
 
 *input impedance in kohm
-*print all
+let zin = -v(in2)[40]/vin#branch[40]
+let rez = Re(zin)
+let imz = Im(zin)
 
-plot abs(v(in2)[40]/vin#branch[40]/(-1000))
-print v(in2)[40]/vin#branch[40]/(-1000)
+echo "zin = $&rez + ($&imz)j"
+print abs(zin)
+
+*plot abs(v(in2)[40]/vin#branch[40]/(-1000))
 
 *cost
 let rinx = 0.1k
 let cix = 135u
-let r1x = 95k
+let r1x = 90k
 let r2x = 10k
-let rcx = 2.5k
-let rex = 0.13k
-let cbx = 1900u
-let routx = 0.25k
-let cox = 1190u
+let rcx = 2.3k
+let rex = 0.12k
+let cbx = 1840u
+let routx = 0.33k
+let cox = 1200u
 let rlx = 0.008k
 
 let cost = '(r1x + r2x + rinx + rcx + rex + routx + rlx)*10^(-3) + (cix + cbx + cox)*10^6 + 0.2'
@@ -104,6 +117,7 @@ let bandwidth = f2-f1
 
 let merit = (bandwidth*maxgain)/(f1*cost)
 
+print maxgain
 print bandwidth
 print cost
 print merit
