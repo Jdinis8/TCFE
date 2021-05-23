@@ -10,12 +10,14 @@ filename2 = "../doc/gainstage_gain.tex";
 filename3 = "../doc/outputstage_gain.tex";
 filename4 = "../doc/merit_sim.tex";
 filename5 = "../doc/total_impedance.tex";
+filename6 = "../doc/tabela_que_eles_querem.tex";
 
 fid1 = fopen (filename1, "w");
 fid2 = fopen (filename2, "w");
 fid3 = fopen (filename3, "w");
 fid4 = fopen (filename4, "w");
 fid5 = fopen (filename5, "w");
+fid6 = fopen (filename6, "w");
 
 beta1 = 178.7;
 beta2 = 227.3;
@@ -105,9 +107,9 @@ gB = 1/(1/gpi2+ZO1);
 AV = (gB+gm2/gpi2*gB)/(gB+ge2+go2+gm2/gpi2*gB)*AV1;
 AV_DB = 20*log10(abs(AV));
 ZI=ZI1;
-ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
+ZO=1/(go2+gm2/gpi2*gB+ge2+gB);
 
-fprintf(fid5, "$%f$\\\\", Z0);
+fprintf(fid5, "$%f$\\\\", ZO);
 
 ##this concludes point 2 of the theoretical analysis
 ##for point 3:
@@ -228,6 +230,16 @@ fprintf(fid4, "Higher Frequency & $%f$\\\\", 10^(upperF));
 fprintf(fid4, "Cost & $%f$\\\\", cost);
 fprintf(fid4, "Merit & $%f$\\\\", merit);
 
+fprintf(fid6, "Gain & $%f$\\\\", v5fmaxlinear);
+fprintf(fid6, "Gain (dB) & $%f$\\\\", v5fmax);
+fprintf(fid6, "Lower cut-off frequency & $%f$\\\\", 10^(lowerF));
+fprintf(fid6, "Higher cut-off frequency & $%f$\\\\", 10^(upperF));
+fprintf(fid6, "Bandwidth & $%f$\\\\", 10^(upperF)-10^(lowerF));
+fprintf(fid6, "Cost & $%f$\\\\", cost);
+fprintf(fid6, "Merit & $%f$\\\\", merit);
+fprintf(fid6, "|Zi| & $%f$\\\\", ZI);
+fprintf(fid6, "|Zo| & $%f$\\\\", ZO);
+
 close all
 
 fclose(fid1);
@@ -235,3 +247,4 @@ fclose(fid2);
 fclose(fid3);
 fclose(fid4);
 fclose(fid5);
+fclose(fid6);
