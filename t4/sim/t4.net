@@ -71,21 +71,26 @@ ac dec 10 1 100MEG
 plot vdb(coll)
 plot vp(coll)
 hardcopy gainplotdb.ps vdb(coll)
+echo gainplotdb_FIG
 hardcopy gainplotphase.ps vp(coll)*180/pi
-
+echo gainplotphase_FIG
 
 
 plot vdb(out)
 plot vp(out)
 hardcopy vdbout.ps vdb(out) vdb(in2)
+echo vdbout_FIG
 
 *input impedance in kohm
 let zin = -v(in2)[40]/vin#branch[40]
 let rez = Re(zin)
 let imz = Im(zin)
+let abszin = abs(zin)
 
-echo "zin = $&rez + ($&imz)j"
-print abs(zin)
+echo "zin_TAB"
+echo "Zi = $&rez + ($&imz)j"
+echo "Zi = $&abszin"
+echo "zin_END"
 
 *plot abs(v(in2)[40]/vin#branch[40]/(-1000))
 
@@ -124,7 +129,16 @@ print bandwidth
 print cost
 print merit
 
+echo "finalvaluesng_TAB"
+echo "Gain = $&maxgain V"
+echo "Gain (dB) = $&maxgaindb dB"
+echo "Lower cut-off frequency = $&f1 Hz"
+echo "Upper cut-off frequency = $&f2 Hz"
+echo "Bandwidth = $&bandwidth Hz"
+echo "Cost = $&cost MU"
+echo "Merit = $&merit"
+echo "finalvaluesng_END"
+
 *need a different setup to measure output impedance
 
 .endc 
-
