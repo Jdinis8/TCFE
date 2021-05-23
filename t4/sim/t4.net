@@ -6,14 +6,14 @@
 
 .param vccx = 12.0
 .param rinx = 0.1k
-.param cix = 35u
+.param cix = 135u
 .param r1x = 95k
 .param r2x = 10k
-.param rcx = 2.1k
-.param rex = 0.14k
-.param cbx = 1950u
+.param rcx = 2.5k
+.param rex = 0.13k
+.param cbx = 1900u
 .param routx = 0.25k
-.param cox = 990u
+.param cox = 1190u
 .param rlx = 0.008k
 
 Vcc vcc 0 vccx
@@ -78,14 +78,14 @@ print v(in2)[40]/vin#branch[40]/(-1000)
 
 *cost
 let rinx = 0.1k
-let cix = 35u
+let cix = 135u
 let r1x = 95k
 let r2x = 10k
-let rcx = 2.1k
-let rex = 0.14k
-let cbx = 1950u
+let rcx = 2.5k
+let rex = 0.13k
+let cbx = 1900u
 let routx = 0.25k
-let cox = 990u
+let cox = 1190u
 let rlx = 0.008k
 
 let cost = '(r1x + r2x + rinx + rcx + rex + routx + rlx)*10^(-3) + (cix + cbx + cox)*10^6 + 0.2'
