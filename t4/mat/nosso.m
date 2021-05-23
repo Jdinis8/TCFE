@@ -230,15 +230,15 @@ fprintf(fid4, "Higher Frequency & $%f$\\\\", 10^(upperF));
 fprintf(fid4, "Cost & $%f$\\\\", cost);
 fprintf(fid4, "Merit & $%f$\\\\", merit);
 
-fprintf(fid6, "Gain & $%f$\\\\", v5fmaxlinear);
-fprintf(fid6, "Gain (dB) & $%f$\\\\", v5fmax);
-fprintf(fid6, "Lower cut-off frequency & $%f$\\\\", 10^(lowerF));
-fprintf(fid6, "Higher cut-off frequency & $%f$\\\\", 10^(upperF));
-fprintf(fid6, "Bandwidth & $%f$\\\\", 10^(upperF)-10^(lowerF));
-fprintf(fid6, "Cost & $%f$\\\\", cost);
-fprintf(fid6, "Merit & $%f$\\\\", merit);
-fprintf(fid6, "|Zi| & $%f$\\\\", ZI);
-fprintf(fid6, "|Zo| & $%f$\\\\", ZO);
+fprintf(fid6, "Gain & $%f$\\\\ \\hline \n", v5fmaxlinear);
+fprintf(fid6, "Gain (dB) & $%f$\\\\ \\hline \n", v5fmax);
+fprintf(fid6, "Lower cut-off frequency & $%f$ Hz\\\\ \\hline \n", 10^(lowerF));
+fprintf(fid6, "Higher cut-off frequency & $%f$ Hz\\\\ \\hline \n", 10^(upperF));
+fprintf(fid6, "Bandwidth & $%f$ Hz\\\\ \\hline \n", 10^(upperF)-10^(lowerF));
+fprintf(fid6, "Cost & $%f$ MU\\\\ \\hline \n", cost);
+fprintf(fid6, "Merit & $%f$\\\\ \\hline \n", merit);
+fprintf(fid6, "|Zi| & $%f \\Omega$ \\\\ \\hline \n", ZI);
+fprintf(fid6, "|Zo| & $%f \\Omega$ \\\\ \\hline \n", ZO);
 
 close all
 
