@@ -6,14 +6,14 @@
 
 .param vccx = 12.0
 .param rinx = 0.1k
-.param cix = 25u
-.param r1x = 67.5k
-.param r2x = 7.5k
-.param rcx = 1.6k
-.param rex = 0.09k
-.param cbx = 420u
-.param routx = 0.3k
-.param cox = 250u
+.param cix = 35u
+.param r1x = 95k
+.param r2x = 10k
+.param rcx = 2.1k
+.param rex = 0.14k
+.param cbx = 1950u
+.param routx = 0.25k
+.param cox = 990u
 .param rlx = 0.008k
 
 Vcc vcc 0 vccx
@@ -59,7 +59,7 @@ hardcopy vo1.ps vdb(coll)
 
 
 * frequency analysis
-ac dec 10 10 100MEG
+ac dec 10 1 100MEG
 plot vdb(coll)
 plot vp(coll)
 hardcopy vo1f.ps vdb(coll)
@@ -78,31 +78,33 @@ print v(in2)[40]/vin#branch[40]/(-1000)
 
 *cost
 let rinx = 0.1k
-let cix = 25u
-let r1x = 67.5k
-let r2x = 7.5k
-let rcx = 1.6k
-let rex = 0.09k
-let cbx = 420u
-let routx = 0.3k
-let cox = 250u
+let cix = 35u
+let r1x = 95k
+let r2x = 10k
+let rcx = 2.1k
+let rex = 0.14k
+let cbx = 1950u
+let routx = 0.25k
+let cox = 990u
 let rlx = 0.008k
 
 let cost = '(r1x + r2x + rinx + rcx + rex + routx + rlx)*10^(-3) + (cix + cbx + cox)*10^6 + 0.2'
 
-
 *merit 
-let cutoff = vecmax(vdb(out))-3
+meas ac maxgaindb MAX vdb(out) from=1 to=100MEG
 
-meas ac f1 WHEN vdb(out)=cutoff RISE=1
+let maxgain = 10^(maxgaindb/20)
+
+let cutoff = maxgaindb - 3
+
+meas ac f1 WHEN vdb(out)=cutoff
 meas ac f2 WHEN vdb(out)=cutoff CROSS=LAST
+
 let bandwidth = f2-f1
 
-print f1 
-let gain_band = abs(v(out)[40]/v(in)[40])
+let merit = (bandwidth*maxgain)/(f1*cost)
 
-let merit = (bandwidth*gain_band)/(f1*cost)
-
+print bandwidth
 print cost
 print merit
 
