@@ -15,11 +15,11 @@ fid3 = fopen (filename3, "w");
 
 beta1 = 178.7;
 beta2 = 227.3;
-R1 = 80*10^3;
-R2 = 20*10^3;
-Rc = 1*10^3;
-Re = 100;
-Rout = 100;
+R1 = 95*10^3;
+R2 = 10*10^3;
+Rc = 2.5*10^3;
+Re = 0.13*10^3;
+Rout = 0.25*10^3;
 Rl = 8;
 Vcc = 12;
 Vbeon = 0.7;
@@ -28,6 +28,10 @@ VAFN=69.7;
 VAFP = 37.2
 RB=1/(1/R1+1/R2);
 RS=100;
+Cin = 135*10^(-6);
+Cb = 1900*10^(-6);
+Co = 1190*10^(-6);
+Rl = 8;
 
 ##big system to calculate all currents :)
 #gain stage
@@ -40,11 +44,11 @@ A = [-beta1  1   0  0     0   0    0   0;
      0       0   0  1     1  -1    0   0;
      0       0   0  0     0   0   R2  R1;
      0      Rc  Re  Rc    0   0    0   0;
-     0       0   0  0     0 Rout   0   0;]
+     0       0   0  0     0 Rout   0   0;];
      
-v = [0; 0; 0; 0; 0; -Vcc; Vcc-Vbeon; Vcc-Vbeon]
+v = [0; 0; 0; 0; 0; -Vcc; Vcc-Vbeon; Vcc-Vbeon];
 
-res = A\v
+res = A\v;
 
 #logo, v0 = vcc - Ic2*R0
 
@@ -102,22 +106,23 @@ ZO=1/(go2+gm2/gpi2*gB+ge2+gB)
 ##this concludes point 2 of the theoretical analysis
 ##for point 3:
 
-Cin = 1*10^(-6);
-Cb = 1*10^(-6);
-Co = 1*10^(-6);
-Rl = 8;
-
 syms w
 
 ##Zin(w) = RS+1/(j*w*Cin)
 ##Zed(w) = Re + 1/(j*w*Cb)
 ##Zl = Rl + 1/(j*w*Co)
 
+syms w
 syms Gin(w)
 syms Ged(w)
+syms G1
+syms G2
+syms Gpi1
+syms Gpi2
 syms Go1
 syms Go2
 syms Gc
+syms Gl
 syms Gout
 syms Gm1
 syms Gm2
@@ -126,54 +131,92 @@ syms acres(w)
 syms Go(w)
 syms v5f(w)
 
-Gin(w) = 1/(RS+1/(j*w*Cin))
-Ged(w) = 1/(1/Re + j*w*Cb)
-Go(w) = j*w*Co
-
-G1 = 1/R1
-G2 = 1/R2
-Gpi1 = 1/rpi1
-Gpi2 = 1/rpi2
-Go2 = 1/ro2
-Go1 = 1/ro1
-Gout = 1/Rout
-Gm1 = gm1
-Gc = 1/Rc
-#Gm2 = gm2
-Vin = 0.1
+Cb1 = 1.61*10^(-11);
+Cb2 = 1.4*10^(-11);
+Ce1 = 4.388*10^(-12);
+Ce2 = 1.11*10^(-11);
 
 
-     #v1             #v2                 #v3           #v4 #v5
-B = [Gin+G2+G1+Gpi1  -Gpi1                0             0   0;
-     -Gpi1-Gm1       Gpi1+Ged+Go1+Gm1    -Go1+Gm1       0   0;
-     Gm1             -Gm1-Go1            Go1+sym(Gc)+Gpi2   -Gpi2 0;
-     0                0                  -Gpi2-gm2     Gpi2+Go2+Gout+sym(gm2)+Go -Go;
-     0                0                   0            -Go  Go+sym(1/Rl)]
+Gin(w) = sym(1)/(sym(RS, 'f')+sym(1)/(j*w*sym(Cin, 'f')));
+Ged(w) = sym(1/Re, 'f') + j*w*sym(Cb,'f');
+Go(w) = j*w*sym(Co,'f');
 
-vb = [Vin*Gin; 0; 0; 0; 0]
+G1 = sym(1/R1, 'f');
+G2 = sym(1/R2, 'f');
+Gpi1 = sym(1/rpi1,'f')+j*w*sym(Cb1, 'f');
+Gpi2 = sym(1/rpi2) + j*w*sym(Cb2, 'f');
+Ge2 = j*w*sym(Ce2);
+Ge1 = j*w*sym(Ce1);
+Go2 = sym(1/ro2, 'f');
+Go1 = sym(1/ro1, 'f');
+Gout = sym(1/Rout, 'f');
+Gm1 = sym(gm1, 'f');
+Gc = sym(1/Rc, 'f');
+Gm2 = sym(gm2, 'f');
+Gl = sym(1/Rl, 'f');
+Vin = sym(0.01, 'f');
 
-acres(w) = B\vb
 
-acres(w) = matlabFunction(vpa(abs(acres(w))))
+     #v1                      #v2                   #v3                   #v4                      #v5
+B(w) = [Gin(w)+G2+G1+Gpi1+Ge1 -Gpi1                 -Ge1                   0                        0;
+       -Gpi1-Gm1               Gpi1+Ged(w)+Go1+Gm1  -Go1                   0                        0;
+        Gm1-Ge1               -Gm1-Go1               Go1+Gc+Gpi2+Ge1+Ge2  -Gpi2-Ge2                 0;
+        0                      0                    -Gpi2-Gm2              Gpi2+Go2+Gout+Gm2+Go(w) -Go(w);
+        0                      0                     0                    -Go(w)                    Go(w)+Gl];
 
+vb(w) = [Vin*Gin(w); 0; 0; 0; 0];
+
+acres(w) = B(w)\vb(w);
+
+h = matlabFunction(abs(vpa((acres(w)))));
+
+
+##
 fif = @(w) w(5);
+v5f = @(w) 20*log10(fif(h(2*pi*10^(w)))/0.01);
 
-v5f = @(w) fif(acres(w))
+fplot(v5f, [0, 9], 2000)
+legend("Gain_{db}");
+xlabel("log10(f) [f] = Hz");
+ylabel("log10(y)");
+print ("gaindb.png", "-dpng");
 
-vpa(v5f(10))
-vpa(v5f(100))
-
-x = linspace(0, 1e9, 90);
-y = cell(90);
-
-#fplot(v5f, [0, 0.02], 201)
-
-##for i=1:length(x)
-##  y(i) = v5f(x(i));
-##endfor
+f = linspace(0, 8, 91);
+y = linspace(0, 10, 91);
 
 
-close all
+for i=1:length(f)
+  y(i) = v5f(f(i))
+endfor
+
+v5fmax = max(y)
+
+lowerF = 0;
+upperF = 0;
+cond1 = true;
+cond2 = true;
+
+for i=1:length(f)
+  if(abs(y(i)-v5fmax-3) < 10)
+    if(cond1 == true)
+      lowerF = f(i);
+      cond1 = false;
+    endif
+   endif
+   
+   if(abs(y(i)-v5fmax+3) < 10 && f(i) > 4)
+    if(cond2 == true)
+      upperF=f(i);
+      cond2 = false;
+    endif
+   endif
+endfor
+
+lowerF
+upperF
+
+
+cost = (R1+R2+RS+Rc+Re+Rout+Rl)/10^3 + (Cin+Cb+Co)*10^(6)
 
 fclose(fid1);
 fclose(fid2);
