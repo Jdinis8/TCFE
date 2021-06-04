@@ -53,21 +53,23 @@ Vcc vcc 0 5.0
 Vee vee 0 -5.0
 Vin in 0 0 ac 1.0 sin(0 10m 1k)
 
-X1 nr2 inv_in vcc vee out uA741
 
+C1 in inv_in 0.72u
 
-C1 in inv_in 220n
+Vze inv_in teste 0
 
-R1 inv_in 0 10k
-R12 inv_in 0 10k
+R1 teste 0 1k
 
+X1 nr2 inv_in vcc vee outf uA741
 R2 nr2 0 1k
-R5 nr2 out 100k
+R5 nr2 outf 103.333333333333333333333k
 
-C2 outf 0 220n
+C2 outf 0 440n
 
-* fonte de tensão de teste
-Vteste out outf ac 1.0 sin(0 10m 1k)
+* load
+RL outf 0 1008
+
+Vteste outf 0 0 ac 1.0 sin(0 700m 1k)
 
 .op
 .end
