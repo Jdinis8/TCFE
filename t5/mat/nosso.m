@@ -138,8 +138,8 @@ Z_out_abs = vpa(abs(Z_out));
 cost_opAMP = 13322.792;
 cost_coisas = 0.22+1+1+300+1+3.44;
 
-merit = 1/(10^(-6)+(13626.95)*abs(100-10^(gain_central/20))*abs(1000-f_central));
-merit_clean = 1/(10^(-6)+(13626.95-cost_opAMP)*abs(100-10^(gain_central/20))*abs(1000-f_central));
+merit = 1/(13626.95*(10^(-6)+abs(100-10^(gain_central/20))*abs(1000-f_central)));
+merit_clean = 1/((13626.95-cost_opAMP)*(10^(-6)+abs(100-10^(gain_central/20))*abs(1000-f_central)));
 
 fprintf(fid1, "%s", char(vpa(low,6)));
 fprintf(fid2, "%s", char(vpa(high,6)));
