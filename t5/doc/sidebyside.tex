@@ -1,0 +1,92 @@
+\section{Side by Side Comparison}
+
+In this section, one can check the responses from the two simulations.
+
+\begin{table}[H]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \vspace{3mm}
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    	\hline
+        Variable & Unit [Hz, dB, -, -]\\ 
+        \hline
+        Central Frequency & \input{mat_f_central}\\
+        \hline
+        Gaindb & \input{mat_gain_central}\\
+        \hline
+        Merit & \input{mat_merit}\\
+        \hline
+        Clean Merit & \input{mat_merit_sem_opAMP}\\
+        \hline
+    \end{tabular}
+	\end{table}
+    \caption{Theoretical analysis.}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+        \begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    	\hline
+    	Variable & Unit [Hz, MU, dB, -, -]\\ 
+    	\hline
+         \input{../sim/values_tab}
+    \end{tabular}
+	\end{table}
+	\caption{Simulation analysis.} 
+    \end{minipage}
+\end{table}
+
+
+\begin{table}[H]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \vspace{3mm}
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    	\hline
+        Impedance &  [VA]\\ 
+        \hline
+        $Z_{in}$ & \input{mat_Z_in_real} + i(\input{mat_Z_in_imag})\\ \hline
+        $|Z_{in}|$ & \input{mat_Z_in_abs}\\ \hline
+        $Z_{out}$ & \input{mat_Z_out_real} + i(\input{mat_Z_out_imag})\\ \hline
+        $|Z_{out}|$ & \input{mat_Z_out_abs}\\ \hline
+    \end{tabular}
+	\end{table}
+    \caption{Theoretical analysis.}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+     \begin{table}[H]
+    \centering 
+    \begin{tabular}{|c|c|}
+    	\hline
+    	Impedance & [VA]\\ 
+    	\hline
+         \input{../sim/zin_tab}
+         \input{../sim/zout_tab}
+    \end{tabular}
+	\end{table}
+	\caption{Simulation analysis.} 
+    \end{minipage}
+\end{table}
+
+\begin{table}[H]
+    \begin{minipage}{.5\textwidth}
+    \centering
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width = \linewidth]{../mat/gain_banda.png}
+	\end{figure}
+    \caption{Theoretical analysis.}
+    \end{minipage}
+    \begin{minipage}{.5\textwidth}
+	\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../sim/voutfreq.pdf}
+	\end{figure}
+	\caption{Simulation analysis.} 
+    \end{minipage}
+\end{table}
+

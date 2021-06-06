@@ -12,12 +12,14 @@ To calculate the total cost associated to this circuit, one considered that it e
 
 \begin{table}[H]
     \centering
-    \begin{tabular}{c|c}
+    \begin{tabular}{|c|c|}
+        \hline
         \textbf{Component} &  \textbf{Price}\\
         \hline
-        Resistors & 1 MU $k\Omega^{-1}$ \\
-        Capacitors & 1 MU $\mu F^{-1}$ \\
-        Transistors & 0.1 MU transistor$^{-1}$
+        Resistors & 1 MU $k\Omega^{-1}$ \\ \hline
+        Capacitors & 1 MU $\mu F^{-1}$ \\ \hline
+        Transistors & 0.1 MU transistor$^{-1}$\\
+        \hline
     \end{tabular}
     \caption{Price table for the components used}
     \label{tab:price}
@@ -26,7 +28,7 @@ To calculate the total cost associated to this circuit, one considered that it e
 The central frequency represented on eq. \eqref{merit} can be directly calculated from the definition of transfer function for this system and it is given by the geometric mean of the lower and higher cutoff frequencies:
 
 \begin{equation}
-    central freq. = \sqrt{f_H + f_L}
+    central freq. = \sqrt{f_H f_L}
 \end{equation}
 
 in which $f_H$ corresponds to the higher cutoff frequency and $f_L$ to the lower cutoff frequency. Finally, the value for the voltage gain used on eq. \eqref{merit} is easily obtained as the correspondent voltage value for the central frequency obtained. \\

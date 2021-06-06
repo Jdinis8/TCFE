@@ -82,7 +82,7 @@ print all
 * frequency analysis
 ac dec 1000 10 100MEG
 hardcopy voutfreq.ps vdb(outf)
-
+echo "voutfreq_FIG"
 
 *input impedance in ohm
 let zin = v(in)[40]/i(Vze)[40]
@@ -91,32 +91,38 @@ let imz = Im(zin)
 let abszin = abs(zin)
 
 echo "zin_TAB"
-echo "Zi = $&rez + ($&imz)j ohm"
-echo "|Zi| = $&abszin ohm"
+echo "Zi = $&rez + ($&imz)j"
+echo "|Zi| = $&abszin"
 echo "zin_END"
 
 meas ac maxgaindb MAX vdb(outf) from=10 to=10MEG
 
 let cutoff = maxgaindb-3
 
-meas ac f1 WHEN vdb(outf)=cutoff
-meas ac f2 WHEN vdb(outf)=cutoff CROSS=LAST
+meas ac flow WHEN vdb(outf)=cutoff
+meas ac fhigh WHEN vdb(outf)=cutoff CROSS=LAST
 
-let centralf = sqrt(f2*f1)
+let centralf = sqrt(flow*fhigh)
 
-meas ac mashimo FIND vdb(outf) AT=centralf
+meas ac gaindb FIND vdb(outf) AT=centralf
 
 let opampcost = 0.2 + 100 + 5.305 + 5.305 + 1.836 + 1.836 + 13190 + 0.05 + 0.1 + 18.16
 let cost = opampcost+3+300+3*0.220
 
-let merit = 1/(0.000001+cost*abs(1000-centralf)*abs(40-mashimo))
-let merit_clean = 1/(0.000001+(cost-opampcost)*abs(1000-centralf)*abs(40-mashimo))
+let merit = 1/(0.000001+cost*abs(1000-centralf)*abs(40-gaindb))
+let meritclean = 1/(0.000001+(cost-opampcost)*abs(1000-centralf)*abs(40-gaindb))
+
+echo "cutoffsim_TAB"
+print flow
+print fhigh
+echo "cutoffsim_END"
 
 echo "values_TAB"
 print centralf
 print cost
+print gaindb
 print merit
-print merit_clean
+print meritclean
 echo "values_END"
 
 .endc 

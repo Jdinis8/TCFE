@@ -1,0 +1,71 @@
+\section{Simulation Analysis}
+
+In order to the simulation analysis, the circuit shown in \ref{fig:schemescheme} was used. The correspondence with Fig. \ref{initialscheme} is pretty easy: the green rectangle is the high-pass filter together with the input source, the yellowish rectangle is a non-inverting OP-AMP (OP-AMP plus the two resistors) and the red rectangle is the low-pass filter, which required some flexing in order to get the better value. The OP-AMP model already set in the given script was left unchanged.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{shkema.pdf}
+    \caption{The Fig.\ref{initialscheme} scheme but with all the details. The names of the components were omitted for better reading, having us left their numerical values for understanding the values in Ngspice as well as in Octave.}
+    \label{fig:schemescheme}
+\end{figure}
+
+The values obtained for the first part are summarized in Tab. \ref{tab:valuesng}.
+
+\begin{table}[H]
+    \centering 
+    \begin{tabular}{|c|c|}
+    	\hline
+    	Variable & Unit [Hz, MU, dB, -, -]\\ 
+    	\hline
+         \input{../sim/values_tab}
+    \end{tabular}
+    \caption{Obtained values through the implementation of Fig. \ref{fig:schemescheme} in Ngspice.}
+    \label{tab:valuesng}
+\end{table}
+
+For calculating the merit, we took into account, as the teacher asked, the components from the OPAMP. This is why we print out two variables, merit and meritclean. The former takes into account the cost of the OPAMP, the latter does not, thus explaining the different of 1 order of magnitude between the two. The numerical value of the OPAMP price, using \ref{tab:price} is of 13322.792 MU and this is the main reason why we used so many components, the price of the rest of the circuit will not matter that much when compared to this. As we can see, the frequency is close to the required 1000Hz, although there would be some space for improvement, but instead we focused more on getting the gaindb to be at 40db in order to have a more practical circuit, in the real world, i.e., we want an amplification and that's what we're going for. In terms of input impedances, check Tab. \ref{tab:inputimp}, and for output impedances, Tab. \ref{tab:outputimp}. The frequency response is shown in Fig. \ref{fig:ngresp}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    	\hline
+    	Impedance & [VA]\\ 
+    	\hline
+         \input{../sim/zin_tab}
+    \end{tabular}
+    \caption{Input impedance.}
+    \label{tab:inputimp}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+    	\hline
+    	Impedance & [VA]\\ 
+    	\hline
+         \input{../sim/zout_tab}
+    \end{tabular}
+    \caption{Output impedance.}
+    \label{tab:outputimp}
+\end{table}
+
+As a side note, you can check the cutoff frequencies in Tab. \ref{tab:cutoff}.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Frequency & [Hz]\\ 
+        \hline
+         \input{../sim/cutoffsim_tab}
+    \end{tabular}
+    \caption{Cutoff frequencies.}
+    \label{tab:cutoff}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{../sim/voutfreq.pdf}
+    \caption{The frequency response of the scheme in Fig. \ref{fig:schemescheme}, through Ngspice.}
+    \label{fig:ngresp}
+\end{figure}
