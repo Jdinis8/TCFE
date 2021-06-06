@@ -10,11 +10,15 @@ In this section, one can check the responses from the two simulations.
     \centering
     \begin{tabular}{|c|c|}
     	\hline
-        Variable & Unit [Hz, dB, -, -]\\ 
+        Variable & Unit [Hz, MU, dB, -, -]\\ 
         \hline
         Central Frequency & \input{mat_f_central}\\
         \hline
+        Cost & \input{mat_cost}\\
+        \hline
         Gaindb & \input{mat_gain_central}\\
+        \hline
+        GainLinear & \input{mat_linear_gain}\\
         \hline
         Merit & \input{mat_merit}\\
         \hline
@@ -90,3 +94,4 @@ In this section, one can check the responses from the two simulations.
     \end{minipage}
 \end{table}
 
+In the tables, it's very visible that all the values are according, except for the merit, which is expected, since it results in the accumulation of all the previous errors.

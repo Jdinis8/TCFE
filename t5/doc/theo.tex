@@ -1,32 +1,37 @@
 \section{Theoretical Analysis}
 
-For this part, we used the scheme in Fig. \ref{fig:joaoscheme}, which takes into account the approximation of the OP-AMP as shown in Fig. \ref{fig:approximation}.
+For this part, we used the scheme in Fig. \ref{fig:joaoscheme}, where an approximation of the OP-AMP is implicit.
 
 \begin{figure}[H]
     \centering
-    \includegraphics{esquemabunituh.PNG}
+    \includegraphics[width = \linewidth]{dependentsource.pdf}
     \caption{Scheme used for Octave.}
     \label{fig:joaoscheme}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics{slidespic.png}
-    \caption{OP-AMP approximation, shown in theoretical classes (Source: Teacher's slides).}
-    \label{fig:approximation}
-\end{figure}
+The equations for the this analysis are given by:
+
+\begin{gather}
+ V_I(\omega) = \frac{R_1}{R_1+\frac{1}{jC_1\omega}} \\
+ V_2(\omega) = \left(1+\frac{R_2}{R_3} \right)V_I\\
+ V_{out}(\omega) = \frac{V_2(\omega)}{1+jR_4C_2\omega}
+\end{gather}
 
 The results for this part are summarized in Tab. \ref{tab:valuesoctave}. As a sidenote, the cutoff frequencies are $f_{low} = \input{mat_low_cof}Hz$ and $f_{high} = \input{mat_high_cof}Hz$.
 
 \begin{table}[H]
     \centering
     \begin{tabular}{|c|c|}
-    	\hline
-        Variable & Unit [Hz, dB, -, -]\\ 
+        \hline
+        Variable & Unit [Hz, MU, dB, -, -]\\ 
         \hline
         Central Frequency & \input{mat_f_central}\\
         \hline
+        Cost & \input{mat_cost}\\
+        \hline
         Gaindb & \input{mat_gain_central}\\
+        \hline
+        GainLinear & \input{mat_linear_gain}\\
         \hline
         Merit & \input{mat_merit}\\
         \hline
@@ -37,7 +42,7 @@ The results for this part are summarized in Tab. \ref{tab:valuesoctave}. As a si
     \label{tab:valuesoctave}
 \end{table}
 
-The input and output impedances are shown below in Tab. \ref{tab:octinput} and Tab. \ref{tab:octouput}, respectively. You can also check the frequency response in Fig. \ref{fig:octavefreq}.
+The input and output impedances are shown below in Tab. \ref{tab:octinput} and Tab. \ref{tab:octoutput}, respectively. You can also check the frequency response in Fig. \ref{fig:octavefreq}.
 
 \begin{table}[H]
     \centering
