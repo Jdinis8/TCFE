@@ -121,8 +121,8 @@ gain_central = vout1(log10(f_central));
 syms Z_in
 syms Z_out
 
-Z_in = vpa(sym(R1+1/(j*f_central*C1), 'f'));
-Z_out = vpa(sym((j*f_central*C2+1/R4)^(-1), 'f'));
+Z_in = vpa(sym(R1+1/(j*2*pi*f_central*C1), 'f'));
+Z_out = vpa(sym((j*2*pi*f_central*C2+1/R4)^(-1), 'f'));
 
 Z_in_real = vpa(real(Z_in));
 Z_in_imag = vpa(imag(Z_in));
