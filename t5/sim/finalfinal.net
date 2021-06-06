@@ -129,6 +129,7 @@ echo "values_TAB"
 print centralf
 print cost
 print gaindb
+print lineargain
 print merit
 print meritclean
 echo "values_END"
