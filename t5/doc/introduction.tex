@@ -1,10 +1,10 @@
 \section{Introduction}
-The main goal of this laboratory assignment is to design, implement and analyse a band-pass filter (BPF) using an OP-AMP (operational amplifier) having in mind that it should have a good relation efficiency-price. The final objective was to get a central frequency of $1kHz$ for the output signal and a voltage gain of $40dB$ and the circuit's efficiency will be measured considering these objectives that were set. \\
+The main goal of this laboratory assignment is to design, implement and analyse a band-pass filter (BPF) using an OP-AMP (operational amplifier) having in mind that it should have a good relation efficiency-price. The final objective was to get a central frequency of $1kHz$ for the output signal and a voltage gain of $40dB$ ($100$ in linear units) and the circuit's efficiency will be measured considering these objectives that were set. \\
 
 So, in order to evaluate the relation efficiency-price of the built circuit, we will use a merit figure that considers the total cost of the circuit and the deviation to the desired gain and central frequency, defined as:
 
 \begin{equation}
-    M = \frac{1}{cost \cdot |40 - gain| \cdot |1000 - central freq.|}
+    M = \frac{1}{cost \cdot (|100 - gain_{linear}| \cdot |1000 - central freq.| + 10^{-6})}
     \label{merit}
 \end{equation}
 
@@ -20,6 +20,7 @@ To calculate the total cost associated to this circuit, one considered that it e
         Capacitors & 1 MU $\mu F^{-1}$ \\ \hline
         Transistors & 0.1 MU transistor$^{-1}$\\
         \hline
+        Diodes & 0.1 MU $diode^{-1}$\\ \hline
     \end{tabular}
     \caption{Price table for the components used}
     \label{tab:price}
