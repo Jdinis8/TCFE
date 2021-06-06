@@ -18,6 +18,8 @@ fid9  = fopen ("../doc/mat_Z_in_abs.tex" , "w");
 fid10 = fopen ("../doc/mat_Z_out_abs.tex" , "w");
 fid11 = fopen ("../doc/mat_merit.tex" , "w");
 fid12 = fopen ("../doc/mat_merit_sem_opAMP.tex" , "w");
+fid13 = fopen ("../doc/mat_cost.tex" , "w");
+fid14 = fopen ("../doc/mat_linear_gain.tex" , "w");
 
 
 #ZI = 4*10^6;
@@ -136,8 +138,8 @@ Z_out_abs = vpa(abs(Z_out));
 cost_opAMP = 13322.792;
 cost_coisas = 0.22+1+1+300+1+3.44;
 
-merit = 1/(10^(-6)+(cost_opAMP+cost_coisas)*abs(100-10^(gain_central/20))*abs(1000-f_central));
-merit_clean = 1/(10^(-6)+(cost_coisas)*abs(100-10^(gain_central/20))*abs(1000-f_central));
+merit = 1/(10^(-6)+(13626.95)*abs(100-10^(gain_central/20))*abs(1000-f_central));
+merit_clean = 1/(10^(-6)+(13626.95-cost_opAMP)*abs(100-10^(gain_central/20))*abs(1000-f_central));
 
 fprintf(fid1, "%s", char(vpa(low,6)));
 fprintf(fid2, "%s", char(vpa(high,6)));
@@ -151,7 +153,8 @@ fprintf(fid9, "%s", char(vpa(Z_in_abs,6)));
 fprintf(fid10, "%s", char(vpa(Z_out_abs,6)));
 fprintf(fid11, "%s", char(vpa(merit,6)));
 fprintf(fid12, "%s", char(vpa(merit_clean,6)));
-
+fprintf(fid13, "%s", char(vpa(13626.95,6)));
+fprintf(fid14, "%s", char(vpa(10^(gain_central/20),6)));
 
 fclose(fid1);
 fclose(fid2);
@@ -165,5 +168,8 @@ fclose(fid9);
 fclose(fid10);
 fclose(fid11);
 fclose(fid12);
+fclose(fid13);
+fclose(fid14);
+
 
 close all
