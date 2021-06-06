@@ -44,7 +44,7 @@ The results for this part are summarized in Tab. \ref{tab:valuesoctave}. As a si
     \label{tab:valuesoctave}
 \end{table}
 
-The input and output impedances are shown below in Tab. \ref{tab:octinput} and Tab. \ref{tab:octoutput}, respectively. You can also check the frequency response in Fig. \ref{fig:octavefreq}. They were calculted by considering in Fig. \ref{fig:joaoscheme} the equivelent impedance as seen from with the voltage sources close, which represents the output impedance of the OP-AMP as 0 and the input impedance as infinity. That being said what is left to calculate for the capacitor $C_{1}$ in series with resistor $R_{1}$ and for the output impeadance is similar but this time considering that the test branch is in parallel with capacitor $C_{2}$ and also in parallel with resistor $R_{4}$.
+The input and output impedances are shown below in Tab. \ref{tab:octinput} and Tab. \ref{tab:octoutput}, respectively. You can also check the frequency response in Fig. \ref{fig:octavefreq} and the phase response in Fig. \ref{fig:octavephase}. They were calculted by considering in Fig. \ref{fig:joaoscheme} the equivelent impedance as seen from with the voltage sources close, which represents the output impedance of the OP-AMP as 0 and the input impedance as infinity. That being said what is left to calculate for the capacitor $C_{1}$ in series with resistor $R_{1}$ and for the output impeadance is similar but this time considering that the test branch is in parallel with capacitor $C_{2}$ and also in parallel with resistor $R_{4}$.
 
 \begin{table}[H]
     \centering
@@ -77,4 +77,11 @@ The input and output impedances are shown below in Tab. \ref{tab:octinput} and T
     \includegraphics[width = \linewidth]{../mat/gain_banda.png}
     \caption{Frequency response of the circuit shown in Fig. \ref{fig:joaoscheme}, in dB.}
     \label{fig:octavefreq}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = \linewidth]{../mat/phase_banda.png}
+    \caption{Phase response of the circuit shown in Fig. \ref{fig:joaoscheme}, in dB.}
+    \label{fig:octavephase}
 \end{figure}
