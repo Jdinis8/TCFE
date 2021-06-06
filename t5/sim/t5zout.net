@@ -51,23 +51,26 @@
 
 Vcc vcc 0 5.0
 Vee vee 0 -5.0
-Vin in 0 0 ac 1.0 sin(0 10m 1k)
+Vin in 0 0
 
 
-C1 in inv_in 0.72u
+C1 in inv_in 220n
 
 Vze inv_in teste 0
 
 R1 teste 0 1k
 
-X1 nr2 inv_in vcc vee outf uA741
+X1 nr2 inv_in vcc vee out uA741
 R2 nr2 0 1k
-R5 nr2 outf 103.333333333333333333333k
+R5 nr2 aux 100k
 
-C2 outf 0 440n
+R6 aux out 100k
+R7 aux out 100k
 
-* load
-RL outf 0 1008
+R8 out outf 1k
+
+*we tried to place all the capacitors used in series and in parallel but it leads to an unstable situation to Ngspice when trying to calculate the operating point. Thus, we solved this by simply calculating the equivalent capacitance in the parameter xC2
+C2 outf 0 xC2
 
 Vteste outf 0 0 ac 1.0 sin(0 700m 1k)
 
@@ -75,9 +78,9 @@ Vteste outf 0 0 ac 1.0 sin(0 700m 1k)
 .end
 
 .control
-ac dec 10 10 100MEG
+ac dec 1000 10 100MEG
 
-let zout = -v(outf)[40]/i(Vteste)[40]
+let zout = -v(outf)[2000]/i(Vteste)[2000]
 let rez = Re(zout)
 let imz = Im(zout)
 let abszout = abs(zout)

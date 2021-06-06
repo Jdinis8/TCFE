@@ -47,6 +47,7 @@
 .model qx NPN(Is=800.0E-18 Bf=93.75)
 .ends
 
+.param xC2 = 1/(1/220n+1/220n+1/(1u+1u+1u))
 
 Vcc vcc 0 5.0
 Vee vee 0 -5.0
@@ -61,11 +62,15 @@ R1 teste 0 1k
 
 X1 nr2 inv_in vcc vee out uA741
 R2 nr2 0 1k
-R5 nr2 out 150k
+R5 nr2 aux 100k
+
+R6 aux out 100k
+R7 aux out 100k
 
 R8 out outf 1k
 
-C2 outf 0 0.1061093248u
+*we tried to place all the capacitors used in series and in parallel but it leads to an unstable situation to Ngspice when trying to calculate the operating point. Thus, we solved this by simply calculating the equivalent capacitance in the parameter xC2
+C2 outf 0 xC2
 
 * load
 *RL outf 0 1k
@@ -85,7 +90,7 @@ hardcopy voutfreq.ps vdb(outf)
 echo "voutfreq_FIG"
 
 *input impedance in ohm
-let zin = v(in)[40]/i(Vze)[40]
+let zin = v(in)[2000]/i(Vze)[2000]
 let rez = Re(zin)
 let imz = Im(zin)
 let abszin = abs(zin)
@@ -106,11 +111,14 @@ let centralf = sqrt(flow*fhigh)
 
 meas ac gaindb FIND vdb(outf) AT=centralf
 
-let opampcost = 0.2 + 100 + 5.305 + 5.305 + 1.836 + 1.836 + 13190 + 0.05 + 0.1 + 18.16
+let lineargain = 10^(gaindb/20)
+print lineargain
+
+let opampcost = 0.2 + 100 + 5.305 + 5.305 + 1.836 + 1.836 + 13190 + 0.05 + 0.1 + 18.16 +0.5
 let cost = opampcost+3+300+3*0.220
 
-let merit = 1/(0.000001+cost*abs(1000-centralf)*abs(40-gaindb))
-let meritclean = 1/(0.000001+(cost-opampcost)*abs(1000-centralf)*abs(40-gaindb))
+let merit = 1/(0.000001+cost*abs(1000-centralf)*abs(100-lineargain))
+let meritclean = 1/(0.000001+(cost-opampcost)*abs(1000-centralf)*abs(100-lineargain))
 
 echo "cutoffsim_TAB"
 print flow
