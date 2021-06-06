@@ -49,6 +49,10 @@
 
 .options savecurrents
 
+
+.param xC2 = 1/(1/220n+1/220n+1/(1u+1u+1u))
+
+
 Vcc vcc 0 5.0
 Vee vee 0 -5.0
 Vin in 0 0
