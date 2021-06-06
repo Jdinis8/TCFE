@@ -64,7 +64,7 @@ R5 nr2 out 150k
 
 R8 out outf 1k
 
-C2 outf 0 110n
+C2 outf 0 0.1061093248u
 
 * load
 *RL outf 0 1k
@@ -118,10 +118,10 @@ let centralf = sqrt(f2*f1)
 meas ac mashimo FIND vdb(outf) AT=centralf
 
 let opampcost = 0.2 + 100 + 5.305 + 5.305 + 1.836 + 1.836 + 13190 + 0.05 + 0.1 + 18.16
-let cost = opampcost+3+30+100+3*0.220+2
+let cost = opampcost+3+300+3*0.220
 
-let merit = 1/(cost*abs(1000-centralf)*abs(40-mashimo))
-let merit_clean = 1/((cost-opampcost)*abs(1000-centralf)*abs(40-mashimo))
+let merit = 1/(0.000001+cost*abs(1000-centralf)*abs(40-mashimo))
+let merit_clean = 1/(0.000001+(cost-opampcost)*abs(1000-centralf)*abs(40-mashimo))
 print centralf
 print cost
 print merit
