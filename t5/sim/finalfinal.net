@@ -88,6 +88,8 @@ print all
 ac dec 1000 10 100MEG
 hardcopy voutfreq.ps vdb(outf)
 echo "voutfreq_FIG"
+hardcopy voutfreq_phase.ps vp(outf)
+echo "voutfreq_phase_FIG"
 
 *input impedance in ohm
 let zin = v(in)[2000]/i(Vze)[2000]

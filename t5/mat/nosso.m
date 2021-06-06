@@ -91,6 +91,16 @@ xlabel("log10(f) [f] = Hz");
 ylabel("Gain (dB)");
 print ("gain_banda.png", "-dpng");
 
+h2 = matlabFunction(angle(vpa((Vout(10^w)))));
+
+vout12 = @(w) (h2(w));
+
+fplot(vout12, [1, 8], 750);
+legend("phase");
+xlabel("log10(f) [f] = Hz");
+ylabel("Phase (rad)");
+print ("phase_banda.png", "-dpng");
+
 
 
 f = linspace(0, 8, 750);
