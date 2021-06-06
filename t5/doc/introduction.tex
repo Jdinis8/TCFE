@@ -1,10 +1,15 @@
 \section{Introduction}
-The main goal of this laboratory assignment is to analyse and better understand how an audio amplifier works and to design it having in mind that it should have a good relation efficiency-price. So, one has to find an optimal solution for the circuit built, which corresponds to a circuit that minimizes the cost, based not only in the number of component but on the type of them (see price table \ref{tab:price}), maximizing the amplifying bandwidth and minimizing the lower cutoff frequency. This is because the frequencies that are more difficult to achieve in a amplifier like the one analysed are the lower ones.\\
+The main goal of this laboratory assignment is to design, implement and analyse a band-pass filter (BPF) using an OP-AMP (operational amplifier) having in mind that it should have a good relation efficiency-price. The final objective was to get a central frequency of $1kHz$ for the output signal and a voltage gain of $40dB$ and the circuit's efficiency will be measured considering these objectives that were set. \\
 
-To calculate the total cost associated to this circuit, one considered that it equals the sum of the cost of the resistors, capacitors and transistors. This maximization process can be compacted in a function called merit.\\
+So, in order to evaluate the relation efficiency-price of the built circuit, we will use a merit figure that considers the total cost of the circuit and the deviation to the desired gain and central frequency, defined as:
 
-\vspace{-2mm}
-\begin{minipage}{.45\textwidth}
+\begin{equation}
+    M = \frac{1}{cost \cdot |40 - gain| \cdot |1000 - central freq.|}
+    \label{merit}
+\end{equation}
+
+To calculate the total cost associated to this circuit, one considered that it equals the sum of the cost of the resistors, capacitors and transistors which is given by:
+
 \begin{table}[H]
     \centering
     \begin{tabular}{c|c}
@@ -17,25 +22,29 @@ To calculate the total cost associated to this circuit, one considered that it e
     \caption{Price table for the components used}
     \label{tab:price}
 \end{table}
-\end{minipage}
-\begin{minipage}{.45\textwidth}
+
+The central frequency represented on eq. \eqref{merit} can be directly calculated from the definition of transfer function for this system and it is given by the geometric mean of the lower and higher cutoff frequencies:
+
 \begin{equation}
-    M = \frac{10\log\left(\frac{V_{in}}{V_{out}}\right) * \text{bandwidth}}{\text{Cost}*\text{LowerCutOffFrequency}}
-    \label{score}
+    central freq. = \sqrt{f_H + f_L}
 \end{equation}
-\end{minipage}\\\\
 
-The bandwidth corresponds to the difference between the higher cutoff frequency and the lower cutoff frequency, and those being defined by the frequencies from which the gain is lower than 3dB compared with the maximum value obtained. The $V_{in}$'s maximum value is set at $10mV$ (mandatory) in order for the goal to be well defined. Additionally to the components seen in the price table \ref{tab:price}, we also use a voltage source of $12V$ that will have an important role in the amplification of the input voltage.\\
+in which $f_H$ corresponds to the higher cutoff frequency and $f_L$ to the lower cutoff frequency. Finally, the value for the voltage gain used on eq. \eqref{merit} is easily obtained as the correspondent voltage value for the central frequency obtained. \\
 
-The circuit can also be divided in 2 main regions: the gain stage and the output stage. The gain stage has the main goal of amplifying the signal, as it is suggested by its name, and the output stage to reduce the impedance of the circuit that is connected to the output audio emitter of $8 \Omega$. This is necessary because having a high output impedance, Zo, in the circuit would make all the current pass through the audio emitter, wasting significant amounts of power and increasing the distortion of the signal. On the other hand, with the goal of averting the degradation of the input voltage, one must have a high input impedance, Zi\\
-
-Furthermore, and considering all the points mentioned before, the circuit used for this purpose was the following:
+The circuit used to implement this band-pass filter using an OP-AMP can be divided in 3 main regions as it can be seen on Fig. \ref{initialscheme}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width = 0.85\linewidth]{scheme.pdf}
-            \caption{\textit{Circuit analysed. The fixed values are $V_{in}$ at $10mV$, being of any frequency from $0$ to $10^8$ $Hz$, $V_{cc}$ at $12V$ and the two resistors $R_{in}$ with $100\Omega$ and $R_L$ with $8\Omega$.}}
-    \label{fig:bigscheme}
+    \includegraphics{esquemabunituh.PNG}
+    \caption{Simplified scheme to present the 3 regions in which the circuit used can be divided}
+    \label{initialscheme}
 \end{figure}
 
-The results were obtained through a theoretical analysis, in which one predicted the output by using a theoretical method that suited the real circuit and through a simulation that was made using \textit{Ngspice}. The results obtained through both methods will be analysed throughout the report. However, because the models used in \textit{Ngspice} are more correct than the ones used on the theoretical analysis, any type of optimization was done almost exclusively in the simulation analysis\\
+The first part, a high-pass filter stage, will essentially have a resistor and a capacitor (i.e. will only pass signals with a frequency higher than a certain cutoff frequency, $f_L$). This part is followed by an amplification unit which will have the main objective of increasing the output voltage gain and which counts with an OP-AMP and two resistors. Finally, one implemented a low-pass filter stage on the circuit which operates on the opposite way of the high-pass filter, i.e. blocks all the signals with a frequency higher than a certain cutoff frequency, $f_H$). \\
+
+As it is trivial, the high-pass filter and the low-pass filter blocking simultaneously frequencies lower than $f_L$ and higher that $f_H$ will act as a band-pass filter as desired. \\
+
+Furthermore, and considering all the points mentioned before, the circuit used for this purpose was the following:
+
+
+The results were obtained through a theoretical analysis, in which one predicted the output by using a theoretical method that suited the real circuit and through a simulation that was made using \textit{Ngspice}. The results obtained through both methods will be analysed throughout the report. However, because the models used in \textit{Ngspice} are more correct than the ones used on the theoretical analysis, any type of optimization was done almost exclusively in the simulation analysis.\\

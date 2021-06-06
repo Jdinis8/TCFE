@@ -81,7 +81,6 @@ let zout = -v(outf)[40]/i(Vteste)[40]
 let rez = Re(zout)
 let imz = Im(zout)
 let abszout = abs(zout)
-print abs(zout)
 
 echo "zout_TAB"
 echo "Zo = $&rez + ($&imz)j ohm"

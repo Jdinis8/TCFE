@@ -90,11 +90,6 @@ let rez = Re(zin)
 let imz = Im(zin)
 let abszin = abs(zin)
 
-print zin
-print rez
-print imz
-print abszin
-
 echo "zin_TAB"
 echo "Zi = $&rez + ($&imz)j ohm"
 echo "|Zi| = $&abszin ohm"
@@ -116,9 +111,12 @@ let cost = opampcost+3+300+3*0.220
 
 let merit = 1/(0.000001+cost*abs(1000-centralf)*abs(40-mashimo))
 let merit_clean = 1/(0.000001+(cost-opampcost)*abs(1000-centralf)*abs(40-mashimo))
+
+echo "values_TAB"
 print centralf
 print cost
 print merit
 print merit_clean
+echo "values_END"
 
 .endc 

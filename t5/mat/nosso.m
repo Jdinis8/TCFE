@@ -77,9 +77,9 @@ V2(w) = (1+R2/R3)*VI(w);
 Vout(w) = V2(w)/(1+R4*GC2);
 
 
-h = matlabFunction(abs(vpa((Vout(10^w)))))
+h = matlabFunction(abs(vpa((Vout(10^w)))));
 
-vout1 = @(w) 20*log10(h(w))
+vout1 = @(w) 20*log10(h(w));
 
 #vout1 = @(w) 20*log10(first(h(w)))
 
@@ -99,24 +99,24 @@ for i=1:length(f)
   y(i) = vout1(f(i));
 endfor
 
-v_max = max(y)
+v_max = max(y);
 
-low = -1
-high = -1
+low = -1;
+high = -1;
 
 for i=1:length(y)
 	if (y(i) >= v_max-3 && low<0)
-	  low = 10^f(i)
+	  low = 10^f(i);
 	endif
 	if (y(i) <= v_max-3 && low>0 && high<0)
-	  high = 10^f(i)
+	  high = 10^f(i);
 	endif
 endfor
 
 
 
-f_central = sqrt(high*low)
-gain_central = vout1(log10(f_central))
+f_central = sqrt(high*low);
+gain_central = vout1(log10(f_central));
 
 syms Z_in
 syms Z_out
@@ -124,20 +124,20 @@ syms Z_out
 Z_in = vpa(sym(R1+1/(j*f_central*C1), 'f'));
 Z_out = vpa(sym((j*f_central*C2+1/R4)^(-1), 'f'));
 
-Z_in_real = vpa(real(Z_in))
-Z_in_imag = vpa(imag(Z_in))
+Z_in_real = vpa(real(Z_in));
+Z_in_imag = vpa(imag(Z_in));
 
-Z_out_real = vpa(real(Z_out))
-Z_out_imag = vpa(imag(Z_out))
+Z_out_real = vpa(real(Z_out));
+Z_out_imag = vpa(imag(Z_out));
 
-Z_in_abs = vpa(abs(Z_in))
-Z_out_abs = vpa(abs(Z_out))
+Z_in_abs = vpa(abs(Z_in));
+Z_out_abs = vpa(abs(Z_out));
 
 cost_opAMP = 13322.792;
-cost_coisas = 0.22+1+1+300+1+3.44
+cost_coisas = 0.22+1+1+300+1+3.44;
 
-merit = 1/(10^(-6)+(cost_opAMP+cost_coisas)*abs(40-gain_central)*abs(1000-f_central))
-merit_clean = 1/(10^(-6)+(cost_coisas)*abs(40-gain_central)*abs(1000-f_central))
+merit = 1/(10^(-6)+(cost_opAMP+cost_coisas)*abs(40-gain_central)*abs(1000-f_central));
+merit_clean = 1/(10^(-6)+(cost_coisas)*abs(40-gain_central)*abs(1000-f_central));
 
 fprintf(fid1, "%s", char(vpa(low,6)));
 fprintf(fid2, "%s", char(vpa(high,6)));
@@ -165,3 +165,5 @@ fclose(fid9);
 fclose(fid10);
 fclose(fid11);
 fclose(fid12);
+
+close all
